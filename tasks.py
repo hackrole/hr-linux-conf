@@ -66,7 +66,7 @@ def make_wget_cmd(url, fname):
     download_dir = "~/Downloads"
     download_file = os.path.join(download_dir, fname)
 
-    return "wget -c {url} -o {download_file}".format(
+    return "wget -c {url} -O {download_file}".format(
         url=url, download_file=download_file)
 
 
@@ -85,19 +85,19 @@ def download_package(url, output):
     else:
         cmd = make_wget_cmd(url, output)
 
-    logging.info("==============")
-    msg = "start using %s download pkg: %s from %s" % (output, url)
+    logging.info("================>>>>")
+    msg = "start download pkg: %s from %s" % (output, url)
     logging.info(msg)
     try:
         run(cmd)
     except Exception as e:
-        msg = "using %s download pkg: %s from %s failed!!!" % (output, url)
+        msg = "download pkg: %s from %s failed!!!" % (output, url)
         logging.warning(msg)
         logging.warning('Exception: %s' % e.message)
     else:
-        msg = "finish using %s download pkg: %s from %s" % (output, url)
+        msg = "finish download pkg: %s from %s" % (output, url)
         logging.info(msg)
-    logging.info("==============")
+    logging.info("<<<<==================")
 
 
 # ================================================
@@ -163,13 +163,13 @@ def download_pkg():
     """ 下载常用软件 """
     package_list = {
         'vim': {
-            'url': 'https://github.com/vim/vim.git',
+            'url': 'git@github.com:vim/vim.git',
             'output': 'vim',
             'comment': ("download vim7.4 source to compile for YCM."
                         "you need to compile YCM after install vim"),
         },
         'emacs': {
-            'url': 'https://github.com/emacs-mirror/emacs.git',
+            'url': 'git@github.com:emacs-mirror/emacs.git',
             'output': 'emacs',
         },
         'ctags5.8': {
@@ -181,7 +181,7 @@ def download_pkg():
             'output': 'vagrant',
         },
         'awesome-wm': {
-            'url': 'git@github.com:mitchellh/vagrant.git',
+            'url': 'git@github.com:awesomeWM/awesome.git',
             'output': 'awesome',
         },
         'musca-wm': {
