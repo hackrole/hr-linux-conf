@@ -1,0 +1,126 @@
+# bg-image/trayer/conkey tools
+# ==================================================
+
+# bg imge
+exec feh --bg-scale /home/daipeng/Desktop/hr-conf/hr-linux-conf/jpg/3.jpg
+
+# manage off
+manage off trayer
+manage off Conky
+manage off fcitx
+manage off xmessage
+manage off guake
+
+# start conky
+#exec conky
+# start trayer
+#exec trayer --edge top --align right --widthtype request --height 20 --SetDockType true --transparent true --alpha 1 --tint 0x00ff00
+
+# start fbpanel
+exec fbpanel
+
+# padding
+pad 0 0 20 0
+hook on add pad 0 0 0 44
+
+
+# musca settings
+# ===============================================
+
+# set border color
+set border_focus Orange
+
+# open in empty frame if there are
+set window_open_frame empty
+
+# XXX set demu startup cmd
+
+# focus on new frame after split
+set frame_split_focus new
+
+# update every 8 secods
+update_interval 8.0
+
+# update time, 0 forever
+total_run_times 0
+
+
+# bind keys
+# ======================================
+
+# quit musca
+bind on Mod4+Shift+q quit
+
+# bind on xterms
+bind off Mod4+t
+bind on Mod4+q exec musca-off
+
+# quick checkout screen 
+bind on Mod4+1 use 0
+bind on Mod4+2 use 1
+bind on Mod4+3 use 2
+bind on Mod4+4 use 3
+
+# app shortcuts
+bind on Mod1+Control+t exec x-terminal-emulator
+bind on Mod1+Control+f exec firefox
+bind on Mod1+Control+g exec gvim
+bind on Mod1+Control+c exec chrome
+bind on Mod1+Control+v exec vmware
+
+# move window
+bind on Mod1+Left slide left
+bind on Mod1+Right slide right
+bind on Mod1+Up slide up
+bind on Mod1+Down slide down
+
+# focus other window 
+bind on Mod4+Shift+h focus left
+bind on Mod4+Shift+j focus down
+bind on Mod4+Shift+k focus up
+bind on Mod4+Shift+l focus right
+
+# move window to screen
+bind on Mod1+Control+Shift+1 move 0
+bind on Mod1+Control+Shift+2 move 1
+bind on Mod1+Control+Shift+3 move 2
+bind on Mod1+Conrol+shift+4 move 3
+bind on Mod1+Control+SHift+top move top
+bind on Mod1+Control+SHift+right move right
+bind on Mod1+Control+SHift+bottom move bottom
+bind on Mod1+Control+SHift+left move left
+
+# checkout next desktop
+bind on Mod4+n use (next)
+bind on Mod4+p use (prev)
+
+
+# screen settings
+# ===========================================
+
+add right
+add bottom
+add right
+use 0
+name top
+
+
+# other settings
+# ============================================
+
+# guake
+exec guake &
+
+# fcitx
+exec export XIM_PROGRAM=fcitx
+exec export GTK_IM_MODULE=fcitx
+exec export QT_IM_MODULE=fcitx
+exec export XIM=fcitx
+exec export XMODIFIERS="@im=fcitx"
+exec fcitx -d &
+
+# xmodmap
+exec xmodmap ~/.xmodmap &
+
+# shadownsock
+exec ~/app/shadowsocks/shadowsocks-local-linux64-1.1.1 -c ~/app/shadowsocks/config.json &

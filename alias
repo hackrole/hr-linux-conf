@@ -1,0 +1,18 @@
+# common alias file, add some work-alias as need.
+
+# alias cd
+alias cdvar="cd /var"
+alias cdapp="cd /usr/local/app"
+alias cdwww="cd /var/www"
+alias cdtest="cd /var/www/stime-test"
+alias cdetc="cd /etc"
+alias cdnginx="cd /etc/nginx"
+alias cdlog="cd /var/log"
+alias cddist='cd /usr/local/lib/python2.7/dist-packages'
+
+alias djserver="python manage.py runserver 0.0.0.0:8000"
+alias djshell="python manage.py shell"
+alias mmplay="cd ~/Music && mplayer -playlist mplay.lst -loop 0"
+alias cdchat="cd ~/projects/next_chat"
+alias cdnchat="cd ~/projects/next_chat/nchat"
+alias ssh241="ssh root@192.168.1.241"

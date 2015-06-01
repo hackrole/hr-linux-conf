@@ -1,0 +1,15 @@
+server {
+	root /var/www/rockmongo;
+	server_name www.rmongo.com rmongo.com;
+	index index.php index.html index.htm;
+	error_log /var/log/rockmongo/error.log;
+	access_log /var/log/rockmongo/access.log;
+
+
+	location ~ \.php$ {
+		fastcgi_pass 127.0.0.1:9000;
+		fastcgi_index index.php;
+		fastcgi_param SCRIPT_FILENAME /var/www/rockmongo/$fastcgi_script_name;
+		include fastcgi_params;
+	}
+}
