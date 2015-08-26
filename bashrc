@@ -148,6 +148,3 @@ export JRE_HOME=${JAVA_HOME}/jre
 export PATH=${JAVA_HOME}/bin:${PATH}
 export CLASSPATH=.:$JAVA_HOME/lib:$JAVA_HOME/jre/lib
 export CLASSPATH=${CLASSPATH}:bsh.jar
-
-# stime develop, finish to remove
-source ~/stime-env/bin/activate
