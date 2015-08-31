@@ -5,3 +5,12 @@ export QT_IM_MODULE=fcitx
 export XIM=fcitx
 export XMODIFIERS="@im=fcitx"
 fcitx &
+
+# define app dir
+app_dir="/home/daipeng/app"
+
+# shadowsocks
+# ${app_dir}/shadowsocks/shadowsocks-local-linux64-1.1.1 -c ${app_dir}/shadowsocks/config.json &
+
+# xmodmap
+# xmodmap ~/.xmodmap
