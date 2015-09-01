@@ -144,7 +144,7 @@ mytasklist.buttons = awful.util.table.join(
 awful.util.spawn_with_shell('fcitx -d')
 awful.util.spawn_with_shell('xmodmap /home/daipeng/.xmodmap')
 awful.util.spawn_with_shell('guake')
-awful.util.spawn_with_shell('xscreensaver')
+awful.util.spawn_with_shell('xscreensaver -no-splash')
 
 for s = 1, screen.count() do
     -- Create a promptbox for each screen

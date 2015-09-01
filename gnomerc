@@ -16,5 +16,5 @@ xmodmap ~/.xmodmap
 xscreensaver_path='/usr/bin/xscreensaver'
 if [ -x ${xscreensaver_path} ] 
 then
-    xscreensaver &
+    xscreensaver -no-splash &
 fi
