@@ -54,10 +54,8 @@ modkey = "Mod4"
 -- Table of layouts to cover with awful.layout.inc, order matters.
 layouts =
 {
-    awful.layout.suit.tile,
     awful.layout.suit.tile.left,
     awful.layout.suit.floating,
-    awful.layout.suit.tile.bottom,
     awful.layout.suit.tile.top,
 }
 -- }}}
@@ -146,6 +144,7 @@ mytasklist.buttons = awful.util.table.join(
 awful.util.spawn_with_shell('fcitx -d')
 awful.util.spawn_with_shell('xmodmap /home/daipeng/.xmodmap')
 awful.util.spawn_with_shell('guake')
+awful.util.spawn_with_shell('xscreensaver')
 
 for s = 1, screen.count() do
     -- Create a promptbox for each screen
@@ -232,6 +231,7 @@ globalkeys = awful.util.table.join(
     awful.key({"Control", "Mod1"}, "m", function() awful.util.spawn("thunderbird") end),
     awful.key({"Control", "Mod1"}, "v", function() awful.util.spawn("vmware") end),
     awful.key({"Control", "Mod1"}, "e", function() awful.util.spawn("emacs") end),
+    awful.key({"Control", "Mod1"}, "l", function() awful.util.spawn("xscreensaver-command -lock") end),
 
     -- Standard program
     awful.key({ modkey,           }, "Return", function () awful.util.spawn(terminal) end),
