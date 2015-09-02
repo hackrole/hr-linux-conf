@@ -231,7 +231,7 @@ globalkeys = awful.util.table.join(
     awful.key({"Control", "Mod1"}, "t", function() awful.util.spawn(terminal) end),
     awful.key({"Control", "Mod1"}, "m", function() awful.util.spawn("thunderbird") end),
     awful.key({"Control", "Mod1"}, "v", function() awful.util.spawn("vmware") end),
-    awful.key({"Control", "Mod1"}, "e", function() awful.util.spawn("emacs") end),
+    awful.key({"Control", "Mod1"}, "e", function() awful.util.spawn("LC_CTYPE=zh_CN.UTF-8 emacs") end),
     awful.key({"Control", "Mod1"}, "l", function() awful.util.spawn("xscreensaver-command -lock") end),
 
     -- Standard program
