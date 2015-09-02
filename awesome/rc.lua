@@ -142,6 +142,7 @@ mytasklist.buttons = awful.util.table.join(
 
 -- auto run
 awful.util.spawn_with_shell('fcitx -d')
+awful.util.spawn_with_shell('/home/daipeng/app/shadowsocks/shadowsocks-local-linux64-1.1.1 -c /home/daipeng/app/shadowsocks/config.json')
 awful.util.spawn_with_shell('xmodmap /home/daipeng/.xmodmap')
 awful.util.spawn_with_shell('guake')
 awful.util.spawn_with_shell('xscreensaver -no-splash')
