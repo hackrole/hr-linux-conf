@@ -132,10 +132,12 @@ if [ -d GGENG_PATH ]; then
 fi
 
 # golang config
-export GOROOT=/usr/local/app/go
-export GOPATH=/home/daipeng/Desktop/program/mygo
-export GOBIN=$GOPATH/bin:$GOROOT/bin
-export PATH=${PATH}:${GOBIN}
+# golang config
+export GOROOT=/home/daipeng/app/go1.4
+export GOPATH=/home/daipeng/program/mygo
+export PATH=${PATH}:${GOROOT}/bin:${GOPATH}/bin
+# gvm setup, conflict with self-install go
+#[[ -s "/home/daipeng/.gvm/scripts/gvm" ]] && source "/home/daipeng/.gvm/scripts/gvm"
 
 # set GNUstep
 #GNUSTEP_MAKEFILES=/usr/share/GNUstep/Makefiles/GNUstep.sh
