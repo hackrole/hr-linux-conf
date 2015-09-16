@@ -1,0 +1,9 @@
+[user]
+	name = hackrole
+	email = daipeng123456@gmail.com
+[alias]
+	ch = checkout
+	br = branch
+	cm = commit
+	st = status
+	lg = log -3 HEAD
