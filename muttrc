@@ -1,0 +1,20 @@
+set mbox_type=MailDir
+set folder=$HOME/Mails/freshfresh
+set spoolfile="+INBOX"
+set mbox="+archive"
+set postponed = "+drafts"
+set editor = "vim"
+set include = yes
+set indent_str = "> "
+set from = "daipeng <daipeng123456@gmail.com"
+set use_from = yes
+set envelope_from = yes
+set realname = "daipeng"
+set reverse_name = yes
+set reverse_realname = yes
+
+unset record
+
+set sendmail = /usr/bin/msmtp
+
+mailboxes +INBOX +archive +send +drafts +spam + trash

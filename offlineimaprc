@@ -1,0 +1,15 @@
+[general]
+accounts = gmail
+
+[Account gmail]
+localrepository = gmailLocal
+remoterepository = gmailRemote
+
+[Repository gmailLocal]
+type = Maildir
+localfolders = ~/Mails/mygmail
+
+[Repository gmailRemote]
+type = Gmail
+remoteport = 993
+remoteuser = daipeng123456@gmail.com
