@@ -142,8 +142,8 @@ mytasklist.buttons = awful.util.table.join(
 
 -- auto run
 awful.util.spawn_with_shell('fcitx -d')
-awful.util.spawn_with_shell('/home/daipeng/app/shadowsocks/shadowsocks-local-linux64-1.1.1 -c /home/daipeng/app/shadowsocks/config.json')
 awful.util.spawn_with_shell('xmodmap /home/daipeng/.xmodmap')
+awful.util.spawn_with_shell('/home/daipeng/app/shadowsocks/shadowsocks-local-linux64-1.1.1 -c /home/daipeng/app/shadowsocks/config.json')
 awful.util.spawn_with_shell('guake')
 awful.util.spawn_with_shell('xscreensaver -no-splash')
 
@@ -227,11 +227,12 @@ globalkeys = awful.util.table.join(
 
     -- TODO run app keybind
     awful.key({"Control", "Mod1"}, "g", function() awful.util.spawn("gvim") end),
+    awful.key({"Control", "Mod1"}, "b", function() awful.util.spawn("sublime") end),
     awful.key({"Control", "Mod1"}, "c", function() awful.util.spawn("chrome") end),
     awful.key({"Control", "Mod1"}, "t", function() awful.util.spawn(terminal) end),
     awful.key({"Control", "Mod1"}, "m", function() awful.util.spawn("thunderbird") end),
     awful.key({"Control", "Mod1"}, "v", function() awful.util.spawn("vmware") end),
-    awful.key({"Control", "Mod1"}, "e", function() awful.util.spawn("LC_CTYPE=zh_CN.UTF-8 emacs") end),
+    awful.key({"Control", "Mod1"}, "e", function() awful.util.spawn("LC_CTYPE=zh_CN.UTF-8 && emacs") end),
     awful.key({"Control", "Mod1"}, "l", function() awful.util.spawn("xscreensaver-command -lock") end),
 
     -- Standard program
@@ -267,7 +268,8 @@ clientkeys = awful.util.table.join(
     awful.key({ modkey, "Shift"   }, "c",      function (c) c:kill()                         end),
     awful.key({ modkey, "Control" }, "space",  awful.client.floating.toggle                     ),
     awful.key({ modkey, "Control" }, "Return", function (c) c:swap(awful.client.getmaster()) end),
-    awful.key({ modkey,           }, "o",      awful.client.movetoscreen                        ),
+    awful.key({ "Control", "Shift", "Mod1" }, "n", function(c) awful.client.movetoscreen(c, c.screen - 1) end),
+    awful.key({ "Control", "Shift", "Mod1" }, "m", function(c) awful.client.movetoscreen(c, c.screen + 1) end),
     awful.key({ modkey, "Shift"   }, "r",      function (c) c:redraw()                       end),
     awful.key({ modkey,           }, "t",      function (c) c.ontop = not c.ontop            end),
     awful.key({ modkey,           }, "n",
@@ -346,6 +348,9 @@ awful.rules.rules = {
       properties = { floating = true } },
     { rule = { class = "gimp" },
       properties = { floating = true } },
+    {
+      rule = { class = 'guake' },
+      properties = { floating = ture } },
     -- Set Firefox to always map on tags number 2 of screen 1.
     -- { rule = { class = "Firefox" },
     --   properties = { tag = tags[1][2] } },
