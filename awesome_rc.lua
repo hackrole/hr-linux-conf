@@ -140,12 +140,12 @@ mytasklist.buttons = awful.util.table.join(
                                               if client.focus then client.focus:raise() end
                                           end))
 
--- auto run
-awful.util.spawn_with_shell('fcitx -d')
-awful.util.spawn_with_shell('xmodmap /home/daipeng/.xmodmap')
-awful.util.spawn_with_shell('/home/daipeng/app/shadowsocks/shadowsocks-local-linux64-1.1.1 -c /home/daipeng/app/shadowsocks/config.json')
-awful.util.spawn_with_shell('guake')
-awful.util.spawn_with_shell('xscreensaver -no-splash')
+-- auto run and run only once
+awful.util.spawn_with_shell('pgrep -x fcitx > /dev/null || fcitx -d')
+awful.util.spawn_with_shell('pgrep -x fcitx > /dev/null || xmodmap /home/daipeng/.xmodmap')
+awful.util.spawn_with_shell('pgrep -x fcitx > /dev/null || /home/daipeng/app/shadowsocks/shadowsocks-local-linux64-1.1.1 -c /home/daipeng/app/shadowsocks/config.json')
+awful.util.spawn_with_shell('pgrep -x fcitx > /dev/null || guake')
+awful.util.spawn_with_shell('pgrep -x fcitx > /dev/null || xscreensaver -no-splash')
 
 for s = 1, screen.count() do
     -- Create a promptbox for each screen
@@ -232,10 +232,10 @@ globalkeys = awful.util.table.join(
     awful.key({"Control", "Mod1"}, "t", function() awful.util.spawn(terminal) end),
     awful.key({"Control", "Mod1"}, "m", function() awful.util.spawn("thunderbird") end),
     awful.key({"Control", "Mod1"}, "v", function() awful.util.spawn("vmware") end),
-    awful.key({"Control", "Mod1"}, "e", function() awful.util.spawn("LC_CTYPE=zh_CN.UTF-8 && emacs") end),
+    awful.key({"Control", "Mod1"}, "e", function() awful.util.spawn_with_shell("LC_CTYPE=zh_CN.UTF-8 emacs") end),
     awful.key({"Control", "Mod1"}, "l", function() awful.util.spawn("xscreensaver-command -lock") end),
-    awful.key({}, "Print", function() awful.util.spawn("scrot %Y-%m-%d-%T-screenshot.jpg") end),
-    awful.key({"Shift"}, "Print", function() awful.util.spawn("scrot -s %Y-%m-%d-%T-screenshot.jpg") end),
+    awful.key({}, "Print", function() awful.util.spawn_with_shell("sleep 0.5 && scrot ~/Pictures/%Y-%m-%d-%T-screenshot.jpg") end),
+    awful.key({"Shift"}, "Print", function() awful.util.spawn_with_shell("sleep 0.5 && scrot -s ~/Pictures/%Y-%m-%d-%T-screenshot.jpg") end),
 
     -- Standard program
     awful.key({ modkey,           }, "Return", function () awful.util.spawn(terminal) end),
