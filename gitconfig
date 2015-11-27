@@ -9,3 +9,5 @@
 	lg = log --pretty=oneline
 [pager]
 	log = false
+[core]
+	editor = vim
