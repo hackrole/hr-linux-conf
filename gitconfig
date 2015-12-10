@@ -7,6 +7,7 @@
 	cm = commit
 	st = status
 	lg = log --pretty=oneline
+	glg = log --graph --pretty=oneline
 [pager]
 	log = false
 [core]
