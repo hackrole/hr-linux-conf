@@ -85,6 +85,7 @@ source $ZSH/oh-my-zsh.sh
 
 # personal config
 # ===============
+
 source ~/.alias
 
 # setup oepnjdk 7
@@ -97,4 +98,4 @@ export CLASSPATH=${CLASSPATH}:${JAVA_HOME}/lib/bsh.jar
 export NVM_DIR="/home/daipeng/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
 # use v4.2.2 node at startup
-nvm use v4.2.2
+#nvm use v4.2.2

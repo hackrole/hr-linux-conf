@@ -12,3 +12,4 @@
 	log = false
 [core]
 	editor = vim
+	excludesfile = /home/daipeng/.gitignore_global
