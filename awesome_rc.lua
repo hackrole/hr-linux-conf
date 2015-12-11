@@ -141,11 +141,10 @@ mytasklist.buttons = awful.util.table.join(
                                           end))
 
 -- auto run and run only once
-awful.util.spawn_with_shell('pgrep -x fcitx > /dev/null || fcitx -d')
-awful.util.spawn_with_shell('pgrep -x fcitx > /dev/null || xmodmap /home/daipeng/.xmodmap')
-awful.util.spawn_with_shell('pgrep -x fcitx > /dev/null || /home/daipeng/app/shadowsocks/shadowsocks-local-linux64-1.1.1 -c /home/daipeng/app/shadowsocks/config.json')
-awful.util.spawn_with_shell('pgrep -x fcitx > /dev/null || guake')
-awful.util.spawn_with_shell('pgrep -x fcitx > /dev/null || xscreensaver -no-splash')
+awful.util.spawn_with_shell('xmodmap /home/daipeng/.xmodmap')
+awful.util.spawn_with_shell('/home/daipeng/app/shadowsocks/shadowsocks-local-linux64-1.1.1 -c /home/daipeng/app/shadowsocks/config.json')
+awful.util.spawn_with_shell('guake')
+awful.util.spawn_with_shell('xscreensaver -no-splash')
 
 for s = 1, screen.count() do
     -- Create a promptbox for each screen
