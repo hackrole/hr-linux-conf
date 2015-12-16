@@ -16,3 +16,8 @@ alias mmplay="cd ~/Music && mplayer -playlist mplay.lst -loop 0"
 alias cdchat="cd ~/projects/next_chat"
 alias cdnchat="cd ~/projects/next_chat/nchat"
 alias ssh241="ssh root@192.168.1.241"
+alias sshtur="ssh daipeng@test.urfresh.cn"
+
+# work
+alias cdfair="cd ~/projects/fair"
+alias fairenv="source ~/projects/fair-env/bin/activate"

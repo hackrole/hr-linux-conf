@@ -1,15 +1,3 @@
 [user]
-	name = hackrole
-	email = daipeng123456@gmail.com
-[alias]
-	ch = checkout
-	br = branch
-	cm = commit
-	st = status
-	lg = log --pretty=oneline
-	glg = log --graph --pretty=oneline
-[pager]
-	log = false
-[core]
-	editor = vim
-	excludesfile = /home/daipeng/.gitignore_global
+	email = daipeng
+	name = daipeng
