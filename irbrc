@@ -3,7 +3,7 @@
 #require "irb"
 #require "irb/completion"
 require 'bond'
-require 'bond/completion'
+Bond.start
 
 # TODO what's this
 require "wirble"

@@ -116,4 +116,4 @@ export NVM_DIR="/home/daipeng/.nvm"
 # use v4.2.2 node at startup
 #nvm use v4.2.2
 
-export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
+# export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
