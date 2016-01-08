@@ -1,9 +1,16 @@
-require "irb"
-require "irb/completion"
+# auto complete
+# use bond for default
+#require "irb"
+#require "irb/completion"
+require 'bond'
+require 'bond/completion'
+
+# TODO what's this
 require "wirble"
 Wirble.init
 Wirble.colorize
 
+# some things else
 IRB.conf[:AUTO_INDENT] = true
 IRB.conf[:IRB_NAME]="hackrole_irb"
 IRB.conf[:DEBUG_LEVEL]=0
