@@ -96,18 +96,24 @@ export CLASSPATH=.:$JAVA_HOME/lib:$JAVA_HOME/jre/lib
 export CLASSPATH=${CLASSPATH}:${JAVA_HOME}/lib/bsh.jar
 
 # setup android sdk
-export ANDROID_HOME=/home/daipeng/app/android-sdk
-export PATH=${PATH}:${ANDROID_HOME}/tools:${ANDROID_HOME}/platform-tools
+export ANDROID_HOME=/home/daipeng/app/android-sdk-linux
+export PATH=$PATH:${ANDROID_HOME}/tools:${ANDROID_HOME}/platform-tools
 
-# setup gradle
-export GRADLE_HOME="/home/daipeng/app/gradle-2.10"
-export PATH=${GRADLE_HOME}/bin:${PATH}
+# setup android ndk
+export ANDROID_NDK=/home/daipeng/app/android-ndk
 
 # setup scala
 export SCALA_HOME="/home/daipeng/app/scala-2.11.7"
-export PATH=${PATH}:${SCALA_HOME}/bin
+export PATH=$PATH:${SCALA_HOME}/bin
 
+# setup gradle
+export GRADLE_HOME="/home/daipeng/app/gradle-2.10/"
+export PATH=${PATH}:${GRADLE_HOME}/bin
+
+# setup nvm
 export NVM_DIR="/home/daipeng/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
 # use v4.2.2 node at startup
 #nvm use v4.2.2
+
+export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
