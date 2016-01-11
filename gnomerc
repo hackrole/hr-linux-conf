@@ -1,20 +1,20 @@
 # fcitx config
-export XIM_PROGRAM=fcitx
-export GTK_IM_MODULE=fcitx
-export QT_IM_MODULE=fcitx
-export XIM=fcitx
-export XMODIFIERS="@im=fcitx"
-fcitx &
+# export XIM_PROGRAM=fcitx
+# export GTK_IM_MODULE=fcitx
+# export QT_IM_MODULE=fcitx
+# export XIM=fcitx
+# export XMODIFIERS="@im=fcitx"
+# fcitx &
 
 # shadowsocks
-/home/daipeng/app/shadowsocks/shadowsocks-local-linux64-1.1.1 -c /home/daipeng/app/shadowsocks/config.json &
+# /home/daipeng/app/shadowsocks/shadowsocks-local-linux64-1.1.1 -c /home/daipeng/app/shadowsocks/config.json &
 
 # xmodmap
-xmodmap ~/.xmodmap
+# xmodmap ~/.xmodmap
 
 # xscreensaver 启动
-xscreensaver_path='/usr/bin/xscreensaver'
-if [ -x ${xscreensaver_path} ] 
-then
-    xscreensaver -no-splash &
-fi
+# xscreensaver_path='/usr/bin/xscreensaver'
+# if [ -x ${xscreensaver_path} ] 
+# then
+     #xscreensaver -no-splash &
+# fi
