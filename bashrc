@@ -159,4 +159,7 @@ export path=$path:${android_home}/tools:${android_home}/platform-tools
 export NVM_DIR="/home/daipeng/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
 
-export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
+# setup virtualenvwrapper
+source /usr/local/bin/virtualenvwrapper.sh
+
+# export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
