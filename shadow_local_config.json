@@ -1,0 +1,9 @@
+{
+    "server": "<ip>",
+    "server_port": "<port:Int>",
+    "local": "127.0.0.1",
+    "local_port": "<port:Int>",
+    "password": "<passwd:String>",
+    "timeout": 600,
+    "method": "aes-256-cfb"
+}
