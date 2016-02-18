@@ -13,3 +13,5 @@
 [core]
 	editor = vim
 	excludesfile = /home/daipeng/.gitignore_global
+[push]
+	default = simple
