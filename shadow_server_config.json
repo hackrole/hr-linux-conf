@@ -1,0 +1,9 @@
+{
+	"server": "<ip>",
+	"server_port":  "<port:Int>",
+	"password": "<pwd:String>",
+	"timeout": 600,
+	"method": "aes-256-cfb",
+	"fast-open": false,
+	"workers": 1
+}
