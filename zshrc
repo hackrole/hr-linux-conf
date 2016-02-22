@@ -86,7 +86,8 @@ source $ZSH/oh-my-zsh.sh
 # personal config
 # ===============
 
-source ~/.alias
+export ZSH_ALIAS="~/.alias"
+[ -s $ZSH_ALIAS ] && . $ZSH_ALIAS
 
 # setup oepnjdk 7
 export JAVA_HOME=/home/daipeng/app/jdk7
@@ -96,18 +97,33 @@ export CLASSPATH=.:$JAVA_HOME/lib:$JAVA_HOME/jre/lib
 export CLASSPATH=${CLASSPATH}:${JAVA_HOME}/lib/bsh.jar
 
 # setup android sdk
-export ANDROID_HOME=/home/daipeng/app/android-sdk
-export PATH=${PATH}:${ANDROID_HOME}/tools:${ANDROID_HOME}/platform-tools
+export ANDROID_HOME=/home/daipeng/app/android-sdk-linux
+export PATH=$PATH:${ANDROID_HOME}/tools:${ANDROID_HOME}/platform-tools
 
-# setup gradle
-export GRADLE_HOME="/home/daipeng/app/gradle-2.10"
-export PATH=${GRADLE_HOME}/bin:${PATH}
+# setup android ndk
+export ANDROID_NDK=/home/daipeng/app/android-ndk
 
 # setup scala
 export SCALA_HOME="/home/daipeng/app/scala-2.11.7"
-export PATH=${PATH}:${SCALA_HOME}/bin
+export PATH=$PATH:${SCALA_HOME}/bin
 
+# setup golang
+export GOROOT="/home/daipeng/app/go1.5.3"
+export GOPATH="/home/daipeng/tmp/mygo1.5"
+export PATH=${PATH}:${GOROOT}/bin:${GOPATH}/bin
+
+# setup gradle
+export GRADLE_HOME="/home/daipeng/app/gradle-2.10/"
+export PATH=${PATH}:${GRADLE_HOME}/bin
+
+# setup virtualenvwapper
+export VIRTUALENV_WRAPPER_BIN="/usr/local/bin/virtualenvwrapper.sh"
+[ -s $VIRTUALENV_WRAPPER_BIN ] && . $VIRTUALENV_WRAPPER_BIN
+
+# setup nvm
 export NVM_DIR="/home/daipeng/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
 # use v4.2.2 node at startup
 #nvm use v4.2.2
+
+# export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting

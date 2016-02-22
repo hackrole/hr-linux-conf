@@ -145,11 +145,21 @@ export PATH=${PATH}:${GOROOT}/bin:${GOPATH}/bin
 #source /usr/share/GNUstep/Makefiles/GNUstep.sh
 
 # setup oepnjdk 6
-export JAVA_HOME=/usr/lib/jvm/java-7-openjdk-amd64
+export JAVA_HOME=/home/daipeng/app/jdk7
 export JRE_HOME=${JAVA_HOME}/jre
 export PATH=${JAVA_HOME}/bin:${PATH}
 export CLASSPATH=.:$JAVA_HOME/lib:$JAVA_HOME/jre/lib
 export CLASSPATH=${CLASSPATH}:bsh.jar
 
+# setuo android sdk
+export android_home=/home/daipeng/app/android-sdk-linux/
+export path=$path:${android_home}/tools:${android_home}/platform-tools
+
+# setup nvm
 export NVM_DIR="/home/daipeng/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+
+# setup virtualenvwrapper
+source /usr/local/bin/virtualenvwrapper.sh
+
+# export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
