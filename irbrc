@@ -1,5 +1,9 @@
-require "irb"
-require "irb/completion"
+# use bond for better completion
+#require "irb"
+#require "irb/completion"
+require 'bond'
+Bond.start
+
 require "wirble"
 Wirble.init
 Wirble.colorize
