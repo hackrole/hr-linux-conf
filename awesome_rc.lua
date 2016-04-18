@@ -140,6 +140,7 @@ mytasklist.buttons = awful.util.table.join(
                                               if client.focus then client.focus:raise() end
                                           end))
 
+
 -- auto run and run only once
 awful.util.spawn_with_shell('xmodmap /home/daipeng/.xmodmap')
 awful.util.spawn_with_shell('/home/daipeng/app/shadowsocks/shadowsocks-local-linux64-1.1.1 -c /home/daipeng/app/shadowsocks/config.json')
