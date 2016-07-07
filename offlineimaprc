@@ -1,15 +1,69 @@
 [general]
-accounts = gmail
+accounts = gmail, 163, bigsec
 
 [Account gmail]
-localrepository = gmailLocal
-remoterepository = gmailRemote
+localrepository = Local_gmail
+remoterepository = Remote_gmail
+autorefresh = 1
 
-[Repository gmailLocal]
+[Repository Local_gmail]
 type = Maildir
-localfolders = ~/Mails/mygmail
+localfolders = ~/Mails/gmail
+keepalive = 60
 
-[Repository gmailRemote]
+[Repository Remote_gmail]
 type = Gmail
-remoteport = 993
 remoteuser = daipeng123456@gmail.com
+remotepass = fuikuhpqgwvlaejj
+ssl=True
+sslcacertfile = /etc/ssl/certs/ca-certificates.crt
+maxconnections = 2
+readonly = False
+#该值为yes时，删除本地会同步删除服务器上的邮件
+realdelete = no
+
+[Account 163]
+localrepository = Local_163
+remoterepository = Remote_163
+autorefresh = 1
+
+[Repository Local_163]
+type = Maildir
+localfolders = ~/Mails/163
+keepalive = 60
+
+[Repository Remote_163]
+type = IMAP
+remotehost = imap.163.com
+remoteport = 993
+remoteuser = daipeng45645@163.com
+remotepass = dp123456
+ssl=True
+sslcacertfile = /etc/ssl/certs/ca-certificates.crt
+maxconnections = 2
+readonly = False
+#该值为yes时，删除本地会同步删除服务器上的邮件
+realdelete = no
+
+[Account bigsec]
+localrepository = Local_bigsec
+remoterepository = Remote_bigsec
+autorefresh = 1
+
+[Repository Local_bigsec]
+type = Maildir
+localfolders = ~/Mails/bigsec
+keepalive = 60
+
+[Repository Remote_bigsec]
+type = IMAP
+remotehost = imap.exmail.qq.com
+remoteport = 993
+remoteuser = peng.dai@bigsec.com
+remotepass = Bigsec123456
+ssl=True
+sslcacertfile = /etc/ssl/certs/ca-certificates.crt
+maxconnections = 2
+readonly = False
+#该值为yes时，删除本地会同步删除服务器上的邮件
+realdelete = no
