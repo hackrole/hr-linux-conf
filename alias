@@ -16,3 +16,6 @@ alias mmplay="cd ~/Music && mplayer -playlist mplay.lst -loop 0"
 alias cdchat="cd ~/projects/next_chat"
 alias cdnchat="cd ~/projects/next_chat/nchat"
 alias ssh241="ssh root@192.168.1.241"
+
+alias sslstart="cd ~/app/shadowsocks && sslocal -d start -c vultr.json --pid-file vultr.pid --log-file vultr.log"
+alias xmodm="xmodmap ~/.xmodmap"

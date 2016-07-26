@@ -1,3 +1,4 @@
+# use bond for better completion
 # auto complete
 # use bond for default
 #require "irb"
