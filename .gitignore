@@ -1,2 +1,3 @@
 *.ropeproject/
 oh-my-zsh/*
+*.DS_Store
