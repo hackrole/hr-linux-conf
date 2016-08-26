@@ -1,10 +1,12 @@
 [general]
-accounts = gmail, 163, bigsec
+accounts = gmail, 163
+# accounts = gmail, 163, company
 
 [Account gmail]
 localrepository = Local_gmail
 remoterepository = Remote_gmail
 autorefresh = 1
+proxy = 127.0.0.1:8089
 
 [Repository Local_gmail]
 type = Maildir
@@ -45,22 +47,22 @@ readonly = False
 #该值为yes时，删除本地会同步删除服务器上的邮件
 realdelete = no
 
-[Account bigsec]
-localrepository = Local_bigsec
-remoterepository = Remote_bigsec
+[Account company]
+localrepository = Local_company
+remoterepository = Remote_company
 autorefresh = 1
 
-[Repository Local_bigsec]
+[Repository Local_company]
 type = Maildir
-localfolders = ~/Mails/bigsec
+localfolders = ~/Mails/company
 keepalive = 60
 
-[Repository Remote_bigsec]
+[Repository Remote_company]
 type = IMAP
-remotehost = imap.exmail.qq.com
+remotehost = 
 remoteport = 993
-remoteuser = peng.dai@bigsec.com
-remotepass = Bigsec123456
+remoteuser = 
+remotepass = 
 ssl=True
 sslcacertfile = /etc/ssl/certs/ca-certificates.crt
 maxconnections = 2
