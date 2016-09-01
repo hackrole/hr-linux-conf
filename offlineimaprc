@@ -7,6 +7,7 @@ localrepository = Local_gmail
 remoterepository = Remote_gmail
 autorefresh = 1
 proxy = 127.0.0.1:8089
+maxage = 10
 
 [Repository Local_gmail]
 type = Maildir
@@ -28,6 +29,7 @@ realdelete = no
 localrepository = Local_163
 remoterepository = Remote_163
 autorefresh = 1
+maxage = 10
 
 [Repository Local_163]
 type = Maildir
@@ -51,6 +53,7 @@ realdelete = no
 localrepository = Local_company
 remoterepository = Remote_company
 autorefresh = 1
+maxage = 10
 
 [Repository Local_company]
 type = Maildir
