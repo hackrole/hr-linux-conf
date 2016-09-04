@@ -91,45 +91,42 @@ source ~/.alias
 # [ -s $ZSH_ALIAS ] && . $ZSH_ALIAS
 
 # setup oepnjdk 7
-export JAVA_HOME=/home/daipeng/app/jdk7
-export JRE_HOME=${JAVA_HOME}/jre
-export PATH=${JAVA_HOME}/bin:${PATH}
-export CLASSPATH=.:$JAVA_HOME/lib:$JAVA_HOME/jre/lib
-export CLASSPATH=${CLASSPATH}:${JAVA_HOME}/lib/bsh.jar
+#export JAVA_HOME=/home/daipeng/app/jdk7
+#export JRE_HOME=${JAVA_HOME}/jre
+#export PATH=${JAVA_HOME}/bin:${PATH}
+#export CLASSPATH=.:$JAVA_HOME/lib:$JAVA_HOME/jre/lib
+#export CLASSPATH=${CLASSPATH}:${JAVA_HOME}/lib/bsh.jar
 
 # sdkman for manager java/scala/groovy/gradle.. version
-source "/home/daipeng/.sdkman/bin/sdkman-init.sh"
+#source "/home/daipeng/.sdkman/bin/sdkman-init.sh"
 
 # setup android sdk
-export ANDROID_HOME=/home/daipeng/app/android-sdk-linux
-export PATH=$PATH:${ANDROID_HOME}/tools:${ANDROID_HOME}/platform-tools
+#export ANDROID_HOME=/home/daipeng/app/android-sdk-linux
+#export PATH=$PATH:${ANDROID_HOME}/tools:${ANDROID_HOME}/platform-tools
 
 # setup android ndk
-export ANDROID_NDK=/home/daipeng/app/android-ndk
+#export ANDROID_NDK=/home/daipeng/app/android-ndk
 
 # setup scala
-export SCALA_HOME="/home/daipeng/app/scala-2.11.7"
-export PATH=$PATH:${SCALA_HOME}/bin
+#export SCALA_HOME="/home/daipeng/app/scala-2.11.7"
+#export PATH=$PATH:${SCALA_HOME}/bin
 
 # setup golang
-export GOROOT="/home/daipeng/app/go1.6"
-export GOPATH="/home/daipeng/goprojects/mygo1.6"
-export PATH=${PATH}:${GOROOT}/bin:${GOPATH}/bin
+#export GOROOT="/home/daipeng/app/go1.6"
+#export GOPATH="/home/daipeng/goprojects/mygo1.6"
+#export PATH=${PATH}:${GOROOT}/bin:${GOPATH}/bin
 
 # setup gradle
-export GRADLE_HOME="/home/daipeng/app/gradle-2.10/"
-export PATH=${PATH}:${GRADLE_HOME}/bin
+#export GRADLE_HOME="/home/daipeng/app/gradle-2.10/"
+#export PATH=${PATH}:${GRADLE_HOME}/bin
 
 # setup virtualenvwapper
 export VIRTUALENV_WRAPPER_BIN="/usr/local/bin/virtualenvwrapper.sh"
 [ -s $VIRTUALENV_WRAPPER_BIN ] && . $VIRTUALENV_WRAPPER_BIN
 
-# setup bro path
-export PATH=${PATH}:/usr/local/bro/bin
-
 # setup nvm
-export NVM_DIR="/home/daipeng/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+#export NVM_DIR="/home/daipeng/.nvm"
+#[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
 # use v4.2.2 node at startup
 #nvm use v4.2.2
 
@@ -137,7 +134,7 @@ export NVM_DIR="/home/daipeng/.nvm"
 
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="/home/daipeng/.sdkman"
-[[ -s "/home/daipeng/.sdkman/bin/sdkman-init.sh" ]] && source "/home/daipeng/.sdkman/bin/sdkman-init.sh"
+#[[ -s "/home/daipeng/.sdkman/bin/sdkman-init.sh" ]] && source "/home/daipeng/.sdkman/bin/sdkman-init.sh"
 
 #THIS MUST BE AT THE END OF THE FILE FOR JENV TO WORK!!!
-[[ -s "/home/daipeng/.jenv/bin/jenv-init.sh" ]] && source "/home/daipeng/.jenv/bin/jenv-init.sh" && source "/home/daipeng/.jenv/commands/completion.sh"
+#[[ -s "/home/daipeng/.jenv/bin/jenv-init.sh" ]] && source "/home/daipeng/.jenv/bin/jenv-init.sh" && source "/home/daipeng/.jenv/commands/completion.sh"
