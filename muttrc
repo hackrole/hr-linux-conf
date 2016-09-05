@@ -21,7 +21,7 @@
 
 ####################
 set mbox_type   = Maildir
-set folder = /home/daipeng/Mails/bigsec
+set folder = /home/daipeng/Mails/gmail
 set spoolfile   = "+INBOX"
 set mbox        = "+archive"
 set postponed   = "+drafts"
