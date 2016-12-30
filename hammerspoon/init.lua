@@ -1,4 +1,6 @@
+----------------------------------------------
 -- move windows
+----------------------------------------------
 hs.hotkey.bind({"alt", "ctrl"}, "h", function()
     local win = hs.window.focusedWindow()
     local f = win:frame()
@@ -103,7 +105,10 @@ hs.hotkey.bind({"alt", "ctrl"}, "Down", function()
     win:setFrame(f)
 end)
 
--- max and min window
+
+----------------------------------------------
+-- max/min/close/kill window
+----------------------------------------------
 hs.hotkey.bind({"alt", "ctrl"}, "f", function()
     local win = hs.window.focusedWindow()
     if win ~= nil then
@@ -131,9 +136,23 @@ hs.hotkey.bind({"alt", "ctrl"}, "n", function()
     end
 end)
 
+hs.hotkey.bind({"alt", "ctrl"}, "c", function()
+    local win = hs.window.focusedWindow()
+    if win ~= nil then
+        win:close()
+    end
+end)
 
+hs.hotkey.bind({"alt", "ctrl"}, "q", function()
+    local win = hs.window.focusedWindow()
+    if win ~= nil then
+        win:application():kill()
+    end
+end)
 
+----------------------------------------------
 -- lauch application
+----------------------------------------------
 hs.hotkey.bind({'ctrl', 'cmd'}, 'i', function()
     ret = hs.application.launchOrFocus('iTerm')
 end)
@@ -155,14 +174,23 @@ hs.hotkey.bind({'cmd', 'ctrl'}, 'e', function()
 end)
 
 hs.hotkey.bind({'cmd', 'ctrl'}, 'w', function()
-    ret = hs.application.launchOrFocus('微信')
+    ret = hs.application.launchOrFocus('WeChat')
 end)
 
 hs.hotkey.bind({'cmd', 'ctrl'}, 'p', function()
     ret = hs.application.launchOrFocus('QQ')
 end)
 
+hs.hotkey.bind({'cmd', 'ctrl'}, 'm', function()
+    ret = hs.application.launchOrFocus('Foxmail')
+end)
+
+----------------------------------------------
+
+
+----------------------------------------------
 -- change focus
+----------------------------------------------
 function focus_left()
     local win = hs.window.filter.new():setCurrentSpace(true)
     -- local win = hs.window.focusedWindow()
@@ -234,9 +262,15 @@ allwindows:subscribe(hs.window.filter.windowFocused, function () redrawBorder() 
 allwindows:subscribe(hs.window.filter.windowMoved, function () redrawBorder() end)
 allwindows:subscribe(hs.window.filter.windowUnfocused, function () redrawBorder() end)
 
--- move space. XXX not support by office.
 
+----------------------------------------------
+-- move space. XXX not support by office.
+----------------------------------------------
+
+
+----------------------------------------------
 -- move screen. XXX not use now.
+----------------------------------------------
 hs.hotkey.bind({'cmd', 'shift', 'alt'}, 'h', function()
     hs.window.focusedWindow():moveOneScreenWest()
 end)

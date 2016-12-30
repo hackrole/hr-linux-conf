@@ -49,7 +49,7 @@ ZSH_THEME="amuse"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git pip cabal celery docker encode64 fabric gem httpie jsontools node npm tmux vagrant virtualenvwrapper)
+plugins=(git pip cabal celery docker encode64 fabric gem httpie jsontools node npm tmux vagrant)
 
 # User configuration
 
@@ -124,6 +124,9 @@ source ~/.alias
 export VIRTUALENV_WRAPPER_BIN="/usr/local/bin/virtualenvwrapper.sh"
 [ -s $VIRTUALENV_WRAPPER_BIN ] && . $VIRTUALENV_WRAPPER_BIN
 
+# homebrew github token
+export HOMEBREW_GITHUB_API_TOKEN="828a4eb4be3e43a2bc728d15224d010dba9caa4b"
+
 # setup nvm
 #export NVM_DIR="/home/daipeng/.nvm"
 #[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
@@ -138,3 +141,5 @@ export SDKMAN_DIR="/home/daipeng/.sdkman"
 
 #THIS MUST BE AT THE END OF THE FILE FOR JENV TO WORK!!!
 #[[ -s "/home/daipeng/.jenv/bin/jenv-init.sh" ]] && source "/home/daipeng/.jenv/bin/jenv-init.sh" && source "/home/daipeng/.jenv/commands/completion.sh"
+export PATH="$HOEM/.nodenv/bin:$PATH"
+eval "$(nodenv init -)"
