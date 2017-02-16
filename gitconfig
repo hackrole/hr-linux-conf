@@ -8,6 +8,7 @@
 	st = status
 	lg = log --pretty=oneline
 	glg = log --graph --pretty=oneline
+	lgg = log --pretty=oneline -5
 [pager]
 	log = false
 [core]

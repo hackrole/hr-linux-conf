@@ -182,7 +182,7 @@ hs.hotkey.bind({'cmd', 'ctrl'}, 'p', function()
 end)
 
 hs.hotkey.bind({'cmd', 'ctrl'}, 'm', function()
-    ret = hs.application.launchOrFocus('Foxmail')
+    ret = hs.application.launchOrFocus('Mail')
 end)
 
 ----------------------------------------------
