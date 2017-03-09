@@ -139,7 +139,11 @@ export HOMEBREW_GITHUB_API_TOKEN="828a4eb4be3e43a2bc728d15224d010dba9caa4b"
 export SDKMAN_DIR="/home/daipeng/.sdkman"
 #[[ -s "/home/daipeng/.sdkman/bin/sdkman-init.sh" ]] && source "/home/daipeng/.sdkman/bin/sdkman-init.sh"
 
+# enable asdf, for virtualenv for nodejs/erlang/elixir and so on
+[[ -s "/home/daipeng/.asdf/asdf.sh" ]] && source /home/daipeng/.asdf/asdf.sh
+[[ -s "/home/daipeng/.asdf/completions/asdf.bash" ]] && source /home/daipeng/.asdf/completions/asdf.bash
+
 #THIS MUST BE AT THE END OF THE FILE FOR JENV TO WORK!!!
 #[[ -s "/home/daipeng/.jenv/bin/jenv-init.sh" ]] && source "/home/daipeng/.jenv/bin/jenv-init.sh" && source "/home/daipeng/.jenv/commands/completion.sh"
-export PATH="$HOEM/.nodenv/bin:$PATH"
+[[ -s "$HOME/.nodenv/" ]] && export PATH="$HOME/.nodenv/bin:$PATH" && export PATH="$HOME/.nodenv/bin:$PATH"
 eval "$(nodenv init -)"
