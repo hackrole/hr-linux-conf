@@ -91,33 +91,33 @@ source ~/.alias
 # [ -s $ZSH_ALIAS ] && . $ZSH_ALIAS
 
 # setup oepnjdk 7
-#export JAVA_HOME=/home/daipeng/app/jdk7
+#export JAVA_HOME=$HOME/app/jdk7
 #export JRE_HOME=${JAVA_HOME}/jre
 #export PATH=${JAVA_HOME}/bin:${PATH}
 #export CLASSPATH=.:$JAVA_HOME/lib:$JAVA_HOME/jre/lib
 #export CLASSPATH=${CLASSPATH}:${JAVA_HOME}/lib/bsh.jar
 
 # sdkman for manager java/scala/groovy/gradle.. version
-#source "/home/daipeng/.sdkman/bin/sdkman-init.sh"
+#source "$HOME/.sdkman/bin/sdkman-init.sh"
 
 # setup android sdk
-#export ANDROID_HOME=/home/daipeng/app/android-sdk-linux
+#export ANDROID_HOME=$HOME/app/android-sdk-linux
 #export PATH=$PATH:${ANDROID_HOME}/tools:${ANDROID_HOME}/platform-tools
 
 # setup android ndk
-#export ANDROID_NDK=/home/daipeng/app/android-ndk
+#export ANDROID_NDK=$HOME/app/android-ndk
 
 # setup scala
-#export SCALA_HOME="/home/daipeng/app/scala-2.11.7"
+#export SCALA_HOME="$HOME/app/scala-2.11.7"
 #export PATH=$PATH:${SCALA_HOME}/bin
 
 # setup golang
-#export GOROOT="/home/daipeng/app/go1.6"
-#export GOPATH="/home/daipeng/goprojects/mygo1.6"
-#export PATH=${PATH}:${GOROOT}/bin:${GOPATH}/bin
+#export GOROOT="$HOME/app/go1.6"
+export GOPATH="$HOME/projects/mygo"
+export PATH=${PATH}:${GOROOT}/bin:${GOPATH}/bin
 
 # setup gradle
-#export GRADLE_HOME="/home/daipeng/app/gradle-2.10/"
+#export GRADLE_HOME="$HOME/app/gradle-2.10/"
 #export PATH=${PATH}:${GRADLE_HOME}/bin
 
 # setup virtualenvwapper
@@ -128,7 +128,7 @@ export VIRTUALENV_WRAPPER_BIN="/usr/local/bin/virtualenvwrapper.sh"
 export HOMEBREW_GITHUB_API_TOKEN="828a4eb4be3e43a2bc728d15224d010dba9caa4b"
 
 # setup nvm
-#export NVM_DIR="/home/daipeng/.nvm"
+#export NVM_DIR="$HOME/.nvm"
 #[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
 # use v4.2.2 node at startup
 #nvm use v4.2.2
@@ -136,14 +136,14 @@ export HOMEBREW_GITHUB_API_TOKEN="828a4eb4be3e43a2bc728d15224d010dba9caa4b"
 # export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
-export SDKMAN_DIR="/home/daipeng/.sdkman"
-#[[ -s "/home/daipeng/.sdkman/bin/sdkman-init.sh" ]] && source "/home/daipeng/.sdkman/bin/sdkman-init.sh"
+export SDKMAN_DIR="$HOME/.sdkman"
+#[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
 
 # enable asdf, for virtualenv for nodejs/erlang/elixir and so on
-[[ -s "/home/daipeng/.asdf/asdf.sh" ]] && source /home/daipeng/.asdf/asdf.sh
-[[ -s "/home/daipeng/.asdf/completions/asdf.bash" ]] && source /home/daipeng/.asdf/completions/asdf.bash
+[[ -s "$HOME/.asdf/asdf.sh" ]] && source $HOME/.asdf/asdf.sh
+[[ -s "$HOME/.asdf/completions/asdf.bash" ]] && source $HOME/.asdf/completions/asdf.bash
 
 #THIS MUST BE AT THE END OF THE FILE FOR JENV TO WORK!!!
-#[[ -s "/home/daipeng/.jenv/bin/jenv-init.sh" ]] && source "/home/daipeng/.jenv/bin/jenv-init.sh" && source "/home/daipeng/.jenv/commands/completion.sh"
+#[[ -s "$HOME/.jenv/bin/jenv-init.sh" ]] && source "$HOME/.jenv/bin/jenv-init.sh" && source "$HOME/.jenv/commands/completion.sh"
 [[ -s "$HOME/.nodenv/" ]] && export PATH="$HOME/.nodenv/bin:$PATH" && export PATH="$HOME/.nodenv/bin:$PATH"
 eval "$(nodenv init -)"
