@@ -86,6 +86,14 @@ source $ZSH/oh-my-zsh.sh
 # personal config
 # ===============
 
+# history config
+setopt append_history
+setopt inc_append_history
+setopt hist_expire_dups_first
+setopt hist_ignore_all_dups
+setopt hist_save_no_dups
+setopt no_share_history
+
 export ZSH_ALIAS="~/.alias"
 source ~/.alias
 # [ -s $ZSH_ALIAS ] && . $ZSH_ALIAS
@@ -135,6 +143,12 @@ export HOMEBREW_GITHUB_API_TOKEN="828a4eb4be3e43a2bc728d15224d010dba9caa4b"
 
 # export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 
+# asdf config
+[ -s "${HOME}/.asdf" ] && source "${HOME}/.asdf/asdf.sh" && source "${HOME}/.asdf/completions/asdf.bash"
+
+# google cloud sdk
+export PATH=$HOME/app/google-cloud-sdk/bin/:$PATH
+
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="$HOME/.sdkman"
 #[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
@@ -148,6 +162,29 @@ export SDKMAN_DIR="$HOME/.sdkman"
 [[ -s "$HOME/.nodenv/" ]] && export PATH="$HOME/.nodenv/bin:$PATH" && export PATH="$HOME/.nodenv/bin:$PATH"
 eval "$(nodenv init -)"
 
+# config ssh-agent
+if [ -z "$SSH_AUTH_SOCK" ]; then
+    eval $(ssh-agent -s)
+fi
+if [ -e "~/.ssh/id_rsa" ]; then
+    ssh-add ~/.ssh/id_rsa
+fi
+if [ -e "~/works/dmp-key.pem" ]; then
+    ssh-add ~/works/dmp-key.pem
+fi
+
+# config autojump
+[ -f /usr/local/etc/profile.d/autojump.sh ] && . /usr/local/etc/profile.d/autojump.sh
+# config fasd
+eval "$(fasd --init auto)"
+
+# java env
+export PATH="$HOME/.jenv/bin:$PATH"
+eval "$(jenv init -)"
+export PATH="/usr/local/opt/scala@2.11/bin:$PATH"
+
+# rust-up path
+export PATH="/Users/daipeng/.cargo/bin:${PATH}"
 # autojump
 [[ -s /home/hackrole/.autojump/etc/profile.d/autojump.sh ]] && source /home/hackrole/.autojump/etc/profile.d/autojump.sh
 

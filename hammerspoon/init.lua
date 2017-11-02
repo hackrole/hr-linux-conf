@@ -1,6 +1,8 @@
 ----------------------------------------------
 -- move windows
 ----------------------------------------------
+global_logger = hs.logger.new("debug", "debug")
+
 hs.hotkey.bind({"alt", "ctrl"}, "h", function()
     local win = hs.window.focusedWindow()
     local f = win:frame()
@@ -185,6 +187,31 @@ hs.hotkey.bind({'cmd', 'ctrl'}, 'm', function()
     ret = hs.application.launchOrFocus('Mail')
 end)
 
+hs.hotkey.bind({"cmd", "ctrl"}, "v", function()
+    ret = hs.application.launchOrFocus("VMware Fusion.app")
+end)
+
+--hs.hotkey.bind({"cmd", "ctrl"}, "j", function()
+--    ret = hs.application.launchOrFocus("IntelliJ IDEA CE.app")
+--end)
+
+hs.hotkey.bind({"cmd", "ctrl"}, "n", function()
+    local win = hs.window.get('NyaoVim')
+    global_logger.d("neovim window value: ", win)
+    if win == nil then
+        --local nvim = hs.task.new("/usr/bin/nohup /Users/daipeng/.nodenv/shims/nyaovim >/dev/null &2>&1 &", nil)
+        --nvim:start()
+        hs.execute('nohup /Users/daipeng/.nodenv/shims/nyaovim >/dev/null &2>&1 &')
+    else
+        win:focus()
+    end
+end)
+
+hs.hotkey.bind({"cmd", "ctrl"}, "t", function()
+    hs.application.launchOrFocus("Hammerspoon.app")
+    local app = hs.application.find("hammerspoon")
+    app:selectMenuItem("Console...")
+end)
 ----------------------------------------------
 
 
