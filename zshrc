@@ -91,10 +91,10 @@ source ~/.alias
 # [ -s $ZSH_ALIAS ] && . $ZSH_ALIAS
 
 # setup oepnjdk 7
-#export JAVA_HOME=$HOME/app/jdk7
-#export JRE_HOME=${JAVA_HOME}/jre
-#export PATH=${JAVA_HOME}/bin:${PATH}
-#export CLASSPATH=.:$JAVA_HOME/lib:$JAVA_HOME/jre/lib
+export JAVA_HOME=$HOME/app/jdk8
+export JRE_HOME=${JAVA_HOME}/jre
+export PATH=${JAVA_HOME}/bin:${PATH}
+export CLASSPATH=.:$JAVA_HOME/lib:$JAVA_HOME/jre/lib
 #export CLASSPATH=${CLASSPATH}:${JAVA_HOME}/lib/bsh.jar
 
 # sdkman for manager java/scala/groovy/gradle.. version
@@ -147,3 +147,10 @@ export SDKMAN_DIR="$HOME/.sdkman"
 #[[ -s "$HOME/.jenv/bin/jenv-init.sh" ]] && source "$HOME/.jenv/bin/jenv-init.sh" && source "$HOME/.jenv/commands/completion.sh"
 [[ -s "$HOME/.nodenv/" ]] && export PATH="$HOME/.nodenv/bin:$PATH" && export PATH="$HOME/.nodenv/bin:$PATH"
 eval "$(nodenv init -)"
+
+# autojump
+[[ -s /home/hackrole/.autojump/etc/profile.d/autojump.sh ]] && source /home/hackrole/.autojump/etc/profile.d/autojump.sh
+
+# tabtab source for electron-forge package
+# uninstall by removing these lines or running `tabtab uninstall electron-forge`
+[[ -f /home/hackrole/Downloads/nodenv/versions/8.4.0/lib/node_modules/electron-forge/node_modules/tabtab/.completions/electron-forge.zsh ]] && . /home/hackrole/Downloads/nodenv/versions/8.4.0/lib/node_modules/electron-forge/node_modules/tabtab/.completions/electron-forge.zsh
