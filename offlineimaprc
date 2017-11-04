@@ -17,7 +17,7 @@ keepalive = 60
 [Repository Remote_gmail]
 type = Gmail
 remoteuser = daipeng123456@gmail.com
-remotepass = fuikuhpqgwvlaejj
+remotepass = <password>
 ssl=True
 sslcacertfile = /etc/ssl/certs/ca-certificates.crt
 maxconnections = 2
@@ -41,7 +41,7 @@ type = IMAP
 remotehost = imap.163.com
 remoteport = 993
 remoteuser = daipeng45645@163.com
-remotepass = dp123456
+remotepass = <password>
 ssl=True
 sslcacertfile = /etc/ssl/certs/ca-certificates.crt
 maxconnections = 2

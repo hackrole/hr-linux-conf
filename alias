@@ -21,3 +21,4 @@ alias sslstart="cd ~/app/shadowsocks && sslocal -d start -c vultr.json --pid-fil
 alias xmodm="xmodmap ~/.xmodmap"
 alias hsandbox="~/app/hsandbox/hsandbox"
 alias spacevim="nyaovim -u ~/.SpaceVim/init.vim"
+alias ngvim="nyaovim -u ~/hr-conf/hr-gvim-conf/nvim_init.vim"
