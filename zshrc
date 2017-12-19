@@ -159,6 +159,9 @@ export SDKMAN_DIR="$HOME/.sdkman"
 
 #THIS MUST BE AT THE END OF THE FILE FOR JENV TO WORK!!!
 #[[ -s "$HOME/.jenv/bin/jenv-init.sh" ]] && source "$HOME/.jenv/bin/jenv-init.sh" && source "$HOME/.jenv/commands/completion.sh"
+#export PATH="$HOME/.jenv/bin:$PATH"
+#eval "$(jenv init -)"
+#
 [[ -s "$HOME/.nodenv/" ]] && export PATH="$HOME/.nodenv/bin:$PATH" && export PATH="$HOME/.nodenv/bin:$PATH"
 eval "$(nodenv init -)"
 
@@ -179,8 +182,6 @@ fi
 eval "$(fasd --init auto)"
 
 # java env
-export PATH="$HOME/.jenv/bin:$PATH"
-eval "$(jenv init -)"
 export PATH="/usr/local/opt/scala@2.11/bin:$PATH"
 
 # rust-up path
