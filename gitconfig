@@ -31,3 +31,7 @@
 	enabled = true
 [pull]
 	rebase = true
+[difftool]
+	prompt = false
+[diff]
+	tool = vimdiff
