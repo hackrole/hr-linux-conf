@@ -171,8 +171,24 @@ hs.hotkey.bind({'cmd', 'ctrl'}, 'f', function()
     ret = hs.application.launchOrFocus('Firefox')
 end)
 
-hs.hotkey.bind({'cmd', 'ctrl'}, 'e', function()
-    ret = hs.application.launchOrFocus('Emacs')
+--hs.hotkey.bind({'cmd', 'ctrl'}, 'e', function()
+--    ret = hs.application.launchOrFocus('Emacs')
+--end)
+hs.hotkey.bind({"cmd", "ctrl"}, "e", function()
+    local wins = hs.window.allWindows()
+    local win = nil
+    for k, v in pairs(wins) do
+        if v:application():name() == "Emacs" then
+            win = v
+        end
+    end
+
+    global_logger.d("emacs window value: ", win)
+    if win == nil then
+        hs.execute("nohup /usr/local/bin/emacs >/dev/null &2>&1 &")
+    else
+        win:focus()
+    end
 end)
 
 hs.hotkey.bind({'cmd', 'ctrl'}, 'w', function()

@@ -192,3 +192,9 @@ export PATH="/Users/daipeng/.cargo/bin:${PATH}"
 # tabtab source for electron-forge package
 # uninstall by removing these lines or running `tabtab uninstall electron-forge`
 [[ -f /home/hackrole/Downloads/nodenv/versions/8.4.0/lib/node_modules/electron-forge/node_modules/tabtab/.completions/electron-forge.zsh ]] && . /home/hackrole/Downloads/nodenv/versions/8.4.0/lib/node_modules/electron-forge/node_modules/tabtab/.completions/electron-forge.zsh
+
+PATH="/Users/daipeng/perl5/bin${PATH:+:${PATH}}"; export PATH;
+PERL5LIB="/Users/daipeng/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;
+PERL_LOCAL_LIB_ROOT="/Users/daipeng/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"; export PERL_LOCAL_LIB_ROOT;
+PERL_MB_OPT="--install_base \"/Users/daipeng/perl5\""; export PERL_MB_OPT;
+PERL_MM_OPT="INSTALL_BASE=/Users/daipeng/perl5"; export PERL_MM_OPT;
