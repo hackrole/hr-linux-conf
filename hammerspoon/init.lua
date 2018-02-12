@@ -217,7 +217,7 @@ hs.hotkey.bind({"cmd", "ctrl"}, "n", function()
     if win == nil then
         --local nvim = hs.task.new("/usr/bin/nohup /Users/daipeng/.nodenv/shims/nyaovim >/dev/null &2>&1 &", nil)
         --nvim:start()
-        hs.execute('nohup /Users/daipeng/.nodenv/shims/nyaovim >/dev/null &2>&1 &')
+        hs.execute('nohup /Users/daipeng/.nodenv/shims/nyaovim --cmd "cd ~" >/dev/null &2>&1 &')
     else
         win:focus()
     end
