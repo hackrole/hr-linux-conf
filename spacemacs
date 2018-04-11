@@ -37,16 +37,16 @@ values."
      ;; Uncomment some layer names and press <SPC f e R> (Vim style) or
      ;; <M-m f e R> (Emacs style) to install them.
      ;; ----------------------------------------------------------------
-     '((erc :variables
+     ((erc :variables
             erc-server-list
             '(("irc.freenode.net"
                :port "6697"
                :ssl t
                :nick "hackrole"
-               :password "secret"))))
+               :password "freeme"))))
      helm
      ;; contains auto-complete/yasnippet/company
-     '(auto-completion :variables auto-completion-enable-sort-by-usage t
+     (auto-completion :variables auto-completion-enable-sort-by-usage t
                         auto-completion-return-key-behavior 'complete
                         auto-completion-tab-key-behavior 'cycle
                         auto-completion-complete-with-key-sequence nil
@@ -103,7 +103,43 @@ values."
      javascript
      sql
      docker
-     (mu4e :variables mu4e-accounts-alist t)
+     (mu4e :variables mu4e-maildir "~/Maildir"
+           mu4e-trash-folder "/Trash"
+           mu4e-refile-folder "/Archive"
+           mu4e-get-mail-command "mbsync -a"
+           mu4e-update-interval nil
+           mu4e-compose-signature-auto-include nil
+           mu4e-view-show-images t
+           mu4e-view-show-addresses t
+           mu4e-maildir-shortcuts
+           '(("/mb_gmail/INBOX" ?g)
+             ("/mb_haomaiyi/INBOX" ?w))
+           mu4e-bookmarks
+           `(("flag:unread AND NOT flag:trashed" "Unread messages" ?u)
+             ("date:today..now" "Today's messages" ?t)
+             ("date:7d..now" "Last 7 Days" ?w)
+             ("mime:image/*" "Messages with images" ?p)
+             (,(mapconcat 'identity
+                          (mapcar
+                           (lambda (maildir)
+                             (concat "maildir:" (car maildir)))
+                           mu4e-maildir-shortcuts) " OR ")
+              "All inboxes" ?i))
+           mu4e-account-alist
+           '(("mb_gmail"
+              (mu4e-sent-messages-behavior delete)
+              (mu4e-sent-folder "/mb_gmail/[Gmail]/.Sent Mail")
+              (mu4e-drafts-folder "/mb_gmail/[Gmail]/.Drafts")
+              (user-mail-address "daipeng123456@gmail.com")
+              (user-full-name "daipeng"))
+             ("mb_haomaiyi"
+              (mu4e-sent-messages-behavior sent)
+              (mu4e-sent-folder "/mb_haomaiyi/Sent Items")
+              (mu4e-drafts-folder "/mb_haomaiyi/Drafts")
+              (user-mail-address "daipeng@haomaiyi.com")
+              (user-full-name "daipeng")))
+           )
+
      )
    ;; List of additional packages that will be installed without being
    ;; wrapped in a layer. If you need some configuration for these
@@ -113,7 +149,7 @@ values."
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
    ;; A list of packages that will not be installed and loaded.
-   dotspacemacs-excluded-packages '()
+   dotspacemacs-excluded-packages '(evil-magit)
    ;; Defines the behaviour of Spacemacs when installing packages.
    ;; Possible values are `used-only', `used-but-keep-unused' and `all'.
    ;; `used-only' installs only explicitly used packages and uninstall any
@@ -398,7 +434,7 @@ you should place your code here."
     ("#CC9393" "#DFAF8F" "#F0DFAF" "#7F9F7F" "#BFEBBF" "#93E0E3" "#94BFF3" "#DC8CC3")))
  '(package-selected-packages
    (quote
-    (erc-yt erc-view-log erc-terminal-notifier erc-social-graph erc-image erc-hl-nicks yaml-mode web-mode web-beautify toml-mode tide typescript-mode tagedit slim-mode scss-mode sass-mode rvm ruby-tools ruby-test-mode rubocop rspec-mode robe rbenv rake racer pug-mode plantuml-mode ob-elixir noflet minitest lua-mode livid-mode skewer-mode simple-httpd less-css-mode js2-refactor js2-mode js-doc intero hlint-refactor hindent helm-hoogle helm-css-scss haskell-snippets haml-mode go-guru go-eldoc go-mode flycheck-mix flycheck erlang ensime sbt-mode scala-mode emmet-mode company-ghci company-ghc ghc haskell-mode coffee-mode cmm-mode clj-refactor inflections edn multiple-cursors paredit peg cider-eval-sexp-fu cider seq queue clojure-mode chruby cargo rust-mode bundler inf-ruby alchemist elixir-mode smeargle orgit org magit-gitflow helm-gitignore helm-company helm-c-yasnippet gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link evil-magit magit git-commit with-editor company-statistics company-anaconda company auto-yasnippet yasnippet ac-ispell auto-complete pkg-info epl helm projectile helm-core hydra mmm-mode markdown-toc markdown-mode gh-md tn-theme docker json-mode tablist magit-popup json-snatcher nginx-mode yapfify pyvenv pytest pyenv-mode py-isort pip-requirements live-py-mode hy-mode helm-pydoc cython-mode anaconda-mode pythonic mu4e-alert ht alert log4e mu4e-maildirs-extension gntp dockerfile-mode docker-tramp json-reformat sql-indent zonokai-theme zenburn-theme zen-and-art-theme underwater-theme ujelly-theme twilight-theme twilight-bright-theme twilight-anti-bright-theme tronesque-theme toxi-theme tao-theme tangotango-theme tango-plus-theme tango-2-theme sunny-day-theme sublime-themes subatomic256-theme subatomic-theme spacegray-theme soothe-theme soft-stone-theme soft-morning-theme soft-charcoal-theme smyx-theme seti-theme reverse-theme railscasts-theme purple-haze-theme professional-theme planet-theme phoenix-dark-pink-theme phoenix-dark-mono-theme pastels-on-dark-theme organic-green-theme omtose-phellack-theme oldlace-theme occidental-theme obsidian-theme noctilux-theme niflheim-theme naquadah-theme mustang-theme monokai-theme monochrome-theme molokai-theme moe-theme minimal-theme material-theme majapahit-theme lush-theme light-soap-theme jbeans-theme jazz-theme ir-black-theme inkpot-theme heroku-theme hemisu-theme hc-zenburn-theme gruvbox-theme gruber-darker-theme grandshell-theme gotham-theme gandalf-theme flatui-theme flatland-theme firebelly-theme farmhouse-theme espresso-theme ein websocket dracula-theme django-theme darktooth-theme autothemer darkokai-theme darkmine-theme darkburn-theme dakrone-theme cyberpunk-theme color-theme-sanityinc-tomorrow color-theme-sanityinc-solarized clues-theme cherry-blossom-theme busybee-theme bubbleberry-theme birds-of-paradise-plus-theme badwolf-theme apropospriate-theme anti-zenburn-theme ample-zen-theme ample-theme alect-themes afternoon-theme ws-butler window-numbering which-key volatile-highlights vi-tilde-fringe uuidgen use-package toc-org spacemacs-theme spaceline restart-emacs request rainbow-delimiters quelpa popwin persp-mode pcre2el paradox org-plus-contrib org-bullets open-junk-file neotree move-text macrostep lorem-ipsum linum-relative link-hint info+ indent-guide ido-vertical-mode hungry-delete hl-todo highlight-parentheses highlight-numbers highlight-indentation hide-comnt help-fns+ helm-themes helm-swoop helm-projectile helm-mode-manager helm-make helm-flx helm-descbinds helm-ag google-translate golden-ratio flx-ido fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-ediff evil-args evil-anzu eval-sexp-fu elisp-slime-nav dumb-jump define-word column-enforce-mode clean-aindent-mode auto-highlight-symbol auto-compile aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line)))
+    (fuzzy company-web web-completion-data company-tern tern company-quickhelp company-go company-cabal clojure-snippets magithub let-alist iedit anzu undo-tree spinner winum white-sand-theme powerline solarized-theme smartparens rebecca-theme pos-tip madhat2r-theme dash-functional parent-mode flycheck-credo flx exotica-theme ghub evil goto-chg request-deferred deferred diminish highlight bind-map bind-key packed f s dash avy popup async erc-yt erc-view-log erc-terminal-notifier erc-social-graph erc-image erc-hl-nicks yaml-mode web-mode web-beautify toml-mode tide typescript-mode tagedit slim-mode scss-mode sass-mode rvm ruby-tools ruby-test-mode rubocop rspec-mode robe rbenv rake racer pug-mode plantuml-mode ob-elixir noflet minitest lua-mode livid-mode skewer-mode simple-httpd less-css-mode js2-refactor js2-mode js-doc intero hlint-refactor hindent helm-hoogle helm-css-scss haskell-snippets haml-mode go-guru go-eldoc go-mode flycheck-mix flycheck erlang ensime sbt-mode scala-mode emmet-mode company-ghci company-ghc ghc haskell-mode coffee-mode cmm-mode clj-refactor inflections edn multiple-cursors paredit peg cider-eval-sexp-fu cider seq queue clojure-mode chruby cargo rust-mode bundler inf-ruby alchemist elixir-mode smeargle orgit org magit-gitflow helm-gitignore helm-company helm-c-yasnippet gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link evil-magit magit git-commit with-editor company-statistics company-anaconda company auto-yasnippet yasnippet ac-ispell auto-complete pkg-info epl helm projectile helm-core hydra mmm-mode markdown-toc markdown-mode gh-md tn-theme docker json-mode tablist magit-popup json-snatcher nginx-mode yapfify pyvenv pytest pyenv-mode py-isort pip-requirements live-py-mode hy-mode helm-pydoc cython-mode anaconda-mode pythonic mu4e-alert ht alert log4e mu4e-maildirs-extension gntp dockerfile-mode docker-tramp json-reformat sql-indent zonokai-theme zenburn-theme zen-and-art-theme underwater-theme ujelly-theme twilight-theme twilight-bright-theme twilight-anti-bright-theme tronesque-theme toxi-theme tao-theme tangotango-theme tango-plus-theme tango-2-theme sunny-day-theme sublime-themes subatomic256-theme subatomic-theme spacegray-theme soothe-theme soft-stone-theme soft-morning-theme soft-charcoal-theme smyx-theme seti-theme reverse-theme railscasts-theme purple-haze-theme professional-theme planet-theme phoenix-dark-pink-theme phoenix-dark-mono-theme pastels-on-dark-theme organic-green-theme omtose-phellack-theme oldlace-theme occidental-theme obsidian-theme noctilux-theme niflheim-theme naquadah-theme mustang-theme monokai-theme monochrome-theme molokai-theme moe-theme minimal-theme material-theme majapahit-theme lush-theme light-soap-theme jbeans-theme jazz-theme ir-black-theme inkpot-theme heroku-theme hemisu-theme hc-zenburn-theme gruvbox-theme gruber-darker-theme grandshell-theme gotham-theme gandalf-theme flatui-theme flatland-theme firebelly-theme farmhouse-theme espresso-theme ein websocket dracula-theme django-theme darktooth-theme autothemer darkokai-theme darkmine-theme darkburn-theme dakrone-theme cyberpunk-theme color-theme-sanityinc-tomorrow color-theme-sanityinc-solarized clues-theme cherry-blossom-theme busybee-theme bubbleberry-theme birds-of-paradise-plus-theme badwolf-theme apropospriate-theme anti-zenburn-theme ample-zen-theme ample-theme alect-themes afternoon-theme ws-butler window-numbering which-key volatile-highlights vi-tilde-fringe uuidgen use-package toc-org spacemacs-theme spaceline restart-emacs request rainbow-delimiters quelpa popwin persp-mode pcre2el paradox org-plus-contrib org-bullets open-junk-file neotree move-text macrostep lorem-ipsum linum-relative link-hint info+ indent-guide ido-vertical-mode hungry-delete hl-todo highlight-parentheses highlight-numbers highlight-indentation hide-comnt help-fns+ helm-themes helm-swoop helm-projectile helm-mode-manager helm-make helm-flx helm-descbinds helm-ag google-translate golden-ratio flx-ido fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-ediff evil-args evil-anzu eval-sexp-fu elisp-slime-nav dumb-jump define-word column-enforce-mode clean-aindent-mode auto-highlight-symbol auto-compile aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line)))
  '(pdf-view-midnight-colors (quote ("#DCDCCC" . "#383838")))
  '(vc-annotate-background "#2B2B2B")
  '(vc-annotate-color-map
