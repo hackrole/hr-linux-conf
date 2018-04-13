@@ -49,7 +49,7 @@ ZSH_THEME="amuse"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git pip cabal celery docker encode64 fabric gem httpie jsontools node npm tmux vagrant kubectl pass)
+plugins=(git cabal celery docker encode64 fabric gem httpie jsontools node npm tmux vagrant kubectl pass)
 
 # User configuration
 
@@ -188,6 +188,9 @@ export PATH="/usr/local/opt/scala@2.11/bin:$PATH"
 export PATH="/Users/daipeng/.cargo/bin:${PATH}"
 # autojump
 [[ -s /home/hackrole/.autojump/etc/profile.d/autojump.sh ]] && source /home/hackrole/.autojump/etc/profile.d/autojump.sh
+
+# vagrant config
+export VAGRANT_HOME=/data/vagrant
 
 # tabtab source for electron-forge package
 # uninstall by removing these lines or running `tabtab uninstall electron-forge`
