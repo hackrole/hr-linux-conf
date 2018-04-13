@@ -112,8 +112,8 @@ values."
            mu4e-view-show-images t
            mu4e-view-show-addresses t
            mu4e-maildir-shortcuts
-           '(("/mb_gmail/INBOX" ?g)
-             ("/mb_haomaiyi/INBOX" ?w))
+           '(("/mb_gmail/INBOX" . ?g)
+             ("/mb_haomaiyi/INBOX" . ?w))
            mu4e-bookmarks
            `(("flag:unread AND NOT flag:trashed" "Unread messages" ?u)
              ("date:today..now" "Today's messages" ?t)
@@ -393,6 +393,7 @@ before packages are loaded. If you are unsure, you should try in setting them in
   ;; enable line-number mode
   (setq-default dotspacemacs-line-numbers t)
   (setq-default paradox-github-token "7476df42c6216208c061c0e71d786227b76e9035")
+  (setq-default vc-follow-symlinks t)
 
   ;; key binding
   ;; org agent
@@ -403,6 +404,18 @@ before packages are loaded. If you are unsure, you should try in setting them in
   (global-set-key (kbd "<f8>") 'eshell)
   ;; ielm
   (global-set-key (kbd "<f7>") 'ielm)
+  ;; switch C-x to C-q
+  (global-set-key (kbd "C-q") ctl-x-map)
+  (global-unset-key (kbd "C-x"))
+  ;; change font size
+  (global-set-key (kbd "C-c C-=") 'text-scale-increase)
+  (global-set-key (kbd "C-c C--") 'text-scale-decrease)
+  (if (featurep 'helm)
+      (progn
+        (define-key 'helm-map (kbd "b") 'helm-bookmaks)))
+  (if (featurep 'helm-projectile)
+      (progn
+        (define-key 'ctl-x-map (kbd "s") 'helm-projectile-switch-project)))
   ;; emms
   (global-set-key (kbd "<f6>") 'emms-playlist-mode-go)
   (global-set-key (kbd "C-c <f6>") 'emms-add-playlist)
