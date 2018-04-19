@@ -397,6 +397,9 @@ before packages are loaded. If you are unsure, you should try in setting them in
   (setq-default paradox-github-token "7476df42c6216208c061c0e71d786227b76e9035")
   (setq-default vc-follow-symlinks t)
 
+  ;; set default browser
+  (setq browse-url-browser-function 'browse-url-chrome)
+
   ;; key binding
   ;; org agent
   (global-set-key (kbd "\C-cl") 'org-store-link)
