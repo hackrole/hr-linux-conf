@@ -342,13 +342,13 @@ values."
    ;; If non nil line numbers are turned on in all `prog-mode' and `text-mode'
    ;; derivatives. If set to `relative', also turns on relative line numbers.
    ;; (default nil)
-   dotspacemacs-line-numbers nil
-   ;; dotspacemacs-line-numbers '(:relative t
-   ;;                                       :disabled-for-modes dired-mode
-   ;;                                       doc-view-mode
-   ;;                                       markdown-mode
-   ;;                                       org-mode
-   ;;                                       pdf-view-mode)
+   ;; dotspacemacs-line-numbers nil
+   dotspacemacs-line-numbers '(:relative t
+                                         :disabled-for-modes dired-mode
+                                         doc-view-mode
+                                         markdown-mode
+                                         org-mode
+                                         pdf-view-mode)
    ;; Code folding method. Possible values are `evil' and `origami'.
    ;; (default 'evil)
    dotspacemacs-folding-method 'evil
@@ -398,8 +398,6 @@ before packages are loaded. If you are unsure, you should try in setting them in
   ;;                                                   hybrid-mode-default-state 'normal))
   ;; default themes
   (setq-default dotspacemacs-themes '(spacemacs-light leuven zenburn tn))
-  ;; enable line-number mode
-  (setq-default dotspacemacs-line-numbers t)
   (setq-default paradox-github-token "7476df42c6216208c061c0e71d786227b76e9035")
   (setq-default vc-follow-symlinks t)
 
@@ -441,8 +439,6 @@ This is the place where most of your configurations should be done. Unless it is
 explicitly specified that a variable should be set before a package is loaded,
 you should place your code here."
   (global-company-mode t)
-
-  ;; disable linum-mode for pdf-view
 
   (global-set-key (kbd "C-q r l") 'helm-bookmarks)
   (define-key 'ctl-x-map (kbd "s") 'helm-projectile-switch-project)
