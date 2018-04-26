@@ -116,8 +116,8 @@ values."
            mu4e-compose-signature-auto-include nil
            mu4e-view-show-images t
            mu4e-view-show-addresses t
-           mu4e-maildir-shortcuts
            mu4e-attachment-dir "~/Downloads"
+           mu4e-maildir-shortcuts
            '(("/mb_gmail/INBOX" . ?g)
              ("/mb_haomaiyi/INBOX" . ?w))
            mu4e-bookmarks
