@@ -192,6 +192,9 @@ export PATH="/Users/daipeng/.cargo/bin:${PATH}"
 # vagrant config
 export VAGRANT_HOME=/data/vagrant
 
+# devpi server dir
+export DEVPI_SERVERDIR="/data/devpi_server"
+
 # tabtab source for electron-forge package
 # uninstall by removing these lines or running `tabtab uninstall electron-forge`
 [[ -f /home/hackrole/Downloads/nodenv/versions/8.4.0/lib/node_modules/electron-forge/node_modules/tabtab/.completions/electron-forge.zsh ]] && . /home/hackrole/Downloads/nodenv/versions/8.4.0/lib/node_modules/electron-forge/node_modules/tabtab/.completions/electron-forge.zsh
