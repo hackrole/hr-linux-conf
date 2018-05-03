@@ -14,6 +14,10 @@
 [core]
 	editor = vim
 	excludesfile = /Users/daipeng/.gitignore_global
+    # use linux line-of-end
+    autocrlf = input
+    #autocrlf = true
+    #whitespace = cr-at-eol
 [push]
 	default = simple
 [difftool "sourcetree"]
@@ -30,7 +34,8 @@
 [rerere]
 	enabled = true
 [pull]
-	rebase = true
+    #rebase = true
+    rebase = false
 [difftool]
 	prompt = false
 [diff]
