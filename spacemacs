@@ -115,6 +115,7 @@ values."
            mu4e-update-interval nil
            mu4e-compose-signature-auto-include nil
            mu4e-view-show-images t
+           message-send-mail-function 'smtpmail-send-it
            mu4e-view-show-addresses t
            mu4e-attachment-dir "~/Downloads"
            mu4e-maildir-shortcuts
@@ -138,12 +139,22 @@ values."
               (mu4e-sent-folder "/mb_gmail/[Gmail]/.Sent Mail")
               (mu4e-drafts-folder "/mb_gmail/[Gmail]/.Drafts")
               (user-mail-address "daipeng123456@gmail.com")
-              (user-full-name "daipeng"))
+              (user-full-name "daipeng")
+              (smtpmail-smtp-server "smtp.gmail.com")
+              (smtpmail-smtp-user "daipeng123456@gmail.com")
+              (smtpmail-stream-type starttls)
+              (smtpmail-smtp-service 587)
+              ;; make the gmail imap works.
+              (mu4e-sent-messages-behavior delete))
              ("mb_haomaiyi"
               (mu4e-sent-messages-behavior sent)
               (mu4e-sent-folder "/mb_haomaiyi/Sent Items")
               (mu4e-drafts-folder "/mb_haomaiyi/Drafts")
               (user-mail-address "daipeng@haomaiyi.com")
+              (smtpmail-smtp-server "smtp.exmail.qq.com")
+              (smtpmail-smtp-user "daipeng@haomaiyi.com")
+              (smtpmail-stream-type ssl)
+              (smtpmail-smtp-service 465)
               (user-full-name "daipeng")))
            )
 
