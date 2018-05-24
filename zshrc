@@ -99,7 +99,7 @@ source ~/.alias
 # [ -s $ZSH_ALIAS ] && . $ZSH_ALIAS
 
 # setup oepnjdk 7
-export JAVA_HOME=$HOME/app/jdk8
+export JAVA_HOME=$HOME/app/jdk1.8.0_171
 export JRE_HOME=${JAVA_HOME}/jre
 export PATH=${JAVA_HOME}/bin:${PATH}
 export CLASSPATH=.:$JAVA_HOME/lib:$JAVA_HOME/jre/lib
@@ -195,9 +195,19 @@ export VAGRANT_HOME=/data/vagrant
 # devpi server dir
 export DEVPI_SERVERDIR="/data/devpi_server"
 
+# export editor
+export EDITOR='vim'
+# tmuxinator init
+export tmuxinator_zsh_compl="/home/hackrole/.asdf/installs/ruby/2.5.1/lib/ruby/gems/2.5.0/gems/tmuxinator-0.11.2/completion/tmuxinator.zsh"
+source $tmuxinator_zsh_compl
+
 # tabtab source for electron-forge package
 # uninstall by removing these lines or running `tabtab uninstall electron-forge`
 [[ -f /home/hackrole/Downloads/nodenv/versions/8.4.0/lib/node_modules/electron-forge/node_modules/tabtab/.completions/electron-forge.zsh ]] && . /home/hackrole/Downloads/nodenv/versions/8.4.0/lib/node_modules/electron-forge/node_modules/tabtab/.completions/electron-forge.zsh
+
+# auto notify use ntfy when long-running command finish
+# install with pip install 'ntfy[telegram]'
+eval "$(ntfy shell-integration -f)"
 
 PATH="/Users/daipeng/perl5/bin${PATH:+:${PATH}}"; export PATH;
 PERL5LIB="/Users/daipeng/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;
@@ -206,3 +216,4 @@ PERL_MB_OPT="--install_base \"/Users/daipeng/perl5\""; export PERL_MB_OPT;
 PERL_MM_OPT="INSTALL_BASE=/Users/daipeng/perl5"; export PERL_MM_OPT;
 # disable vim freeze
 stty -ixon
+

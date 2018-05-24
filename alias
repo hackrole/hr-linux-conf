@@ -10,6 +10,7 @@ alias ssh241="ssh root@192.168.1.241"
 # xclip
 alias xclip="xclip -selection clipboard"
 
+alias devpi_lg="devpi login hmy --password AEbDunETs5uzS"
 alias sslstart="cd ~/app/shadowsocks && sslocal -d start -c vultr.json --pid-file vultr.pid --log-file vultr.log"
 alias xmodm="xmodmap ~/.xmodmap"
 alias hsandbox="~/app/hsandbox/hsandbox"
@@ -18,3 +19,9 @@ alias ngvim="nyaovim -u ~/hr-conf/hr-gvim-conf/nvim_init.vim"
 alias spacemacs="HOME=~/app/spacemacs emacs"
 alias racket_repl="racket -i -p neil/sicp -l xrepl"
 alias open="xdg-open"
+
+# ngrok client
+alias ngrok_me='~/app/ngrok/ngrok -config=~/app/ngrok/ngrok.cfg -hostname="ngrok.hackrole.xyz" 8080'
+alias wget_java="wget --no-cookies --header \"Cookie: oraclelicense=accept-securebackup-cookie;\""
+alias nd="ntfy done"
+alias tmn=tmuxinator

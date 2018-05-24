@@ -113,6 +113,8 @@ values."
            mu4e-refile-folder "/Archive"
            mu4e-get-mail-command "mbsync -a"
            mu4e-update-interval nil
+           ;; not show threads
+           mu4e-headers-show-threads nil
            mu4e-compose-signature-auto-include nil
            mu4e-view-show-images t
            message-send-mail-function 'smtpmail-send-it
