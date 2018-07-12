@@ -1,0 +1,77 @@
+// Place your key bindings in this file to overwrite the defaults
+[
+    {
+        "key": "Ctrl+w e",
+        "command": "workbench.action.togglePanel",
+    },
+    {
+        "key": "f1",
+        "command": "workbench.action.toggleZenMode",
+    },
+    {
+        "key": "f2",
+        "command": "workbench.action.toggleSidebarVisibility",
+    },
+    {
+        "key": "f3",
+        "command": "workbench.action.openGlobalKeybindings",
+    },
+    {
+        "key": "ctrl+w t",
+        "command": "workbench.action.toggleEditorGroupLayout",
+    },
+    {
+        "key": "ctrl+w x",
+        "command": "workbench.action.closeEditorsInGroup",
+    },
+    {
+        "key": "ctrl+w c",
+        "command": "workbench.action.closeActiveEditor",
+    },
+    {
+        "key": "ctrl+w O",
+        "command": "workbench.action.closeEditorsInOtherGroups",
+    },
+    {
+        "key": "ctrl+w s",
+        "command": "workbench.action.splitEditor",
+    },
+    {
+        "key": "ctrl+w s",
+        "command": "workbench.action.terminal.split",
+        "when": "terminalFocus",
+    },
+    {
+        "key": "ctrl+a t",
+        "command": "workbench.action.terminal.toggleTerminal",
+    },
+    {
+        "key": "ctrl+a t",
+        "command": "workbench.action.terminal.toggleTerminal",
+        "when": "terminalFocus",
+    },
+    {
+        "key": "alt+,",
+        "command": "toggleSuggestionDetails",
+        "when": "suggestWidgetVisible && textInputFocus"
+    },
+    {
+        "key": "ctrl+space",
+        "command": "-toggleSuggestionDetails",
+        "when": "suggestWidgetVisible && textInputFocus"
+    },
+    {
+        "key": "alt+.",
+        "command": "editor.action.triggerSuggest",
+        "when": "editorHasCompletionItemProvider && textInputFocus && !editorReadonly"
+    },
+    {
+        "key": "ctrl+space",
+        "command": "-editor.action.triggerSuggest",
+        "when": "editorHasCompletionItemProvider && textInputFocus && !editorReadonly"
+    },
+    {
+        "key": "ctrl+w l",
+        "command": "editor.action.showSnippets"
+    }
+]

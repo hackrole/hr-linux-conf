@@ -1,0 +1,37 @@
+{
+  "workbench.colorTheme": "Visual Studio Light",
+  "window.zoomLevel": 1.5,
+
+  // editor
+  "editor.lineNumbers": "off",
+  "editor.fontSize": 14,
+  "editor.fontFamily": "Source Code Pro",
+  "editor.minimap.enabled": false,
+  // intellisense
+  "editor.acceptSuggestionOnEnter": true,
+  "editor.quickSuggestionsDelay": 10,
+  "editor.wordBasedSuggestions": true,
+  "editor.suggestOnTriggerCharacters": true,
+  "editor.parameterHints": true,
+  "editor.quickSuggestions": {
+    "other": true,
+    "comments": true,
+    "strings": true, 
+  },
+  "editor.suggestSelection": "first",
+  // snippet
+  "editor.snippetSuggestions": "top",
+  "editor.tabCompletion": true,
+
+  // python
+  "python.venvFolders": ["~/.virtualenvs",],
+  "python.autoComplete.preloadModules": [
+    "numpy", "pandas", "matplotlib",
+  ],
+  "python.autoComplete.addBrackets": true,
+  // golang
+  "go.autocompleteUnimportedPackages": true,
+  "gitlens.advanced.messages": {
+    "suppressShowKeyBindingsNotice": true
+  },
+}
