@@ -207,7 +207,7 @@ source $tmuxinator_zsh_compl
 
 # auto notify use ntfy when long-running command finish
 # install with pip install 'ntfy[telegram]'
-eval "$(ntfy shell-integration -f)"
+# eval "$(ntfy shell-integration -f)"
 
 PATH="/Users/daipeng/perl5/bin${PATH:+:${PATH}}"; export PATH;
 PERL5LIB="/Users/daipeng/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;
@@ -217,3 +217,11 @@ PERL_MM_OPT="INSTALL_BASE=/Users/daipeng/perl5"; export PERL_MM_OPT;
 # disable vim freeze
 stty -ixon
 
+# command -v vg >/dev/null 2>&1 && eval "$(vg eval --shell zsh)"
+#export PATH="$PATH:/opt/mssql-tools/bin"
+# pyenv
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+if command -v pyenv 1>/dev/null 2>&1; then
+  eval "$(pyenv init -)"
+fi
