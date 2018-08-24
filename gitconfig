@@ -1,42 +1,48 @@
 [user]
-	name = hackrole
-	email = daipeng123456@gmail.com
+    name = hackrole
+    email = daipeng123456@gmail.com
 [alias]
-	ch = checkout
-	br = branch
-	cm = commit
-	st = status
-	lg = log --pretty=oneline
-	glg = log --graph --pretty=oneline
-	lgg = log --pretty=oneline -5
+    ch = checkout
+    br = branch
+    cm = commit
+    st = status
+    lg = log --pretty=oneline
+    glg = log --graph --pretty=oneline
+    lgg = log --pretty=oneline -5
 [pager]
-	log = false
+    log = false
 [core]
-	editor = vim
-	excludesfile = /Users/daipeng/.gitignore_global
+    editor = vim
+    excludesfile = /Users/daipeng/.gitignore_global
     # use linux line-of-end
     autocrlf = input
     #autocrlf = true
     #whitespace = cr-at-eol
 [push]
-	default = simple
+    default = simple
 [difftool "sourcetree"]
-	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
-	path = 
+    cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+    path = 
 [mergetool "sourcetree"]
-	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
-	trustExitCode = true
+    cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+    trustExitCode = true
 [filter "lfs"]
-	clean = git-lfs clean -- %f
-	smudge = git-lfs smudge -- %f
-	process = git-lfs filter-process
-	required = true
+    clean = git-lfs clean -- %f
+    smudge = git-lfs smudge -- %f
+    process = git-lfs filter-process
+    required = true
 [rerere]
-	enabled = true
+    enabled = true
 [pull]
     #rebase = true
     rebase = false
 [difftool]
-	prompt = false
+    prompt = false
 [diff]
-	tool = vimdiff
+    tool = vimdiff
+[fetch]
+    # auto remove remote deleted branch on local
+    prune = true
+[remote "origin"]
+    # auto remove remote deleted branch on local
+    prune = true
