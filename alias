@@ -11,7 +11,8 @@ alias ssh241="ssh root@192.168.1.241"
 alias xclip="xclip -selection clipboard"
 
 alias devpi_lg="devpi login hmy --password AEbDunETs5uzS"
-alias sslstart="cd ~/app/shadowsocks && sslocal -d start -c vultr.json --pid-file vultr.pid --log-file vultr.log"
+#alias sslstart="cd ~/app/shadowsocks && sslocal -d start -c vultr.json --pid-file vultr.pid --log-file vultr.log"
+alias sslstart="cd /home/hackrole/app/shadowsocksr && python shadowsocks/local.py -c config.json --pid-file ./ssr.pid --log-file ./ssr.log -d start"
 alias xmodm="xmodmap ~/.xmodmap"
 alias hsandbox="~/app/hsandbox/hsandbox"
 alias spacevim="nyaovim -u ~/.SpaceVim/init.vim"
@@ -37,4 +38,36 @@ function git_fp(){
     git add -A
     git commit -m ${msg}
     git push origin $(git rev-parse --abbrev-ref HEAD)
+}
+
+# TODO tmux new version nested session config
+function test_api_ssh(){
+    /home/hackrole/.asdf/shims/python -c 'import pexpect; c = pexpect.spawn("ssh hmy_test"); c.expect("alitest"); c.sendline("sudo su"); c.expect("password"); c.sendline("hmy"); c.sendline("source /opt/py_virtualenvs/shiyijian-api/bin/activate"); c.expect("shiyijian-api"); c.sendline("cd /opt/shiyijian-api"); c.expect("/opt/shiyijian"); c.interact();'
+}
+function test_api_shell(){
+    /home/hackrole/.asdf/shims/python -c 'import pexpect; c = pexpect.spawn("ssh hmy_test"); c.expect("alitest"); c.sendline("sudo su"); c.expect("password"); c.sendline("hmy"); c.sendline("source /opt/py_virtualenvs/shiyijian-api/bin/activate"); c.expect("shiyijian-api"); c.sendline("cd /opt/shiyijian-api"); c.expect("/opt/shiyijian");c.sendline("python manage.py shell"); c.interact();'
+}
+
+function qa_api_ssh(){
+    /home/hackrole/.asdf/shims/python -c 'import pexpect; c = pexpect.spawn("ssh hmy_stag"); c.expect("alirds"); c.sendline("sudo su"); c.expect("password"); c.sendline("hmy"); c.sendline("source /opt/py_virtualenvs/shiyijian-api/bin/activate"); c.expect("shiyijian-api"); c.sendline("cd /opt/shiyijian-api"); c.expect("/opt/shiyijian"); c.interact();'
+}
+
+function qa_api_shell(){
+    /home/hackrole/.asdf/shims/python -c 'import pexpect; c = pexpect.spawn("ssh hmy_stag"); c.expect("alirds"); c.sendline("sudo su"); c.expect("password"); c.sendline("hmy"); c.sendline("source /opt/py_virtualenvs/shiyijian-api/bin/activate"); c.expect("shiyijian-api"); c.sendline("cd /opt/shiyijian-api"); c.expect("/opt/shiyijian");c.sendline("python manage.py shell"); c.interact();'
+}
+
+function qa_mg_ssh(){
+    /home/hackrole/.asdf/shims/python -c 'import pexpect; c = pexpect.spawn("ssh hmy_stag"); c.expect("alirds"); c.sendline("sudo su"); c.expect("password"); c.sendline("hmy"); c.sendline("source /opt/py_virtualenvs/shiyijian-manager/bin/activate"); c.expect("shiyijian-manager"); c.sendline("cd /opt/shiyijian-manager"); c.expect("/opt/shiyijian"); c.interact();'
+}
+
+function qa_mg_shell(){
+    /home/hackrole/.asdf/shims/python -c 'import pexpect; c = pexpect.spawn("ssh hmy_stag"); c.expect("alirds"); c.sendline("sudo su"); c.expect("password"); c.sendline("hmy"); c.sendline("source /opt/py_virtualenvs/shiyijian-manager/bin/activate"); c.expect("shiyijian-manager"); c.sendline("cd /opt/shiyijian-manager"); c.expect("/opt/shiyijian");c.sendline("python manage.py shell"); c.interact();'
+}
+
+function alicore_pillar(){
+    /home/hackrole/.asdf/shims/python -c 'import pexpect; c = pexpect.spawn("ssh hmy_alicore"); c.expect("alicore"); c.sendline("sudo su"); c.expect("password"); c.sendline("hmy");  c.sendline("cd /srv/pillar"); c.expect("/srv/pillar"); c.interact();'
+}
+
+function alicore_mg_ssh(){
+    /home/hackrole/.asdf/shims/python -c 'import pexpect; c = pexpect.spawn("ssh hmy_alicore"); c.expect("alicore"); c.sendline("sudo su"); c.expect("password"); c.sendline("hmy"); c.sendline("source /opt/py_virtualenvs/shiyijian-manager/bin/activate"); c.expect("shiyijian-manager"); c.sendline("cd /opt/shiyijian-manager"); c.expect("/opt/shiyijian-manager"); c.interact();'
 }
