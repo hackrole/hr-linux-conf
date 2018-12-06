@@ -1,5 +1,8 @@
 # common alias file, add some work-alias as need.
 
+alias vim="nvim"
+alias rm="echo 'use trash-put(tp), please,please,please!!!!'"
+alias tp="trash-put"
 alias djserver="python manage.py runserver 0.0.0.0:8000"
 alias djshell="python manage.py shell"
 alias mmplay="cd ~/Music && mplayer -playlist mplay.lst -loop 0"

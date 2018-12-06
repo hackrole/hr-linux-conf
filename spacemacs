@@ -104,6 +104,7 @@ values."
      ;; python and ipython
      (python :variables python-test-runner 'pytest
              python-enable-yapf-format-on-save t
+             python-sort-imports-on-save t
              flycheck-flake8-maximum-complexity 8)
      ipython-notebook
      django
@@ -541,6 +542,9 @@ you should place your code here."
   ;; lsp-go hooks
   (require 'lsp-go)
   (add-hook 'go-mode-hook #'lsp-go-enable)
+
+  ;; scheme layer config
+  (setq geiser-active-implementations '(mit))
 
   ;; force disable linum-mode in doc-view-mode(pdf-tools)
   (add-hook 'pdf-view-mode-hook (lambda() (linum-mode -1)))

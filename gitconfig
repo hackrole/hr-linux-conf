@@ -46,3 +46,5 @@
 [remote "origin"]
     # auto remove remote deleted branch on local
     prune = true
+[github]
+	user = hackrole

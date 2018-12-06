@@ -99,7 +99,8 @@ source ~/.alias
 # [ -s $ZSH_ALIAS ] && . $ZSH_ALIAS
 
 # setup oepnjdk 7
-export JAVA_HOME='/Library/Java/JavaVirtualMachines/jdk1.8.0_112.jdk/Contents/Home'
+#export JAVA_HOME='/Library/Java/JavaVirtualMachines/jdk1.8.0_112.jdk/Contents/Home'
+export JAVA_HOME='/usr/lib/jvm/java-8-openjdk-amd64'
 export JRE_HOME=${JAVA_HOME}/jre
 #export PATH=${JAVA_HOME}/bin:${PATH}
 export CLASSPATH=.:$JAVA_HOME/lib:$JAVA_HOME/jre/lib
@@ -121,10 +122,10 @@ export CLASSPATH=.:$JAVA_HOME/lib:$JAVA_HOME/jre/lib
 
 # setup golang
 #export GOROOT="$HOME/app/go1.6"
-export GOPATH="$HOME/projects/mygo"
-export PATH=${PATH}:${GOROOT}/bin:${GOPATH}/bin
+#export GOPATH="$HOME/projects/mygo"
+#export PATH=${PATH}:${GOROOT}/bin:${GOPATH}/bin
 # golang virtualenv vg
-command -v vg >/dev/null 2>&1 && eval "$(vg eval --shell zsh)"
+#command -v vg >/dev/null 2>&1 && eval "$(vg eval --shell zsh)"
 
 # setup gradle
 #export GRADLE_HOME="$HOME/app/gradle-2.10/"
@@ -228,3 +229,9 @@ if command -v pyenv 1>/dev/null 2>&1; then
   eval "$(pyenv init -)"
 fi
 export PATH=$PATH:$HOME/.linkerd2/bin
+
+autoload -U +X bashcompinit && bashcompinit
+complete -o nospace -C /opt/vault_0.11.4/vault vault
+
+# added by travis gem
+[ -f /home/hackrole/.travis/travis.sh ] && source /home/hackrole/.travis/travis.sh
