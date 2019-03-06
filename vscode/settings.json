@@ -1,5 +1,8 @@
 {
-  "workbench.colorTheme": "Visual Studio Light",
+  // 取消自动更新
+  "update.channel": "none",
+
+  "workbench.colorTheme": "Default Light+",
   "window.zoomLevel": 1.5,
 
   // editor
@@ -8,11 +11,11 @@
   "editor.fontFamily": "Source Code Pro",
   "editor.minimap.enabled": false,
   // intellisense
-  "editor.acceptSuggestionOnEnter": true,
+  //"editor.acceptSuggestionOnEnter": true,
   "editor.quickSuggestionsDelay": 10,
   "editor.wordBasedSuggestions": true,
   "editor.suggestOnTriggerCharacters": true,
-  "editor.parameterHints": true,
+  //"editor.parameterHints": true,
   "editor.quickSuggestions": {
     "other": true,
     "comments": true,
@@ -21,17 +24,44 @@
   "editor.suggestSelection": "first",
   // snippet
   "editor.snippetSuggestions": "top",
-  "editor.tabCompletion": true,
+  "editor.tabCompletion": "on",
+
+  // vim
+  "vim.easymotion": true,
+  "vim.useCtrlKeys": true,
+  "vim.hlsearch": true,
+  "vim.insertModeKeyBindings": [
+    {
+      "before": ["j", "k"],
+      "after": ["<Esc>"]
+    },
+  ],
+  "vim.normalModeKeyBindingsNonRecursive": [
+    {
+      "before": ["g", "d"],
+      "command": [
+        "editor.action.goToDeclaration",
+      ]
+    },
+  ],
 
   // python
   "python.venvFolders": ["~/.virtualenvs",],
-  "python.autoComplete.preloadModules": [
-    "numpy", "pandas", "matplotlib",
-  ],
+  "python.jediEnabled": false,
   "python.autoComplete.addBrackets": true,
+  "[python]": {
+    "editor.insertSpaces": true,
+    "editor.tabSize": 4,
+  },
   // golang
   "go.autocompleteUnimportedPackages": true,
-  "gitlens.advanced.messages": {
-    "suppressShowKeyBindingsNotice": true
-  },
+  //"gitlens.advanced.messages": {
+  // "suppressShowKeyBindingsNotice": true
+  //},
+  "typescript.updateImportsOnFileMove.enabled": "always",
+  "workbench.iconTheme": "vscode-icons",
+  "vsicons.projectDetection.autoReload": true,
+  "files.hotExit": "off",
+  "vsicons.dontShowNewVersionMessage": true,
+  "sync.gist": "9a7fd85064f4368e4d25da87262d8916",
 }

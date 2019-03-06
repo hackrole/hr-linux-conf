@@ -126,6 +126,8 @@ export CLASSPATH=.:$JAVA_HOME/lib:$JAVA_HOME/jre/lib
 #export PATH=${PATH}:${GOROOT}/bin:${GOPATH}/bin
 # golang virtualenv vg
 #command -v vg >/dev/null 2>&1 && eval "$(vg eval --shell zsh)"
+export GOROOT="$HOME/.asdf/installs/golang/1.11.4/go"
+export GOPATH="$HOME/projects/mygo"
 
 # setup gradle
 #export GRADLE_HOME="$HOME/app/gradle-2.10/"
@@ -182,7 +184,7 @@ fi
 # config autojump
 [ -f /usr/local/etc/profile.d/autojump.sh ] && . /usr/local/etc/profile.d/autojump.sh
 # config fasd
-#eval "$(fasd --init auto)"
+eval "$(fasd --init auto)"
 
 # java env
 export PATH="/usr/local/opt/scala@2.11/bin:$PATH"
@@ -198,11 +200,16 @@ export VAGRANT_HOME=/data/vagrant
 # devpi server dir
 export DEVPI_SERVERDIR="/data/devpi_server"
 
+# direnv
+eval "$(direnv hook zsh)"
+
 # export editor
 export EDITOR='vim'
 # tmuxinator init
 export tmuxinator_zsh_compl="/home/hackrole/.asdf/installs/ruby/2.5.1/lib/ruby/gems/2.5.0/gems/tmuxinator-0.11.2/completion/tmuxinator.zsh"
 source $tmuxinator_zsh_compl
+# tmuxp init
+eval "$(_TMUXP_COMPLETE=source tmuxp)"
 
 # tabtab source for electron-forge package
 # uninstall by removing these lines or running `tabtab uninstall electron-forge`
@@ -235,3 +242,5 @@ complete -o nospace -C /opt/vault_0.11.4/vault vault
 
 # added by travis gem
 [ -f /home/hackrole/.travis/travis.sh ] && source /home/hackrole/.travis/travis.sh
+
+complete -o nospace -C /usr/local/bin/consul consul

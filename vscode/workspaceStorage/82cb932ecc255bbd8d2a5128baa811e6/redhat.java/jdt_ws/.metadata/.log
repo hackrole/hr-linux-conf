@@ -1,0 +1,75 @@
+!SESSION 2019-01-30 16:13:11.017 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=1.8.0_191
+java.vendor=Oracle Corporation
+BootLoader constants: OS=linux, ARCH=x86_64, WS=gtk, NL=en_US
+Command-line arguments:  -data /home/hackrole/.config/Code/User/workspaceStorage/82cb932ecc255bbd8d2a5128baa811e6/redhat.java/jdt_ws
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2019-01-30 16:13:12.831
+!MESSAGE class org.eclipse.jdt.ls.core.internal.JavaLanguageServerPlugin is started
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2019-01-30 16:13:12.962
+!MESSAGE Main thread is waiting
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2019-01-30 16:13:12.978
+!MESSAGE >> initialize
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2019-01-30 16:13:12.979
+!MESSAGE Initializing Java Language Server 0.31.0.201901170522
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2019-01-30 16:13:12.992
+!MESSAGE Installed reference:file:/home/hackrole/.vscode/extensions/visualstudioexptteam.vscodeintellicode-1.0.6/node_modules/@vsintellicode/vscode-intellicode-java/server/com.microsoft.jdtls.intellicode.core-0.3.6.jar
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2019-01-30 16:13:12.994
+!MESSAGE Installed reference:file:/home/hackrole/.vscode/extensions/vscjava.vscode-java-debug-0.16.0/server/com.microsoft.java.debug.plugin-0.16.0.jar
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2019-01-30 16:13:12.997
+!MESSAGE Installed reference:file:/home/hackrole/.vscode/extensions/vscjava.vscode-java-dependency-0.3.0/server/com.microsoft.jdtls.ext.core-0.3.0.jar
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2019-01-30 16:13:12.999
+!MESSAGE Installed reference:file:/home/hackrole/.vscode/extensions/vscjava.vscode-java-test-0.14.0/server/com.microsoft.java.test.plugin-0.14.0.jar
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2019-01-30 16:13:13.063
+!MESSAGE Creating the Java project jdt.ls-java-project
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2019-01-30 16:13:13.094
+!MESSAGE Started reference:file:/home/hackrole/.vscode/extensions/visualstudioexptteam.vscodeintellicode-1.0.6/node_modules/@vsintellicode/vscode-intellicode-java/server/com.microsoft.jdtls.intellicode.core-0.3.6.jar
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2019-01-30 16:13:13.106
+!MESSAGE >> initialized
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2019-01-30 16:13:13.564
+!MESSAGE Finished creating the Java project jdt.ls-java-project
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2019-01-30 16:13:13.686
+!MESSAGE Workspace initialized in 697ms
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2019-01-30 16:13:13.745
+!MESSAGE >> workspace/didChangeConfiguration
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2019-01-30 16:13:13.746
+!MESSAGE >> registerFeature 'workspace/didChangeWatchedFiles'
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2019-01-30 16:13:13.756
+!MESSAGE >>New configuration: {java={home=null, jdt={ls={vmargs=-noverify -Xmx1G -XX:+UseG1GC -XX:+UseStringDeduplication}}, errors={incompleteClasspath={severity=warning}}, configuration={updateBuildConfiguration=interactive, maven={userSettings=null}}, trace={server=off}, import={gradle={enabled=true}, maven={enabled=true}, exclusions=[**/node_modules/**, **/.metadata/**, **/archetype-resources/**, **/META-INF/maven/**]}, referencesCodeLens={enabled=false}, signatureHelp={enabled=false}, implementationsCodeLens={enabled=false}, format={enabled=true, settings={url=null, profile=null}, comments={enabled=true}, onType={enabled=true}}, saveActions={organizeImports=false}, contentProvider={preferred=null}, autobuild={enabled=true}, maxConcurrentBuilds=1.0, completion={enabled=true, overwrite=true, guessMethodArguments=false, favoriteStaticMembers=[org.junit.Assert.*, org.junit.Assume.*, org.junit.jupiter.api.Assertions.*, org.junit.jupiter.api.Assumptions.*, org.junit.jupiter.api.DynamicContainer.*, org.junit.jupiter.api.DynamicTest.*, org.mockito.Mockito.*, org.mockito.ArgumentMatchers.*, org.mockito.Answers.*], importOrder=[java, javax, com, org]}, progressReports={enabled=true}, debug={logLevel=warn, settings={showHex=false, showStaticVariables=true, showQualifiedNames=false, maxStringLength=0.0, enableHotCodeReplace=true, enableRunDebugCodeLens=true, forceBuildBeforeLaunch=true}}, dependency={showOutline=true, syncWithFolderExplorer=true, packagePresentation=flat}, test={report={position=sideView}, log={level=info}, message={hintForDeprecatedConfig=true, hintForSetingDefaultConfig=true}, defaultConfig=, config={}}}}
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2019-01-30 16:13:49.121
+!MESSAGE >> workspace/executeCommand vscode.java.fetchUsageData
+
+!ENTRY java-debug 1 0 2019-01-30 16:13:49.127
+!MESSAGE Starting com.microsoft.java.debug.plugin
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2019-01-30 16:14:56.616
+!MESSAGE >> shutdown
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2019-01-30 16:14:56.630
+!MESSAGE >> exit
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2019-01-30 16:14:56.630
+!MESSAGE Shutdown received... waking up main thread
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2019-01-30 16:14:56.633
+!MESSAGE class org.eclipse.jdt.ls.core.internal.JavaLanguageServerPlugin is stopping:
+
+!ENTRY java-debug 1 0 2019-01-30 16:14:57.524
+!MESSAGE Stopping com.microsoft.java.debug.plugin

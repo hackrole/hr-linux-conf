@@ -1,0 +1,82 @@
+# haomaiyi qq mail
+IMAPAccount work
+Host imap.exmail.qq.com
+User daipeng@haomaiyi.com
+Pass pSURcU42yG
+Port 993
+SSLType IMAPS
+AuthMechs Login
+CertificateFile /etc/ssl/certs/ca-certificates.crt
+
+IMAPStore work-remote
+Account work
+
+MaildirStore work-local
+Path ~/Maildir/mb_haomaiyi
+Inbox ~/Maildir/mb_haomaiyi/INBOX
+
+Channel work
+Master :work-remote:
+Slave :work-local:
+Patterns "Sent_Items" "INBOX" "Delete Items"
+Create Slave
+Sync All
+Expunge Both
+SyncState *
+
+# gmail account
+IMAPAccount gmail
+Host imap.googlemail.com
+User daipeng123456@gmail.com
+# Pass "noxwgqqwiczuacgy"
+PassCmd "gpg2 -q --for-your-eyes-only --no-tty -d ~/.emacs.d/.mbsyncpass.gpg"
+Port 993
+SSLType IMAPS
+AuthMechs Login
+CertificateFile /etc/ssl/certs/ca-certificates.crt
+
+IMAPStore gmail-remote
+Account gmail
+
+MaildirStore gmail-local
+Path ~/Maildir/mb_gmail
+Inbox ~/Maildir/mb_gmail/INBOX
+
+Channel gmail
+Master :gmail-remote:
+Slave :gmail-local:
+Patterns "Sent_Items" "INBOX" "Delete Items"
+Create Slave
+# MaxMessage 1000
+Sync All
+Expunge Both
+SyncState *
+
+# gmail account2
+IMAPAccount hk_gmail
+Host imap.googlemail.com
+User hack.role@gmail.com
+# set password directly or through passcmd gpg2
+Pass pass
+#PassCmd "gpg2 -q --for-your-eyes-only --no-tty -d"
+Port 993
+SSLType IMAPS
+AuthMechs Login
+CertificateFile /etc/ssl/certs/ca-certificates.crt
+
+IMAPStore hk_gmail_remote
+Account hk_gmail
+
+MaildirStore hk_gmail_local
+Path ~/Maildir/mb_hk_gmail
+Inbox ~/Maildir/mb_hk_gmail/INBOX
+
+Channel gmail
+Master :hk_gmail_remote:
+Slave :hk_gmail_local:
+Patterns "Sent_Items" "INBOX" "Delete Items"
+Create Slave
+# MaxMessage 1000
+Sync All
+Expunge Both
+SyncState *

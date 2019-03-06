@@ -1,0 +1,105 @@
+!SESSION 2018-11-10 17:50:31.131 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=1.8.0_171
+java.vendor=Oracle Corporation
+BootLoader constants: OS=linux, ARCH=x86_64, WS=gtk, NL=en_US
+Command-line arguments:  -data /home/hackrole/.config/Code/User/workspaceStorage/8bca5826a39aedcd547863790a0fe054/redhat.java/jdt_ws
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-11-10 17:50:32.816
+!MESSAGE class org.eclipse.jdt.ls.core.internal.JavaLanguageServerPlugin is started
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-11-10 17:50:32.904
+!MESSAGE Main thread is waiting
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-11-10 17:50:32.921
+!MESSAGE >> initialize
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-11-10 17:50:32.922
+!MESSAGE Initializing Java Language Server 0.27.0.201810230509
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-11-10 17:50:32.931
+!MESSAGE Installed reference:file:/home/hackrole/.vscode/extensions/vscjava.vscode-java-debug-0.15.0/server/com.microsoft.java.debug.plugin-0.15.0.jar
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-11-10 17:50:32.932
+!MESSAGE Installed reference:file:/home/hackrole/.vscode/extensions/vscjava.vscode-java-test-0.10.0/server/com.microsoft.java.test.plugin-0.10.0.jar
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-11-10 17:50:32.977
+!MESSAGE Creating the default Java project
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-11-10 17:50:32.998
+!MESSAGE Started reference:file:/home/hackrole/.vscode/extensions/vscjava.vscode-java-debug-0.15.0/server/com.microsoft.java.debug.plugin-0.15.0.jar
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-11-10 17:50:33.007
+!MESSAGE >> initialized
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-11-10 17:50:33.310
+!MESSAGE Finished creating the default Java project
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-11-10 17:50:33.421
+!MESSAGE Importing Gradle project(s)
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-11-10 17:51:51.174
+!MESSAGE Shutdown received... waking up main thread
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-11-10 17:51:51.177
+!MESSAGE class org.eclipse.jdt.ls.core.internal.JavaLanguageServerPlugin is stopping:
+
+!ENTRY org.eclipse.core.resources 2 10035 2018-11-10 17:59:15.585
+!MESSAGE The workspace will exit with unsaved changes in this session.
+!SESSION 2018-11-12 13:18:41.079 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=1.8.0_181
+java.vendor=Oracle Corporation
+BootLoader constants: OS=linux, ARCH=x86_64, WS=gtk, NL=en_US
+Command-line arguments:  -data /home/hackrole/.config/Code/User/workspaceStorage/8bca5826a39aedcd547863790a0fe054/redhat.java/jdt_ws
+
+!ENTRY org.eclipse.core.resources 2 10035 2018-11-12 13:18:41.640
+!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-11-12 13:18:42.715
+!MESSAGE class org.eclipse.jdt.ls.core.internal.JavaLanguageServerPlugin is started
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-11-12 13:18:42.824
+!MESSAGE Main thread is waiting
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-11-12 13:18:42.845
+!MESSAGE >> initialize
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-11-12 13:18:42.846
+!MESSAGE Initializing Java Language Server 0.27.0.201810230509
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-11-12 13:18:42.926
+!MESSAGE Creating the default Java project
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-11-12 13:18:42.942
+!MESSAGE Finished creating the default Java project
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-11-12 13:18:43.012
+!MESSAGE >> initialized
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-11-12 13:18:43.254
+!MESSAGE Importing Gradle project(s)
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-11-12 13:23:43.013
+!MESSAGE Timeout while waiting for completion of job: Initialize Workspace(25)
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-11-12 13:23:43.021
+!MESSAGE >> workspace/didChangeConfiguration
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-11-12 13:23:43.023
+!MESSAGE >> java/buildWorkspace (incremental)
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-11-12 13:23:43.025
+!MESSAGE >> registerFeature 'workspace/didChangeWatchedFiles'
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-11-12 13:23:43.033
+!MESSAGE >>New configuration: {java={home=null, jdt={ls={vmargs=-noverify -Xmx1G -XX:+UseG1GC -XX:+UseStringDeduplication}}, errors={incompleteClasspath={severity=warning}}, configuration={updateBuildConfiguration=interactive, maven={userSettings=null}}, trace={server=off}, import={gradle={enabled=true}, maven={enabled=true}, exclusions=[**/node_modules/**, **/.metadata/**, **/archetype-resources/**, **/META-INF/maven/**]}, referencesCodeLens={enabled=false}, signatureHelp={enabled=false}, implementationsCodeLens={enabled=false}, format={enabled=true, settings={url=null, profile=null}, comments={enabled=true}, onType={enabled=true}}, saveActions={organizeImports=false}, contentProvider={preferred=null}, autobuild={enabled=true}, completion={enabled=true, overwrite=true, guessMethodArguments=false, favoriteStaticMembers=[org.junit.Assert.*, org.junit.Assume.*, org.junit.jupiter.api.Assertions.*, org.junit.jupiter.api.Assumptions.*, org.junit.jupiter.api.DynamicContainer.*, org.junit.jupiter.api.DynamicTest.*, org.mockito.Mockito.*, org.mockito.ArgumentMatchers.*, org.mockito.Answers.*], importOrder=[java, javax, com, org]}, progressReports={enabled=true}, debug={logLevel=warn, settings={showHex=false, showStaticVariables=true, showQualifiedNames=false, maxStringLength=0.0, enableHotCodeReplace=true, enableRunDebugCodeLens=true}}, test={report={position=sideView}}}}
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-11-12 13:23:43.033
+!MESSAGE >> document/didOpen
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-11-12 13:26:11.740
+!MESSAGE Shutdown received... waking up main thread
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-11-12 13:26:11.744
+!MESSAGE class org.eclipse.jdt.ls.core.internal.JavaLanguageServerPlugin is stopping:
