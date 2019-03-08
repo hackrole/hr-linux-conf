@@ -203,9 +203,13 @@ hs.hotkey.bind({'cmd', 'ctrl'}, 'm', function()
     ret = hs.application.launchOrFocus('Mail')
 end)
 
-hs.hotkey.bind({"cmd", "ctrl"}, "v", function()
-    ret = hs.application.launchOrFocus("VMware Fusion.app")
+hs.hotkey.bind({'cmd', 'ctrl'}, 'v', function()
+    ret = hs.application.launchOrFocus('Visual Studio Code')
 end)
+
+--hs.hotkey.bind({"cmd", "ctrl"}, "v", function()
+--    ret = hs.application.launchOrFocus("VMware Fusion.app")
+--end)
 
 --hs.hotkey.bind({"cmd", "ctrl"}, "j", function()
 --    ret = hs.application.launchOrFocus("IntelliJ IDEA CE.app")

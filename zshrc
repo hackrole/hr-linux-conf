@@ -200,8 +200,8 @@ export DEVPI_SERVERDIR="/data/devpi_server"
 # export editor
 export EDITOR='vim'
 # tmuxinator init
-export tmuxinator_zsh_compl="/home/hackrole/.asdf/installs/ruby/2.5.1/lib/ruby/gems/2.5.0/gems/tmuxinator-0.11.2/completion/tmuxinator.zsh"
-source $tmuxinator_zsh_compl
+#export tmuxinator_zsh_compl="/home/hackrole/.asdf/installs/ruby/2.5.1/lib/ruby/gems/2.5.0/gems/tmuxinator-0.11.2/completion/tmuxinator.zsh"
+#source $tmuxinator_zsh_compl
 
 # tabtab source for electron-forge package
 # uninstall by removing these lines or running `tabtab uninstall electron-forge`
