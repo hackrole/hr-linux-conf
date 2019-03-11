@@ -52,6 +52,9 @@ values."
      nixos
      ;; restclient
      restclient
+     ;; sphinx and rst-mode
+     sphinx
+     restructuredtext
      ;; flycheck for syntax checking
      (syntax-checking :variables syntax-checking-use-original-bitmaps t)
      ;; contains auto-complete/yasnippet/company
@@ -152,7 +155,9 @@ values."
      javascript
      sql
      docker
-     pdf-tools
+     ;; the pdf-tools layer seems rename to pdf
+     ;;pdf-tools
+     pdf
      chrome
      (mu4e :variables mu4e-maildir "~/Maildir"
            mu4e-trash-folder "/Trash"
@@ -226,19 +231,18 @@ values."
                                       sr-speedbar
                                       projectile-speedbar
                                       ;; python-lsp
-                                      lsp-mode
-                                      lsp-python
-                                      lsp-vue
-                                      rst-mode
+                                      ;; lsp-mode
+                                      ;; lsp-python
+                                      ;; lsp-vue
                                       vue-mode
-                                      company-lsp
+                                      ;; company-lsp
                                       go-mode
-                                      protobuf-mode
-                                      lsp-go)
+                                      protobuf-mode)
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
    ;; A list of packages that will not be installed and loaded.
-   dotspacemacs-excluded-packages '(mu4e-maildirs-extension)
+   dotspacemacs-excluded-packages '(tn-theme)
+   ;; dotspacemacs-excluded-packages '(mu4e-maildirs-extension)
    ;; Defines the behaviour of Spacemacs when installing packages.
    ;; Possible values are `used-only', `used-but-keep-unused' and `all'.
    ;; `used-only' installs only explicitly used packages and uninstall any
@@ -558,10 +562,6 @@ you should place your code here."
   ;; tab always indent
   (setq tab-always-indent nil)
 
-  ;; lsp-go hooks
-  (require 'lsp-go)
-  (add-hook 'go-mode-hook #'lsp-go-enable)
-
   ;; scheme layer config
   (setq geiser-active-implementations '(mit))
 
@@ -576,11 +576,11 @@ you should place your code here."
   ;; vue-mode for vue
   (require 'vue-mode)
   (add-to-list 'vue-mode-hook #'smartparens-mode)
-  (require 'lsp-mode)
-  (require 'lsp-vue)
-  (add-hook 'vue-mode-hook #'lsp-vue-mmm-enable)
-  (require 'company-lsp)
-  (push 'company-lsp company-backends)
+  ;; (require 'lsp-mode)
+  ;; (require 'lsp-vue)
+  ;; (add-hook 'vue-mode-hook #'lsp-vue-mmm-enable)
+  ;; (require 'company-lsp)
+  ;; (push 'company-lsp company-backends)
 
   ;;; python setup
   ;; XXX tmp init virtual global virtualenv
@@ -607,8 +607,8 @@ you should place your code here."
                                 (spacemacs/set-leader-keys-for-major-mode 'python-mode
                                   "db" 'hr-conf/python-toggle-breakpoint)
                                 ))
-  (require 'lsp-python)
-  (add-hook 'pytho-mode-hook #'lsp-python-enable)
+  ;; (require 'lsp-python)
+  ;; (add-hook 'pytho-mode-hook #'lsp-python-enable)
 
   ;; google translate
   (setq google-translate-default-target-language "zh-CN")
