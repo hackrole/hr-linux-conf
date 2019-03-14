@@ -125,6 +125,8 @@ values."
      erlang
      ;; golang
      (go :variables go-tab-width 2
+         go-format-before-save t
+         godoc-at-point-function 'godoc-gogetdoc
          go-fmt-command "goimports")
      ;; haskell
      haskell

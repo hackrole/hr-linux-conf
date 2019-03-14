@@ -11,7 +11,8 @@ alias cdnchat="cd ~/projects/next_chat/nchat"
 alias ssh241="ssh root@192.168.1.241"
 
 # xclip
-alias xclip="xclip -selection clipboard"
+alias xp="xclip -selection clipboard"
+alias xpi="echo $@ | xclip -i"
 
 alias devpi_lg="devpi login hmy --password AEbDunETs5uzS"
 #alias sslstart="cd ~/app/shadowsocks && sslocal -d start -c vultr.json --pid-file vultr.pid --log-file vultr.log"
