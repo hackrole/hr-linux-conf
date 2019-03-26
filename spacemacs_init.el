@@ -235,8 +235,8 @@ values."
    dotspacemacs-additional-packages '(yasnippet-snippets
                                       sr-speedbar
                                       projectile-speedbar
-                                      ;;easy-hugo
-                                      ;; es-mode
+                                      easy-hugo
+                                      es-mode
                                       ;; python-lsp
                                       ;; lsp-mode
                                       ;; lsp-python
