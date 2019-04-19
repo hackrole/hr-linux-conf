@@ -116,7 +116,8 @@ values."
              python-enable-yapf-format-on-save nil
              python-sort-imports-on-save t
              flycheck-flake8-maximum-complexity 8)
-     ipython-notebook
+     (ipython-notebook :variables
+                       ein:jupyter-default-server-command "/home/hackrole/.virtualenvs/jupyter3/bin/jupyter")
      django
      ;; scheme
      scheme
@@ -165,10 +166,13 @@ values."
      pdf
      chrome
      (mu4e :variables mu4e-maildir "~/Maildir"
+           ;; mu4e-use-maildirs-extension t
+           mu4e-enable-async-operations t
+           mu4e-enable-notifications t
            mu4e-trash-folder "/Trash"
            mu4e-refile-folder "/Archive"
            mu4e-get-mail-command "mbsync -a"
-           mu4e-update-interval nil
+           mu4e-update-interval 300
            ;; not show threads
            mu4e-headers-show-threads nil
            mu4e-compose-signature-auto-include nil
@@ -183,7 +187,9 @@ values."
              ("/Trash" . ?T))
            mu4e-bookmarks
            `(("flag:unread AND NOT flag:trashed" "Unread messages" ?u)
+             ("flag:flagged" "starred message" ?s)
              ("date:today..now" "Today's messages" ?t)
+             ;; ("flag: flagged" ?f)
              ("date:7d..now" "Last 7 Days" ?w)
              ("mime:image/*" "Messages with images" ?p)
              (,(mapconcat 'identity
@@ -241,6 +247,8 @@ values."
                                       ;; lsp-mode
                                       ;; lsp-python
                                       ;; lsp-vue
+                                      (leetcode :location (recipe :fetcher github
+                                                                    :repo "kaiwk/leetcode.el"))
                                       vue-mode
                                       ;; company-lsp
                                       go-mode
@@ -562,6 +570,11 @@ you should place your code here."
   (setq-default evil-escape-key-sequence "jk")
   (setq-default evil-escape-delay 0.2)
 
+  ;; mu4e config for alert
+  (with-eval-after-load 'mu4e-alert
+    (mu4e-alert-set-default-style 'notifications)) ;; for linux
+    ;; (mu4e-alert-set-default-style 'notifier)) ;; for mac OSX
+
   ;; javascript config
   (setq-default js2-basic-offset 2)
   (setq-default js-indent-level 2)
@@ -665,10 +678,10 @@ you should place your code here."
   (add-to-list 'exec-path "/home/hackrole/projects/mygo/bin")
 
   ;; yassnippet
-  (spacemacs/set-leader-keys "<f7>" 'yas-new-snippet)
   (spacemacs/declare-prefix "y" "yas-customer-prefix")
   (spacemacs/set-leader-keys "y d" 'yas-describe-tables)
   (spacemacs/set-leader-keys "y v" 'yas-visit-snippet-file)
+  (spacemacs/set-leader-keys "y n" 'yas-new-snippet)
   (define-key evil-insert-state-map (kbd "C-e") 'yas-expand)
 
   ;; set for git
