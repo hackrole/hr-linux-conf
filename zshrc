@@ -112,6 +112,11 @@ export CLASSPATH=.:$JAVA_HOME/lib:$JAVA_HOME/jre/lib
 # setup android sdk
 #export ANDROID_HOME=$HOME/app/android-sdk-linux
 #export PATH=$PATH:${ANDROID_HOME}/tools:${ANDROID_HOME}/platform-tools
+export PATH="${PATH}:/opt/android-studio/bin"
+# flutter
+export PUB_HOSTED_URL=https://pub.flutter-io.cn
+export FLUTTER_STORAGE_BASE_URL=https://storage.flutter-io.cn
+export PATH="${PATH}:/opt/flutter/bin"
 
 # setup android ndk
 #export ANDROID_NDK=$HOME/app/android-ndk
@@ -128,13 +133,15 @@ export CLASSPATH=.:$JAVA_HOME/lib:$JAVA_HOME/jre/lib
 #command -v vg >/dev/null 2>&1 && eval "$(vg eval --shell zsh)"
 export GOROOT="$HOME/.asdf/installs/golang/1.11.4/go"
 export GOPATH="$HOME/projects/mygo"
+export PATH="${GOPATH}/bin:${PATH}"
+export GOTOOLDIR="$HOME/.asdf/installs/golang/1.11.4/go/pkg/linux_amd64/"
 
 # setup gradle
 #export GRADLE_HOME="$HOME/app/gradle-2.10/"
 #export PATH=${PATH}:${GRADLE_HOME}/bin
 
 # setup virtualenvwapper
-export VIRTUALENV_WRAPPER_BIN="/home/hackrole/.asdf/installs/python/3.7.2/bin/virtualenvwrapper.sh"
+export VIRTUALENV_WRAPPER_BIN="/home/hackrole/.asdf/installs/python/3.7.3/bin/virtualenvwrapper.sh"
 [ -s $VIRTUALENV_WRAPPER_BIN ] && . $VIRTUALENV_WRAPPER_BIN
 
 # homebrew github token
@@ -230,11 +237,11 @@ stty -ixon
 # command -v vg >/dev/null 2>&1 && eval "$(vg eval --shell zsh)"
 #export PATH="$PATH:/opt/mssql-tools/bin"
 # pyenv
-export PYENV_ROOT="$HOME/.pyenv"
-export PATH="$PYENV_ROOT/bin:$PATH"
-if command -v pyenv 1>/dev/null 2>&1; then
-  eval "$(pyenv init -)"
-fi
+#export PYENV_ROOT="$HOME/.pyenv"
+#export PATH="$PYENV_ROOT/bin:$PATH"
+#if command -v pyenv 1>/dev/null 2>&1; then
+#  eval "$(pyenv init -)"
+#fi
 export PATH=$PATH:$HOME/.linkerd2/bin
 
 autoload -U +X bashcompinit && bashcompinit
@@ -246,3 +253,6 @@ complete -o nospace -C /opt/vault_0.11.4/vault vault
 complete -o nospace -C /usr/local/bin/consul consul
 
 complete -o nospace -C /home/hackrole/projects/mygo/bin/mc mc
+
+complete -o nospace -F /usr/local/bin/aliyun aliyun
+

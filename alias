@@ -1,14 +1,11 @@
 # common alias file, add some work-alias as need.
 
 alias vim="nvim"
-alias rm="echo 'use trash-put(tp), please,please,please!!!!'"
-alias tp="trash-put"
+#alias rm="echo 'use trash-put(tp), please,please,please!!!!'"
+#alias tp="trash-put"
 alias djserver="python manage.py runserver 0.0.0.0:8000"
 alias djshell="python manage.py shell"
 alias mmplay="cd ~/Music && mplayer -playlist mplay.lst -loop 0"
-alias cdchat="cd ~/projects/next_chat"
-alias cdnchat="cd ~/projects/next_chat/nchat"
-alias ssh241="ssh root@192.168.1.241"
 
 # xclip
 alias xp="xclip -selection clipboard"
@@ -24,7 +21,6 @@ alias sslstart="cd /home/hackrole/app/shadowsocksr && python shadowsocks/local.p
 alias xmodm="xmodmap ~/.xmodmap"
 alias hsandbox="~/app/hsandbox/hsandbox"
 alias spacevim="nyaovim -u ~/.SpaceVim/init.vim"
-alias ngvim="nyaovim -u ~/hr-conf/hr-gvim-conf/nvim_init.vim"
 alias spacemacs="HOME=~/app/spacemacs emacs"
 alias racket_repl="racket -i -p neil/sicp -l xrepl"
 alias open="xdg-open"
@@ -36,7 +32,7 @@ alias nd="ntfy done"
 alias tmn=tmuxinator
 
 # docker alias
-alias docker_rmi="docker rmi $(docker images -f 'dangling=true' -q)"
+alias docker_rmi='docker rmi $(docker images -f "dangling=true" -q)'
 alias docker_rm="docker ps -a | grep Exited | cut -d ' ' -f 1 | xargs docker rm"
 
 # git
