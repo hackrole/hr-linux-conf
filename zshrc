@@ -201,15 +201,15 @@ export VAGRANT_HOME=/data/vagrant
 export DEVPI_SERVERDIR="/data/devpi_server"
 
 # direnv
-eval "$(direnv hook zsh)"
+#eval "$(direnv hook zsh)"
 
 # export editor
 export EDITOR='vim'
 # tmuxinator init
-export tmuxinator_zsh_compl="/home/hackrole/.asdf/installs/ruby/2.5.1/lib/ruby/gems/2.5.0/gems/tmuxinator-0.11.2/completion/tmuxinator.zsh"
-source $tmuxinator_zsh_compl
+#export tmuxinator_zsh_compl="/home/hackrole/.asdf/installs/ruby/2.5.1/lib/ruby/gems/2.5.0/gems/tmuxinator-0.11.2/completion/tmuxinator.zsh"
+#source $tmuxinator_zsh_compl
 # tmuxp init
-eval "$(_TMUXP_COMPLETE=source tmuxp)"
+#eval "$(_TMUXP_COMPLETE=source tmuxp)"
 
 # tabtab source for electron-forge package
 # uninstall by removing these lines or running `tabtab uninstall electron-forge`
@@ -230,11 +230,12 @@ stty -ixon
 # command -v vg >/dev/null 2>&1 && eval "$(vg eval --shell zsh)"
 #export PATH="$PATH:/opt/mssql-tools/bin"
 # pyenv
-export PYENV_ROOT="$HOME/.pyenv"
-export PATH="$PYENV_ROOT/bin:$PATH"
-if command -v pyenv 1>/dev/null 2>&1; then
-  eval "$(pyenv init -)"
-fi
+#export PYENV_ROOT="$HOME/.pyenv"
+#export PATH="$PYENV_ROOT/bin:$PATH"
+#if command -v pyenv 1>/dev/null 2>&1; then
+#  eval "$(pyenv init -)"
+#fi
+
 export PATH=$PATH:$HOME/.linkerd2/bin
 
 autoload -U +X bashcompinit && bashcompinit
