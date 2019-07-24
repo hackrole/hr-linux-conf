@@ -134,7 +134,7 @@ export GOPATH="$HOME/projects/mygo"
 #export PATH=${PATH}:${GRADLE_HOME}/bin
 
 # setup virtualenvwapper
-export VIRTUALENV_WRAPPER_BIN="/usr/local/bin/virtualenvwrapper.sh"
+export VIRTUALENV_WRAPPER_BIN="/home/hackrole/.asdf/installs/python/3.7.2/bin/virtualenvwrapper.sh"
 [ -s $VIRTUALENV_WRAPPER_BIN ] && . $VIRTUALENV_WRAPPER_BIN
 
 # homebrew github token
@@ -167,8 +167,8 @@ export SDKMAN_DIR="$HOME/.sdkman"
 #export PATH="$HOME/.jenv/bin:$PATH"
 #eval "$(jenv init -)"
 #
-[[ -s "$HOME/.nodenv/" ]] && export PATH="$HOME/.nodenv/bin:$PATH" && export PATH="$HOME/.nodenv/bin:$PATH"
-eval "$(nodenv init -)"
+#[[ -s "$HOME/.nodenv/" ]] && export PATH="$HOME/.nodenv/bin:$PATH" && export PATH="$HOME/.nodenv/bin:$PATH"
+#eval "$(nodenv init -)"
 
 # config ssh-agent
 if [ -z "$SSH_AUTH_SOCK" ]; then
@@ -245,3 +245,5 @@ complete -o nospace -C /opt/vault_0.11.4/vault vault
 [ -f /home/hackrole/.travis/travis.sh ] && source /home/hackrole/.travis/travis.sh
 
 complete -o nospace -C /usr/local/bin/consul consul
+
+complete -o nospace -C /home/hackrole/projects/mygo/bin/mc mc

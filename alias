@@ -14,6 +14,10 @@ alias ssh241="ssh root@192.168.1.241"
 alias xp="xclip -selection clipboard"
 alias xpi="echo $@ | xclip -i"
 
+# open chrome app
+# chrome --app-id=<>
+alias ckeep="chrome --app-id=hmjkmjkepdijhoojdojkdfohbdgmmhki"
+
 alias devpi_lg="devpi login hmy --password AEbDunETs5uzS"
 #alias sslstart="cd ~/app/shadowsocks && sslocal -d start -c vultr.json --pid-file vultr.pid --log-file vultr.log"
 alias sslstart="cd /home/hackrole/app/shadowsocksr && python shadowsocks/local.py -c config.json --pid-file ./ssr.pid --log-file ./ssr.log -d start"
