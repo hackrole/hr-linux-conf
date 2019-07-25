@@ -208,13 +208,13 @@ export VAGRANT_HOME=/data/vagrant
 export DEVPI_SERVERDIR="/data/devpi_server"
 
 # direnv
-eval "$(direnv hook zsh)"
+#eval "$(direnv hook zsh)"
 
 # export editor
 export EDITOR='vim'
 # tmuxinator init
-export tmuxinator_zsh_compl="/home/hackrole/.asdf/installs/ruby/2.5.1/lib/ruby/gems/2.5.0/gems/tmuxinator-0.11.2/completion/tmuxinator.zsh"
-source $tmuxinator_zsh_compl
+#export tmuxinator_zsh_compl="/home/hackrole/.asdf/installs/ruby/2.5.1/lib/ruby/gems/2.5.0/gems/tmuxinator-0.11.2/completion/tmuxinator.zsh"
+#source $tmuxinator_zsh_compl
 # tmuxp init
 #eval "$(_TMUXP_COMPLETE=source tmuxp)"
 
