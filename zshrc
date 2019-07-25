@@ -244,6 +244,9 @@ stty -ixon
 #fi
 export PATH=$PATH:$HOME/.linkerd2/bin
 
+# direnv
+eval "$(direnv hook zsh)"
+
 autoload -U +X bashcompinit && bashcompinit
 complete -o nospace -C /opt/vault_0.11.4/vault vault
 

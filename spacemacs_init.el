@@ -49,7 +49,6 @@ values."
      helm
      (ibuffer :variables ibuffer-group-buffers-by 'projects)
      nixos
-     ;; restclient
      ;; password from pass
      pass
      restclient
@@ -88,6 +87,9 @@ values."
      ;; vimscript
      vimscript
      ;; markdown
+     (latex :variables latex-build-command "LaTex"
+            latex-enable-folding t
+            latex-enable-magic t)
      (markdown :variables markdown-live-preview-engine 'vmd)
      ;; terraform
      terraform
@@ -253,6 +255,7 @@ values."
    dotspacemacs-additional-packages '(yasnippet-snippets
                                       easy-hugo
                                       es-mode
+                                      ;; projectile-direnv ;; TODO not work
                                       graphql-mode
                                       (leetcode :location (recipe :fetcher github
                                                                     :repo "kaiwk/leetcode.el"))
@@ -597,6 +600,12 @@ you should place your code here."
   ;;     (call-process "zathura" nil 0 nil file)
   ;;     (message "Opening %s done" file)))
   ;; (evil-define-key 'normal dired-mode-map (kbd "f") 'hr-dired-open-file)
+
+  ;; ;; TODO not work projectile direnv
+  ;; (add-hook 'projectile-mode-hook 'projectile-direnv-export-variables)
+
+  ;; latex
+  (add-hook 'doc-view-minor-mode-hook 'auto-revert-mode)
 
   ;; - to dired-mode
   (evil-define-key 'normal dired-mode-map (kbd "-") 'dired-up-directory)
