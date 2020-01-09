@@ -11,6 +11,9 @@ alias mmplay="cd ~/Music && mplayer -playlist mplay.lst -loop 0"
 alias xp="xclip -selection clipboard"
 alias xpi="echo $@ | xclip -i"
 
+alias arcdiff="arc diff --reviewers kui.sun,linji.wang,jianjun.pan,huangsong,dongxiao.wang"
+alias sjump="/Users/daipeng/.asdf/shims/python3 ~/.jump.py"
+
 # open chrome app
 # chrome --app-id=<>
 alias ckeep="chrome --app-id=hmjkmjkepdijhoojdojkdfohbdgmmhki"

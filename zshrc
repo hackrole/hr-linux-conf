@@ -98,6 +98,29 @@ export ZSH_ALIAS="~/.alias"
 source ~/.alias
 # [ -s $ZSH_ALIAS ] && . $ZSH_ALIAS
 
+
+
+# homebrew github token
+export HOMEBREW_GITHUB_API_TOKEN="828a4eb4be3e43a2bc728d15224d010dba9caa4b"
+
+# setup nvm
+#export NVM_DIR="$HOME/.nvm"
+#[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+# use v4.2.2 node at startup
+#nvm use v4.2.2
+
+# export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
+
+
+# google cloud sdk
+export PATH=$HOME/app/google-cloud-sdk/bin/:$PATH
+
+# ====================
+# [ use sdkman to manage java/scala/android ]
+# ====================
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="$HOME/.sdkman"
+[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
 # setup oepnjdk 7
 #export JAVA_HOME='/Library/Java/JavaVirtualMachines/jdk1.8.0_112.jdk/Contents/Home'
 export JAVA_HOME='/usr/lib/jvm/java-8-openjdk-amd64'
@@ -105,9 +128,6 @@ export JRE_HOME=${JAVA_HOME}/jre
 #export PATH=${JAVA_HOME}/bin:${PATH}
 export CLASSPATH=.:$JAVA_HOME/lib:$JAVA_HOME/jre/lib
 #export CLASSPATH=${CLASSPATH}:${JAVA_HOME}/lib/bsh.jar
-
-# sdkman for manager java/scala/groovy/gradle.. version
-#source "$HOME/.sdkman/bin/sdkman-init.sh"
 
 # setup android sdk
 #export ANDROID_HOME=$HOME/app/android-sdk-linux
@@ -125,49 +145,34 @@ export PATH="${PATH}:/opt/flutter/bin"
 #export SCALA_HOME="$HOME/app/scala-2.11.7"
 #export PATH=$PATH:${SCALA_HOME}/bin
 
+
+# setup gradle
+#export GRADLE_HOME="$HOME/app/gradle-2.10/"
+#export PATH=${PATH}:${GRADLE_HOME}/bin
+
+# ========================
+# [use asdf to manage python/golang/nodejs/ruby/rust]
+# ========================
+# asdf config
+#[ -s "${HOME}/.asdf" ] && source "${HOME}/.asdf/asdf.sh" && source "${HOME}/.asdf/completions/asdf.bash"
+# enable asdf, for virtualenv for nodejs/erlang/elixir and so on
+[[ -s "$HOME/.asdf/asdf.sh" ]] && source $HOME/.asdf/asdf.sh
+[[ -s "$HOME/.asdf/completions/asdf.bash" ]] && source $HOME/.asdf/completions/asdf.bash
+
+# setup virtualenvwapper
+export VIRTUALENV_WRAPPER_BIN="${HOME}/.asdf/installs/python/3.6.5/bin/virtualenvwrapper.sh"
+[ -s $VIRTUALENV_WRAPPER_BIN ] && . $VIRTUALENV_WRAPPER_BIN
+
 # setup golang
 #export GOROOT="$HOME/app/go1.6"
 #export GOPATH="$HOME/projects/mygo"
 #export PATH=${PATH}:${GOROOT}/bin:${GOPATH}/bin
 # golang virtualenv vg
 #command -v vg >/dev/null 2>&1 && eval "$(vg eval --shell zsh)"
-export GOROOT="$HOME/.asdf/installs/golang/1.11.4/go"
+export GOROOT="$HOME/.asdf/installs/golang/1.13.5/go"
 export GOPATH="$HOME/projects/mygo"
 export PATH="${GOPATH}/bin:${PATH}"
-export GOTOOLDIR="$HOME/.asdf/installs/golang/1.11.4/go/pkg/linux_amd64/"
-
-# setup gradle
-#export GRADLE_HOME="$HOME/app/gradle-2.10/"
-#export PATH=${PATH}:${GRADLE_HOME}/bin
-
-# setup virtualenvwapper
-export VIRTUALENV_WRAPPER_BIN="/home/hackrole/.asdf/installs/python/3.7.3/bin/virtualenvwrapper.sh"
-[ -s $VIRTUALENV_WRAPPER_BIN ] && . $VIRTUALENV_WRAPPER_BIN
-
-# homebrew github token
-export HOMEBREW_GITHUB_API_TOKEN="828a4eb4be3e43a2bc728d15224d010dba9caa4b"
-
-# setup nvm
-#export NVM_DIR="$HOME/.nvm"
-#[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
-# use v4.2.2 node at startup
-#nvm use v4.2.2
-
-# export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
-
-# asdf config
-[ -s "${HOME}/.asdf" ] && source "${HOME}/.asdf/asdf.sh" && source "${HOME}/.asdf/completions/asdf.bash"
-
-# google cloud sdk
-export PATH=$HOME/app/google-cloud-sdk/bin/:$PATH
-
-#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
-export SDKMAN_DIR="$HOME/.sdkman"
-#[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
-
-# enable asdf, for virtualenv for nodejs/erlang/elixir and so on
-[[ -s "$HOME/.asdf/asdf.sh" ]] && source $HOME/.asdf/asdf.sh
-[[ -s "$HOME/.asdf/completions/asdf.bash" ]] && source $HOME/.asdf/completions/asdf.bash
+export GOTOOLDIR="$HOME/.asdf/installs/golang/1.13.5/go/pkg/linux_amd64/"
 
 #THIS MUST BE AT THE END OF THE FILE FOR JENV TO WORK!!!
 #[[ -s "$HOME/.jenv/bin/jenv-init.sh" ]] && source "$HOME/.jenv/bin/jenv-init.sh" && source "$HOME/.jenv/commands/completion.sh"
@@ -259,3 +264,4 @@ complete -o nospace -C /home/hackrole/projects/mygo/bin/mc mc
 
 complete -o nospace -F /usr/local/bin/aliyun aliyun
 
+export PATH=${PATH}:${HOME}/.mozbuild/arcanist/bin

@@ -16,6 +16,7 @@
     excludesfile = /Users/daipeng/.gitignore_global
     # use linux line-of-end
     autocrlf = input
+	pager = less -F -X
     #autocrlf = true
     #whitespace = cr-at-eol
 [push]

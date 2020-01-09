@@ -346,7 +346,7 @@ values."
    ;; Default font, or prioritized list of fonts. `powerline-scale' allows to
    ;; quickly tweak the mode-line size to make separators look not too crappy.
    dotspacemacs-default-font '("Source Code Pro"
-                               :size 16
+                               :size 14
                                :weight normal
                                :width normal
                                :powerline-scale 1.1)
@@ -560,10 +560,6 @@ before packages are loaded. If you are unsure, you should try in setting them in
   ;; XXX this would cause this C-q bind fails
   ;;(global-git-commit-mode t)
 
-  ;;;; org config
-  ;; enable org shortkey to insert code
-  (require 'org-tempo)
-
   ;; key binding
   ;; org agent
   (global-set-key (kbd "\C-cl") 'org-store-link)
@@ -579,8 +575,6 @@ before packages are loaded. If you are unsure, you should try in setting them in
   ;; change font size
   (global-set-key (kbd "C-c C-=") 'text-scale-increase)
   (global-set-key (kbd "C-c C--") 'text-scale-decrease)
-  ;; (global-set-key (kbd "C-q r l") 'helm-bookmarks)
-  ;; (define-key 'ctl-x-map (kbd "s") 'helm-projectile-switch-project)
   ;; emms
   (global-set-key (kbd "<f6>") 'emms-playlist-mode-go)
   (global-set-key (kbd "C-c <f6>") 'emms-add-playlist)
@@ -613,7 +607,11 @@ you should place your code here."
 
   ;; TODO add some files default readonly
 
-  ;; ;; TODO not work projectile direnv
+  ;;;; org config
+  ;; enable org shortkey to insert code
+  (require 'org-tempo)
+
+  ;;;; TODO not work projectile direnv
   ;; (add-hook 'projectile-mode-hook 'projectile-direnv-export-variables)
 
   ;; latex
@@ -780,8 +778,8 @@ you should place your code here."
   (add-hook 'company-mode-hook (lambda()
                                  (define-key evil-insert-state-map (kbd "<f1>") 'company-complete)))
 
-  (global-set-key (kbd "C-q r l") 'helm-bookmarks)
-  (global-set-key (kbd "C-q s") 'helm-projectile-switch-project)
+  ;; (global-set-key (kbd "C-q r l") 'helm-bookmarks)
+  ;; (global-set-key (kbd "C-q s") 'helm-projectile-switch-project)
   ;; (if (featurep 'helm)
   ;;     (progn
   ;;       (global-set-key (kbd "C-q r l") 'helm-bookmarks)))
