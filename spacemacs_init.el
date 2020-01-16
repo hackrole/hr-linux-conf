@@ -76,7 +76,8 @@ values."
      ;; dash doc viewer
      (dash :variables  helm-dash-browser-func 'eww)
      git
-     github
+     (github :variables gist-ask-for-description t
+             gist-ask-for-filename t)
      ;; plantuml, install plantuml with apt-get on ubuntu
      (plantuml :variables org-plantuml-jar-path "/usr/share/plantuml/plantuml.jar"
                plantuml-jar-path "/usr/share/plantuml/plantuml.jar")
@@ -123,7 +124,7 @@ values."
      (python :variables python-test-runner 'pytest
              ;; tmp nil for the project not too diff
              ;; python-enable-yapf-format-on-save nil
-             python-formatter 'yapf
+             python-formatter 'black
              python-format-on-save t
              python-sort-imports-on-save t
              ;; python-backend 'lsp
