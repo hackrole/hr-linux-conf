@@ -11,6 +11,14 @@ alias mmplay="cd ~/Music && mplayer -playlist mplay.lst -loop 0"
 alias xp="xclip -selection clipboard"
 alias xpi="echo $@ | xclip -i"
 
+alias yd="fanyi"
+
+## emacs alias
+# not used
+#alias spacemacs="HOME=~/app/spacemacs emacs"
+alias doomemacs="LC_CTYPE=zh_CN.UTF-8 emacs --with-profile doom"
+alias emacs="LC_CTYPE=zh_CN.UTF-8 emacs"
+
 alias arcdiff="arc diff --reviewers kui.sun,linji.wang,jianjun.pan,huangsong,dongxiao.wang"
 alias sjump="/Users/daipeng/.asdf/shims/python3 ~/.jump.py"
 
@@ -24,7 +32,6 @@ alias sslstart="cd /home/hackrole/app/shadowsocksr && python shadowsocks/local.p
 alias xmodm="xmodmap ~/.xmodmap"
 alias hsandbox="~/app/hsandbox/hsandbox"
 alias spacevim="nyaovim -u ~/.SpaceVim/init.vim"
-alias spacemacs="HOME=~/app/spacemacs emacs"
 alias racket_repl="racket -i -p neil/sicp -l xrepl"
 alias open="xdg-open"
 
