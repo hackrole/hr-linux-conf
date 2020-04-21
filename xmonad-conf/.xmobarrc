@@ -13,7 +13,7 @@ Config
 
        , bgColor = "#222222"
        , fgColor = "#222222"
-	     , position = TopP 0 0
+	     , position = TopP 0 100
 	     , allDesktops = True
 	     , commands = [ Run Network "wlo1" ["-L","0","-H","32","--normal","green","--high","red"] 12
 	     , Run Memory ["-t"," <usedratio>%"] 12
