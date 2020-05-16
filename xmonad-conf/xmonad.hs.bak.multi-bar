@@ -31,6 +31,7 @@ import qualified XMonad.Layout.ToggleLayouts as TogL
 import qualified XMonad.Layout.Grid as LtGrid
 import qualified XMonad.Layout.Tabbed as LtTabbed
 import qualified XMonad.Layout.ThreeColumns as LtThreeColumns
+import qualified XMonad.Layout.IndependentScreens as IdpS
 
 import qualified XMonad.StackSet as W
 

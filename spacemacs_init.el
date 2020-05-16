@@ -115,8 +115,9 @@ values."
             shell-default-position 'bottom
             shell-default-shell 'ansi-term
             shell-default-term-shell "/bin/zsh")
-     ;; spell-checking
-     ;; syntax-checking
+     (spell-checking :variables
+                     enable-flyspell-auto-completion t
+                     spell-checking-enable-auto-dictionary t)
      ;; version-control
      ;; emacs lisp
      emacs-lisp
@@ -127,8 +128,8 @@ values."
              python-formatter 'black
              python-format-on-save t
              python-sort-imports-on-save t
-             ;; python-backend 'lsp
-             python-backend 'anaconda
+             python-backend 'lsp
+             ;; python-backend 'anaconda
              flycheck-flake8-maximum-complexity 8)
      (ipython-notebook :variables
                        ein:jupyter-default-server-command "/home/hackrole/.virtualenvs/jupyter3/bin/jupyter")
@@ -154,7 +155,13 @@ values."
      prettier
      (html :variables web-fmt-tool 'prettier)
      (typescript :variables typescript-fmt-on-save t)
-     javascript
+     (javascript :variables
+                 ;; javascript-backend 'tern
+                 javascript-backend 'lsp
+                 javascript-lsp-linter nil
+                 javascript-fmt-tool 'prettier
+                 javascript-fmt-on-save t
+                 js2-basic-offset 2)
      react
      ;; lua
      lua
@@ -261,6 +268,10 @@ values."
                                       es-mode
                                       ;; projectile-direnv ;; TODO not work
                                       graphql-mode
+                                      ;; buku bookmark emacs bind
+                                      ebuku
+                                      ;; atomic-chrome similer to edit-with-emacs
+                                      atomic-chrome
                                       (leetcode :location (recipe :fetcher github
                                                                     :repo "kaiwk/leetcode.el"))
                                       vue-mode
@@ -607,6 +618,15 @@ you should place your code here."
   ;; (setq flymd-browser-open-function 'my-flymd-browser-function)
 
   ;; TODO add some files default readonly
+
+  ;; edit chrome with emacs
+  (require 'atomic-chrome)
+  (atomic-chrome-start-server)
+  (setq atomic-chrome-default-major-mode 'markdown-mode)
+  (setq atomic-chrome-url-major-mode-alist
+        '(("github\\.com" . gfm-mode)
+          ("redmine" . texttile-mode)))
+  (setq atomic-chrome-buffer-open-style 'frame)
 
   ;;;; org config
   ;; enable org shortkey to insert code
