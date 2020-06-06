@@ -7,6 +7,9 @@ export ZSH=$HOME/.oh-my-zsh
 # time that oh-my-zsh is loaded.
 ZSH_THEME="amuse"
 
+export LC_ALL=en_US.UTF-8
+export LANG=en_US.UTF-8
+
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
 
@@ -49,7 +52,7 @@ ZSH_THEME="amuse"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git cabal celery docker encode64 fabric gem httpie jsontools node npm tmux vagrant kubectl pass)
+plugins=(git git-extras cabal celery docker encode64 fabric gem httpie jsontools node npm tmux vagrant kubectl pass)
 
 # User configuration
 
@@ -123,10 +126,10 @@ export SDKMAN_DIR="$HOME/.sdkman"
 [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
 # setup oepnjdk 7
 #export JAVA_HOME='/Library/Java/JavaVirtualMachines/jdk1.8.0_112.jdk/Contents/Home'
-export JAVA_HOME='/usr/lib/jvm/java-8-openjdk-amd64'
-export JRE_HOME=${JAVA_HOME}/jre
+#export JAVA_HOME='/usr/lib/jvm/java-8-openjdk-amd64'
+#export JRE_HOME=${JAVA_HOME}/jre
 #export PATH=${JAVA_HOME}/bin:${PATH}
-export CLASSPATH=.:$JAVA_HOME/lib:$JAVA_HOME/jre/lib
+#export CLASSPATH=.:$JAVA_HOME/lib:$JAVA_HOME/jre/lib
 #export CLASSPATH=${CLASSPATH}:${JAVA_HOME}/lib/bsh.jar
 
 # setup android sdk
@@ -264,4 +267,5 @@ complete -o nospace -C /home/hackrole/projects/mygo/bin/mc mc
 
 complete -o nospace -F /usr/local/bin/aliyun aliyun
 
-export PATH=${PATH}:${HOME}/.mozbuild/arcanist/bin
+export PATH="$PATH:/opt/phabricator/arcanist/bin/"
+source <(kaf completion zsh)

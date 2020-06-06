@@ -49,3 +49,4 @@
     prune = true
 [github]
 	user = hackrole
+	oauth-token = 84364c88a33dd2f99dc5fdd1551a662fc01fa0bd
