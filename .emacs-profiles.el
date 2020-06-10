@@ -1,2 +1,2 @@
-(("doom"   . ((user-emacs-directory . "/Users/daipeng/hr-conf/doom-emacs")))
- ("default" . ((user-emacs-directory . "/Users/daipeng/hr-conf/spacemacs"))))
+(("doom"   . ((user-emacs-directory . "/home/hackrole/hr-conf/doom-emacs")))
+ ("default" . ((user-emacs-directory . "/home/hackrole/hr-conf/spacemacs"))))
