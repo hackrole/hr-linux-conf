@@ -1,11 +1,17 @@
 # common alias file, add some work-alias as need.
 
 alias vim="nvim"
+alias doomemacs='emacs --with-profile doom'
 #alias rm="echo 'use trash-put(tp), please,please,please!!!!'"
 #alias tp="trash-put"
 alias djserver="python manage.py runserver 0.0.0.0:8000"
 alias djshell="python manage.py shell"
 alias mmplay="cd ~/Music && mplayer -playlist mplay.lst -loop 0"
+
+alias arcdiff='arc diff --reviewers linji.wang'
+
+# git
+alias glot="git log -10 --pretty=oneline"
 
 # xclip
 alias xp="xclip -selection clipboard"
@@ -19,7 +25,6 @@ alias yd="fanyi"
 alias doomemacs="LC_CTYPE=zh_CN.UTF-8 emacs --with-profile doom"
 alias emacs="LC_CTYPE=zh_CN.UTF-8 emacs"
 
-alias arcdiff="arc diff --reviewers kui.sun,linji.wang,jianjun.pan,huangsong,dongxiao.wang"
 alias sjump="/Users/daipeng/.asdf/shims/python3 ~/.jump.py"
 
 # open chrome app
@@ -33,7 +38,7 @@ alias xmodm="xmodmap ~/.xmodmap"
 alias hsandbox="~/app/hsandbox/hsandbox"
 alias spacevim="nyaovim -u ~/.SpaceVim/init.vim"
 alias racket_repl="racket -i -p neil/sicp -l xrepl"
-alias open="xdg-open"
+#alias open="xdg-open"
 
 # ngrok client
 alias ngrok_me='~/app/ngrok/ngrok -config=~/app/ngrok/ngrok.cfg -hostname="ngrok.hackrole.xyz" 8080'

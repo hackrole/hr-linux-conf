@@ -167,6 +167,10 @@ hs.hotkey.bind({'cmd', 'ctrl'}, 'c', function()
     ret = hs.application.launchOrFocus('Google Chrome')
 end)
 
+hs.hotkey.bind({'cmd', 'ctrl'}, 'd', function()
+    ret = hs.application.launchOrFocus('DingTalk')
+end)
+
 hs.hotkey.bind({'cmd', 'ctrl'}, 'f', function()
     ret = hs.application.launchOrFocus('Firefox')
 end)
