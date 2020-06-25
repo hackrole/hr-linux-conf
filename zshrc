@@ -123,10 +123,10 @@ export SDKMAN_DIR="$HOME/.sdkman"
 [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
 # setup oepnjdk 7
 #export JAVA_HOME='/Library/Java/JavaVirtualMachines/jdk1.8.0_112.jdk/Contents/Home'
-export JAVA_HOME='/usr/lib/jvm/java-8-openjdk-amd64'
-export JRE_HOME=${JAVA_HOME}/jre
+#export JAVA_HOME='/usr/lib/jvm/java-8-openjdk-amd64'
+#export JRE_HOME=${JAVA_HOME}/jre
 #export PATH=${JAVA_HOME}/bin:${PATH}
-export CLASSPATH=.:$JAVA_HOME/lib:$JAVA_HOME/jre/lib
+#export CLASSPATH=.:$JAVA_HOME/lib:$JAVA_HOME/jre/lib
 #export CLASSPATH=${CLASSPATH}:${JAVA_HOME}/lib/bsh.jar
 
 # setup android sdk
@@ -159,8 +159,12 @@ export PATH="${PATH}:/opt/flutter/bin"
 [[ -s "$HOME/.asdf/asdf.sh" ]] && source $HOME/.asdf/asdf.sh
 [[ -s "$HOME/.asdf/completions/asdf.bash" ]] && source $HOME/.asdf/completions/asdf.bash
 
+##  haskell config
+# stack complete
+#eval "$(stack --bash-completion-script stack)"
+
 # setup virtualenvwapper
-export VIRTUALENV_WRAPPER_BIN="${HOME}/.asdf/installs/python/3.6.5/bin/virtualenvwrapper.sh"
+export VIRTUALENV_WRAPPER_BIN="${HOME}/.asdf/installs/python/3.8.2/bin/virtualenvwrapper.sh"
 [ -s $VIRTUALENV_WRAPPER_BIN ] && . $VIRTUALENV_WRAPPER_BIN
 
 # setup golang
@@ -169,10 +173,10 @@ export VIRTUALENV_WRAPPER_BIN="${HOME}/.asdf/installs/python/3.6.5/bin/virtualen
 #export PATH=${PATH}:${GOROOT}/bin:${GOPATH}/bin
 # golang virtualenv vg
 #command -v vg >/dev/null 2>&1 && eval "$(vg eval --shell zsh)"
-export GOROOT="$HOME/.asdf/installs/golang/1.13.5/go"
+export GOROOT="$HOME/.asdf/installs/golang/1.13.8/go"
 export GOPATH="$HOME/projects/mygo"
 export PATH="${GOPATH}/bin:${PATH}"
-export GOTOOLDIR="$HOME/.asdf/installs/golang/1.13.5/go/pkg/linux_amd64/"
+export GOTOOLDIR="$HOME/.asdf/installs/golang/1.13.8/go/pkg/linux_amd64/"
 
 #THIS MUST BE AT THE END OF THE FILE FOR JENV TO WORK!!!
 #[[ -s "$HOME/.jenv/bin/jenv-init.sh" ]] && source "$HOME/.jenv/bin/jenv-init.sh" && source "$HOME/.jenv/commands/completion.sh"
@@ -250,7 +254,7 @@ stty -ixon
 export PATH=$PATH:$HOME/.linkerd2/bin
 
 # direnv
-eval "$(direnv hook zsh)"
+#eval "$(direnv hook zsh)"
 
 autoload -U +X bashcompinit && bashcompinit
 complete -o nospace -C /opt/vault_0.11.4/vault vault
@@ -265,3 +269,11 @@ complete -o nospace -C /home/hackrole/projects/mygo/bin/mc mc
 complete -o nospace -F /usr/local/bin/aliyun aliyun
 
 export PATH=${PATH}:${HOME}/.mozbuild/arcanist/bin
+
+export PATH=${HOME}/.local/bin:${PATH}
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+source ~/.zplug/init.zsh
+
+zplug 'wfxr/forgit'
