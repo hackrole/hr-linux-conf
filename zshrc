@@ -268,4 +268,4 @@ complete -o nospace -C /home/hackrole/projects/mygo/bin/mc mc
 complete -o nospace -F /usr/local/bin/aliyun aliyun
 
 export PATH="$PATH:/opt/phabricator/arcanist/bin/"
-source <(kaf completion zsh)
+source <(\kaf completion zsh)
