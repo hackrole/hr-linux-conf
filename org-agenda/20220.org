@@ -1,0 +1,122 @@
+#+TODO: TODO NEXT | DONE DELAYED
+
+* TODO java sprint project 
+  
+** TODO java sprint in-action
+
+** TODO java sprint microservice in-action
+
+   预计三个月
+  
+* TODO rust get-start
+  预计一个月
+  
+  
+* TODO haskell get-start
+  预计一个月
+
+** TODO learn haskell for great good
+
+** TODO FP tutorial
+   
+** TODO stack/haskell/hindent/xmonad... env
+   
+* TODO python 
+  预计2个月
+
+** TODO faust source
+   
+** TODO python high performance
+
+** TODO python meta/property...
+   
+** TODO tornado new source
+
+** TODO ayncio/ ayncihttp
+   
+* TODO react/redux project [/]
+  预计两个月和vue一起
+  DEADLINE: <2020-07-16 四>
+  
+** TODO react admin
+
+** TODO react antd
+
+* TODO vue project
+  DEADLINE: <2020-07-05 日>
+
+* TODO vue offical site
+** TODO vue handbook
+
+   
+* TODO kafka
+  
+** TODO kafka stream
+
+** TODO kafak confluent sql
+
+** TODO faust
+
+* TODO elasticsearch
+  
+** TODO 分布式原理
+
+** TODO 底层设计细节整理
+
+** TODO ELK使用
+
+** TODO 相关性调优
+   
+** TODO 于网页排名算法结合
+
+  
+* TODO golang
+
+** TODO go-micro
+   
+** TODO gin
+
+   
+* TODO mit6.824
+  预计1-2个月
+
+** TODO data-sentive application
+   
+** TODO mit6.924
+
+** TODO 论文整理
+
+   
+* TODO 领域驱动设计
+  预计2个月
+
+** TODO 实现领域驱动设计
+
+** TODO 领域驱动设计
+
+** TODO 设计原则,设计模式
+   
+** TODO 啊哈,设计模式
+
+** TODO header-first设计模式
+
+** TODO 函数式简化原则
+
+** TODO martin blog
+
+   
+* TODO 算法
+  闲暇时间做
+
+  
+* TODO emacs
+
+** TODO emacs org/agenda
+
+** TODO emacs program config
+   
+** TODO elisp
+
+* TODO anki
+
+** TODO emacs 集成

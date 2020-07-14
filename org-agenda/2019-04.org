@@ -1,0 +1,152 @@
+* TODO xmonad config
+1) multi screen
+2) dzen2 conky bar
+
+* DONE how to save chrome/firefox session
+  CLOSED: [2020-04-09 四 00:14]
+  
+* TODO haskell
+
+** TODO learn you an haskell for great good
+   DEADLINE: <2020-04-12 日>
+   
+** TODO emacs haskell editor config
+   
+
+* TODO react
+
+** TODO react book
+
+** TODO redux offical doc
+*** TODO redux thunks
+*** TODO redux develop tools  
+*** TODO redux Sags
+*** TODO selectors
+*** TODO middleware
+*** TODO normalization
+** TODO react offical doc
+ 1) lift state up/down
+ 2) HOC high-order-components
+ 3) state and props
+ 4) functional state
+ 5) react context api
+ 6) container and presenter pattern
+ 7) mobx or redux
+ 8) list and key
+ 9) lifecyle methods
+ 10) events and forms
+ 11) composable and reusable components
+ 12) provider/flex ... pattern
+ 13) refs
+*** es6
+1) const and let
+2) arrow functions
+3) object and arrayspreed operators
+4) descructuring
+5) template strings
+6) modules(import and export)
+
+
+** blog
+
+  1) [isqyuared](https://blog.isquaredsoftware.com/)
+  2) [robinwieruch high-recommend](https://www.robinwieruch.de/react-state)
+  3) react/redux offical document`
+   
+* TODO golang
+
+** TODO web book
+
+** TODO project 
+
+** TODO go-micro
+
+** TODO some source read
+   
+* TODO mit 6.824
+  
+* TODO rust
+
+** TODO book code exmaple
+   
+** TODO emacs editor config
+
+* TODO python
+
+** TODO sqlalchemy advance
+1) join query
+2) prefetch
+3) session manager
+4) relationship
+5) source read
+
+** ssh jump cmdline tool
+
+** homely server-config behind jumpserver
+
+   
+** TODO faust 
+
+*** TODO document/example
+
+*** TODO source code read
+* TODO emacs config
+  
+** try doomemacs
+   wait one year
+   
+** haskell-mode
+
+*** asdf haskell
+
+*** stack/cabal
+
+*** unintall old haskell
+
+*** other tools, hindent, hlint
+  
+    
+** DONE emacs atomic-chrome for edit ph doc
+   CLOSED: [2020-05-16 六 18:22]
+
+   it seems good
+** DONE emacs forge for leyan.gitlab issues
+   CLOSED: [2020-05-16 六 23:23]
+   it works, but seems not good as the browser version. not force used now.
+*** TODO know more about ~/.authinfo ~/.authinfo.gpg
+*** TODO emacs edit gpg file
+   
+** TODO emacs org layout for task schedule manage
+   
+*** TODO deadline/schedule, datetime or repeatably, agenda view. tags
+   
+** TODO emacs spellfly
+   
+* misc
+
+** TODO bookmark tools (github, download chrome bookmark)
+   
+** TODO git extras/tid
+   
+** TODO nvim config
+
+* DONE this week
+  CLOSED: [2020-04-29 三 22:56] DEADLINE: <2020-04-18 六>
+
+** google-chrome react tab read and close
+
+** kycloud cash one year
+
+
+** config clash for sister
+
+** vscode haskell
+   
+*** vscode config update
+   
+** python lps mode 
+   
+   
+* TODO clash python cmdline tools
+  1) download/update subscribition
+  2) change server ping server

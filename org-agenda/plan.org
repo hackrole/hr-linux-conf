@@ -1,0 +1,49 @@
+* gin doc gothrought
+  
+* homely dotfile
+  1) split into multi group to config ( zsh, vim, emacs, browser, language(asdf, pyenv, sdkman, rofi)
+  2) extends homely with package
+  3) support link and copy(template and copy), support diff for copy
+  4) support gpg encrypt
+  5) unittest use vagrant and support
+** write a remote homely repo
+
+** action to install for signle. support deps. and group action into group
+    
+* xmonad config
+
+  
+** fundation
+  font/board/color
+  
+** xmobar, trayer
+   
+** keybinding
+   1) window/workspace/monitor move/resize/shrink/max/full-screen
+   2) toogle layout, default layout
+    
+** autostart
+   1) xrandr with variable or generate with template
+   2) fcitx
+   3) auto-mount usb
+
+** multiple monitor
+   
+*** float window support
+
+* obs-studio go-tutorial
+  
+* qtile config
+  
+* downloader
+
+** aria2 vs others
+   
+  
+   
+   
+* TODO org google todo
+
+* TODO google keep
+  
+* TODO google wpa
