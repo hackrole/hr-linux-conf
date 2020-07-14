@@ -47,6 +47,7 @@ values."
                :nick "hackrole"
                :password "freeme")))
      helm
+     ;; ivy
      (ibuffer :variables ibuffer-group-buffers-by 'projects)
      nixos
      ;; password from pass
@@ -156,13 +157,13 @@ values."
      prettier
      (html :variables web-fmt-tool 'prettier)
      (typescript :variables typescript-fmt-on-save t)
-     (javascript :variables
-                 ;; javascript-backend 'tern
-                 javascript-backend 'lsp
-                 javascript-lsp-linter nil
-                 javascript-fmt-tool 'prettier
-                 javascript-fmt-on-save t
-                 js2-basic-offset 2)
+     ;; (javascript :variables
+     ;;             ;; javascript-backend 'tern
+     ;;             javascript-backend 'lsp
+     ;;             javascript-lsp-linter nil
+     ;;             javascript-fmt-tool 'prettier
+     ;;             javascript-fmt-on-save t
+     ;;             js2-basic-offset 2)
      react
      ;; lua
      lua
@@ -688,20 +689,14 @@ you should place your code here."
   (setq-default evil-escape-key-sequence "jk")
   (setq-default evil-escape-delay 0.2)
 
-  ;;;; TODO quick open python site-packages
-  (setq hr-python-site-package-path (expand-file-name "~/.asdf/installs/python/3.7.5/lib/python3.7/site-packages"))
-  (spacemacs/set-leader-keys-for-major-mode 'python-mode
-    "g s" '(lambda () (interactive)(dired hr-python-site-package-path)))
   ;; disable mypy check
   (setq-default flycheck-disabled-checkers '(python-mypy python-pylint))
   (define-coding-system-alias 'utf8 'utf-8)
 
-  ;;;; TODO this not work now
-  ;; (add-hook 'python-mode-hook (lambda ()
-  ;;                               (message "python format-on-save %s" python-format-on-save)
-  ;;                               (if python-format-on-save
-  ;;                                   (blacken-mode t)
-  ;;                                 (blacken-mode -1))))
+  ;; close flymake mode, it's fucked
+  (setq flymake-diagnostic-functions '(t))
+  (global-flycheck-mode 0)
+  (add-hook 'python-mode-hook '(lambda () (flymake-mode 0)) t)
 
   ;; mu4e config for alert
   (with-eval-after-load 'mu4e-alert
@@ -927,6 +922,7 @@ This function is called at the very end of Spacemacs initialization."
    [default default default italic underline success warning error])
  '(evil-want-Y-yank-to-eol nil)
  '(fci-rule-color "#383838" t)
+ '(lsp-prefer-flymake nil)
  '(nrepl-message-colors
    (quote
     ("#CC9393" "#DFAF8F" "#F0DFAF" "#7F9F7F" "#BFEBBF" "#93E0E3" "#94BFF3" "#DC8CC3")))
@@ -940,7 +936,6 @@ This function is called at the very end of Spacemacs initialization."
      (python-sort-imports-on-save . t)
      (typescript-backend . tide)
      (typescript-backend . lsp)
-     (javascript-backend . tern)
      (javascript-backend . lsp)
      (go-backend . go-mode)
      (go-backend . lsp)

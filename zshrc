@@ -166,6 +166,10 @@ export PATH="${PATH}:/opt/flutter/bin"
 # stack complete
 #eval "$(stack --bash-completion-script stack)"
 
+##  haskell config
+# stack complete
+#eval "$(stack --bash-completion-script stack)"
+
 # setup virtualenvwapper
 export VIRTUALENV_WRAPPER_BIN="${HOME}/.asdf/installs/python/3.8.2/bin/virtualenvwrapper.sh"
 [ -s $VIRTUALENV_WRAPPER_BIN ] && . $VIRTUALENV_WRAPPER_BIN
@@ -271,7 +275,12 @@ complete -o nospace -C /home/hackrole/projects/mygo/bin/mc mc
 
 complete -o nospace -F /usr/local/bin/aliyun aliyun
 
-export PATH=${PATH}:${HOME}/.mozbuild/arcanist/bin
+# arcanist config
+#export PATH="$PATH:/opt/phabricator/arcanist/bin/"
+# or in home dir
+#export PATH=${PATH}:${HOME}/.mozbuild/arcanist/bin
+
+source <(\kaf completion zsh)
 
 export PATH=${HOME}/.local/bin:${PATH}
 
