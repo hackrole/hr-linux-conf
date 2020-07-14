@@ -160,7 +160,7 @@ export PATH="${PATH}:/opt/flutter/bin"
 #[ -s "${HOME}/.asdf" ] && source "${HOME}/.asdf/asdf.sh" && source "${HOME}/.asdf/completions/asdf.bash"
 # enable asdf, for virtualenv for nodejs/erlang/elixir and so on
 [[ -s "$HOME/.asdf/asdf.sh" ]] && source $HOME/.asdf/asdf.sh
-[[ -s "$HOME/.asdf/completions/asdf.bash" ]] && source $HOME/.asdf/completions/asdf.bash
+#[[ -s "$HOME/.asdf/completions/asdf.bash" ]] && source $HOME/.asdf/completions/asdf.bash
 
 ##  haskell config
 # stack complete
@@ -203,7 +203,7 @@ fi
 # config autojump
 [ -f /usr/local/etc/profile.d/autojump.sh ] && . /usr/local/etc/profile.d/autojump.sh
 # config fasd
-eval "$(fasd --init auto)"
+#eval "$(fasd --init auto)"
 
 # java env
 export PATH="/usr/local/opt/scala@2.11/bin:$PATH"
@@ -277,6 +277,6 @@ export PATH=${HOME}/.local/bin:${PATH}
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-source ~/.zplug/init.zsh
+source ~/hr-conf/zplug/init.zsh
 
 zplug 'wfxr/forgit'
