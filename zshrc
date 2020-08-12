@@ -280,7 +280,7 @@ complete -o nospace -F /usr/local/bin/aliyun aliyun
 # or in home dir
 #export PATH=${PATH}:${HOME}/.mozbuild/arcanist/bin
 
-source <(\kaf completion zsh)
+#source <(\kaf completion zsh)
 
 export PATH=${HOME}/.local/bin:${PATH}
 
