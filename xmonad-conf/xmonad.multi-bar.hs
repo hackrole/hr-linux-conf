@@ -418,6 +418,7 @@ myXConfig =
                             --X.spawn "stalonetray"
                             -- TODO use pm2 to start feh_bg
                             spawnOnce "bash ~/.xmonad/feh_bg.sh"
+                            spawnOnce "pm2 start clash -- -f ~/.config/clash/kycloud.yaml"
                             X.spawn "nm-applet"
                             -- spawnOnce "compton -b"
                             X.spawn "fcitx"

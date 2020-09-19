@@ -262,6 +262,7 @@ values."
    dotspacemacs-additional-packages '(yasnippet-snippets
                                       easy-hugo
                                       es-mode
+                                      ob-ipython
                                       ;; projectile-direnv ;; TODO not work
                                       graphql-mode
                                       ;; buku bookmark emacs bind
@@ -369,7 +370,7 @@ values."
    ;; Default font, or prioritized list of fonts. `powerline-scale' allows to
    ;; quickly tweak the mode-line size to make separators look not too crappy.
    dotspacemacs-default-font '("Source Code Pro"
-                               :size 14
+                               :size 20
                                :weight normal
                                :width normal
                                :powerline-scale 1.1)
@@ -671,6 +672,17 @@ you should place your code here."
   ;;;; org config
   ;; enable org shortkey to insert code
   (require 'org-tempo)
+
+  ;;;; ob-ipython config, remember to add ipython startup.ob-ipython-config.py
+  ;; http://mpwang.github.io/2019/02/07/how-to-use-ob-ipython/
+  (use-package use-package-ensure-system-package
+    :ensure t)
+  (use-package ob-ipython
+    :ensure-system-package ((jupyter . "pip3 install jupyter")))
+  (with-eval-after-load 'org
+    (add-to-list 'org-babel-load-languages '(ipython . t))
+    (setq org-confirm-babel-evaluate nil)
+    (add-hook 'org-babel-after-execute-hook 'org-display-inline-images 'append))
 
   ;;;; TODO not work projectile direnv
   ;; (add-hook 'projectile-mode-hook 'projectile-direnv-export-variables)
