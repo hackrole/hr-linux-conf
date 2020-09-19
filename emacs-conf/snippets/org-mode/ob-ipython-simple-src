@@ -1,0 +1,6 @@
+# key: obis
+# name: ob-ipython-simple-src
+# --
+#+begin_src ipython :session :exports both :results raw drawer
+            $0
+#+end_src
