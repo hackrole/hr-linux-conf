@@ -1,6 +1,6 @@
 [user]
-    name = hackrole
-    email = daipeng123456@gmail.com
+    name = peng.dai
+    email = peng.dai@leyantech.com
 [alias]
     ch = checkout
     br = branch
@@ -16,7 +16,7 @@
     excludesfile = /Users/daipeng/.gitignore_global
     # use linux line-of-end
     autocrlf = input
-	pager = less -F -X
+    pager = less -F -X
     #autocrlf = true
     #whitespace = cr-at-eol
 [push]
