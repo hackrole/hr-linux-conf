@@ -161,14 +161,22 @@ export PATH="${PATH}:/opt/flutter/bin"
 #[ -s "${HOME}/.asdf" ] && source "${HOME}/.asdf/asdf.sh" && source "${HOME}/.asdf/completions/asdf.bash"
 # enable asdf, for virtualenv for nodejs/erlang/elixir and so on
 [[ -s "$HOME/.asdf/asdf.sh" ]] && source $HOME/.asdf/asdf.sh
-[[ -s "$HOME/.asdf/completions/asdf.bash" ]] && source $HOME/.asdf/completions/asdf.bash
+#[[ -s "$HOME/.asdf/completions/asdf.bash" ]] && source $HOME/.asdf/completions/asdf.bash
+
+##  haskell config
+# stack complete
+#eval "$(stack --bash-completion-script stack)"
+
+##  haskell config
+# stack complete
+#eval "$(stack --bash-completion-script stack)"
 
 ##  haskell config
 # stack complete
 #eval "$(stack --bash-completion-script stack)"
 
 # setup virtualenvwapper
-export VIRTUALENV_WRAPPER_BIN="${HOME}/.asdf/installs/python/3.6.5/bin/virtualenvwrapper.sh"
+export VIRTUALENV_WRAPPER_BIN="${HOME}/.asdf/installs/python/3.8.2/bin/virtualenvwrapper.sh"
 [ -s $VIRTUALENV_WRAPPER_BIN ] && . $VIRTUALENV_WRAPPER_BIN
 
 # setup golang
@@ -204,7 +212,7 @@ fi
 # config autojump
 [ -f /usr/local/etc/profile.d/autojump.sh ] && . /usr/local/etc/profile.d/autojump.sh
 # config fasd
-eval "$(fasd --init auto)"
+#eval "$(fasd --init auto)"
 
 # java env
 export PATH="/usr/local/opt/scala@2.11/bin:$PATH"
@@ -277,7 +285,7 @@ complete -o nospace -F /usr/local/bin/aliyun aliyun
 # or in home dir
 #export PATH=${PATH}:${HOME}/.mozbuild/arcanist/bin
 
-source <(\kaf completion zsh)
+#source <(\kaf completion zsh)
 
 export PATH=${HOME}/.local/bin:${PATH}
 

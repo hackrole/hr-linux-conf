@@ -47,3 +47,7 @@
 [remote "origin"]
     # auto remove remote deleted branch on local
     prune = true
+[github]
+	user = hackrole
+[gitlab "git.leyantech.com/api/v4"]
+	user = peng.dai
