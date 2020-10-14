@@ -176,7 +176,7 @@ export PATH="${PATH}:/opt/flutter/bin"
 #eval "$(stack --bash-completion-script stack)"
 
 # setup virtualenvwapper
-export VIRTUALENV_WRAPPER_BIN="${HOME}/.asdf/installs/python/3.8.2/bin/virtualenvwrapper.sh"
+export VIRTUALENV_WRAPPER_BIN="${HOME}/.asdf/installs/python/3.6.5/bin/virtualenvwrapper.sh"
 [ -s $VIRTUALENV_WRAPPER_BIN ] && . $VIRTUALENV_WRAPPER_BIN
 
 # setup golang

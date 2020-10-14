@@ -172,7 +172,7 @@ hs.hotkey.bind({'cmd', 'ctrl', 'shift'}, 'd', function()
 end)
 
 hs.hotkey.bind({'cmd', 'ctrl'}, 'f', function()
-    ret = hs.application.launchOrFocus('Firefox')
+    ret = hs.application.launchOrFocus('Firefox Developer Edition')
 end)
 
 --hs.hotkey.bind({'cmd', 'ctrl'}, 'e', function()
