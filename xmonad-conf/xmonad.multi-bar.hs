@@ -8,11 +8,13 @@ import System.IO (Handle())
 
 import XMonad ((-->), (.|.), (=?), (|||))
 import qualified XMonad as X
-
+import XMonad.Hooks.EwmhDesktops
 import XMonad.Hooks.InsertPosition(insertPosition, Position( Below ), Focus(Newer))
 import qualified XMonad.Actions.DynamicWorkspaces as DynaW
 import qualified XMonad.Actions.FloatSnap as Snap
 import qualified XMonad.Actions.Warp as Warp
+import XMonad.Actions.WindowGo
+import XMonad.Actions.CopyWindow
 -- import qualified XMonad.Actions.Minimize as Min
 
 import qualified XMonad.Hooks.DynamicBars as Bars
@@ -57,7 +59,7 @@ import qualified XMonad.Hooks.WorkspaceHistory as WH
 -- This configuration requires xmonad >=0.13.
 
 
-main = X.xmonad $ Docks.docks myXConfig
+main = X.xmonad $ ewmh $ Docks.docks myXConfig
 
 {----------------
 -  Colors, &c.  -
@@ -89,12 +91,22 @@ myExternalMonitor = "HDMI-1"
 -  Keyboard & mouse bindings  -
 ------------------------------}
 
+spawnToWorkspace :: String -> String -> X.X ()
+spawnToWorkspace program workspace = do
+  X.spawn program
+  X.windows $ W.greedyView workspace
+
 myKeyBindings :: [(String, X.X ())]
 myKeyBindings =
   [ -- ("M-z", X.spawn myTerminal)
   ("M-S-c", X.kill)
   -- rofi and applicatioin launch
-  , ("M-o", X.spawn "rofi -show")
+  , ("M-o", X.spawn "rofi -modi combi,run,window,ssh,drun -combi-modi run,window -show")
+  , ("M-C-p f", runOrRaise "firefox" (className =? "Firefox"))
+  , ("M-C-p c", runOrRaise "google-chrome" (className =? "Google-chrome"))
+  , ("M-C-p t", runOrCopy "gnome-terminal" (className =? "gnome-terminal"))
+  , ("M-C-p e", runOrCopy "emacs" (className =? "emacs"))
+  , ("M-C-p g", runOrCopy "firefox" (className =? "Firefox"))
   , ("M-<Return>", X.spawn myTerminal)
   , ("M-p e", X.spawn "LC_CTYPE=zh_CN.UTF-8 emacs")
   , ("M-p d", X.spawn "LC_CTYPE=zh_CN.UTF-8  emacs --with-profile doom")
@@ -181,8 +193,7 @@ myKeyBindings =
   , ("S-<Print> w", X.spawn "~/bin/screenshot window")
   , ("S-<Print> r", X.spawn "~/bin/screenshot root")
   -- Miscellaneous utilities.
-  , ("M-n", X.refresh)
-  , ("M1-<Space>", X.spawn "urxvt -e alsamixer")
+  , ("M-n", X.refresh) , ("M1-<Space>", X.spawn "urxvt -e alsamixer")
   , ("M-M1-f", X.spawn "/usr/bin/kill -SIGSTOP firefox")
   , ("M-M1-S-f", X.spawn "/usr/bin/kill -SIGCONT firefox")
   , ("M-x q", X.spawn "xmonad --recompile && xmonad --restart")
@@ -393,7 +404,7 @@ myXConfig =
       uConf = Urg.urgencyConfig
                 { Urg.suppressWhen = Urg.OnScreen
                 }
-      man   = insertPosition Below Newer X.<+> X.composeAll
+      man   = SpawnOn.manageSpawn X.<+> insertPosition Below Newer X.<+> X.composeAll
                 [ X.className =? "Xmessage" --> X.doFloat
                 ]
       conf  = X.defaultConfig
@@ -418,10 +429,14 @@ myXConfig =
                             --X.spawn "stalonetray"
                             -- TODO use pm2 to start feh_bg
                             spawnOnce "bash ~/.xmonad/feh_bg.sh"
-                            spawnOnce "pm2 start clash -- -f ~/.config/clash/kycloud.yaml"
+                            -- spawnOnce "pm2 start clash -- -f ~/.config/clash/kycloud.yaml"
+                            spawnOnce "clash -f ~/.config/clash/kycloud.yaml"
+                            spawnOnce "dropbox start -i"
                             X.spawn "nm-applet"
                             -- spawnOnce "compton -b"
                             X.spawn "fcitx"
+                            SpawnOn.spawnOn "1" "google-chrome"
+                            SpawnOn.spawnOn "2" "gnome-terminal"
                             X.spawn "sleep 3 && xmodmap /home/hackrole/.xmodmap && echo 1 >> /tmp/xmodmap.log"
        , X.logHook     = do WH.workspaceHistoryHook
                             Bars.multiPP myLogPPActive myLogPP

@@ -75,7 +75,8 @@ values."
      ;; imenu-list, like vim-tagbar
      imenu-list
      ;; dash doc viewer
-     (dash :variables  helm-dash-browser-func 'eww)
+     (dash :variables  helm-dash-browser-func 'eww
+           dash-docs-docset-newpath "~/.local/share/Zeal/Zeal/docsets")
      git
      (github :variables gist-ask-for-description t
              gist-ask-for-filename t)
@@ -187,7 +188,7 @@ values."
      ;; yaml
      yaml
      ;; rust
-     rust
+     (rust rust-format-on-save t)
      sql
      docker
      pdf
@@ -561,6 +562,9 @@ before packages are loaded. If you are unsure, you should try in setting them in
   (setq leetcode-account "daipeng123456")
   (setq leetcode-prefer-language "python3")
 
+  ;; dash config
+  (setq helm-dash-browser-func 'eww)
+
   ;; python
   (setq flycheck-python-flake8-executable "flake8")
 
@@ -638,10 +642,11 @@ you should place your code here."
   ;; (setq-default helm-boring-file-regexp-list)
 
   ;; epub nov config
+  (setq nov-text-width 80)
   (defun my-nov-font-setup ()
     (face-remap-add-relative 'variable-pitch :family "Source Code Pro"
-                             :size 28
-                             :height 1.2))
+                             :size 32
+                             :height 1.5))
   (add-hook 'nov-mode-hook 'my-nov-font-setup)
 
   ;; setup flymd using firefox
@@ -661,7 +666,7 @@ you should place your code here."
                     "ogm" "ogg" "mkv"))
                  "mpv" '(file))
            (list (openwith-make-extension-regexp
-                  '("pdf" "epub"))
+                  '("pdf" ))
                  "zathura" '(file))
            ))
     (openwith-mode 1))
@@ -684,10 +689,10 @@ you should place your code here."
 
   ;;;; ob-ipython config, remember to add ipython startup.ob-ipython-config.py
   ;; http://mpwang.github.io/2019/02/07/how-to-use-ob-ipython/
-  (use-package use-package-ensure-system-package
-    :ensure t)
-  (use-package ob-ipython
-    :ensure-system-package ((jupyter . "pip3 install jupyter")))
+  ;; (use-package use-package-ensure-system-package
+  ;;   :ensure t)
+  ;; (use-package ob-ipython
+  ;;   :ensure-system-package ((jupyter . "pip3 install jupyter")))
   (with-eval-after-load 'org
     (add-to-list 'org-babel-load-languages '(ipython . t))
     (setq org-confirm-babel-evaluate nil)
