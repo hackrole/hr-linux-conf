@@ -167,12 +167,12 @@ hs.hotkey.bind({'cmd', 'ctrl'}, 'c', function()
     ret = hs.application.launchOrFocus('Google Chrome')
 end)
 
-hs.hotkey.bind({'cmd', 'ctrl'}, 'd', function()
+hs.hotkey.bind({'cmd', 'ctrl', 'shift'}, 'd', function()
     ret = hs.application.launchOrFocus('DingTalk')
 end)
 
 hs.hotkey.bind({'cmd', 'ctrl'}, 'f', function()
-    ret = hs.application.launchOrFocus('Firefox')
+    ret = hs.application.launchOrFocus('Firefox Developer Edition')
 end)
 
 --hs.hotkey.bind({'cmd', 'ctrl'}, 'e', function()
@@ -190,6 +190,24 @@ hs.hotkey.bind({"cmd", "ctrl"}, "e", function()
     global_logger.d("emacs window value: ", win)
     if win == nil then
         hs.execute("nohup /usr/local/bin/emacs >/dev/null &2>&1 &")
+    else
+        win:focus()
+    end
+end)
+
+
+hs.hotkey.bind({"cmd", "ctrl"}, "d", function()
+    local wins = hs.window.allWindows()
+    local win = nil
+    for k, v in pairs(wins) do
+        if v:application():name() == "Emacs" then
+            win = v
+        end
+    end
+
+    global_logger.d("emacs window value: ", win)
+    if win == nil then
+        hs.execute("nohup /usr/local/bin/emacs --with-profile doom >/dev/null &2>&1 &")
     else
         win:focus()
     end

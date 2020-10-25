@@ -131,6 +131,7 @@ export SDKMAN_DIR="$HOME/.sdkman"
 #export PATH=${JAVA_HOME}/bin:${PATH}
 #export CLASSPATH=.:$JAVA_HOME/lib:$JAVA_HOME/jre/lib
 #export CLASSPATH=${CLASSPATH}:${JAVA_HOME}/lib/bsh.jar
+export JAVA_HOME=/Users/daipeng/.sdkman/candidates/java/current
 
 # setup android sdk
 #export ANDROID_HOME=$HOME/app/android-sdk-linux
@@ -170,8 +171,12 @@ export PATH="${PATH}:/opt/flutter/bin"
 # stack complete
 #eval "$(stack --bash-completion-script stack)"
 
+##  haskell config
+# stack complete
+#eval "$(stack --bash-completion-script stack)"
+
 # setup virtualenvwapper
-export VIRTUALENV_WRAPPER_BIN="${HOME}/.asdf/installs/python/3.8.2/bin/virtualenvwrapper.sh"
+export VIRTUALENV_WRAPPER_BIN="${HOME}/.asdf/installs/python/3.6.5/bin/virtualenvwrapper.sh"
 [ -s $VIRTUALENV_WRAPPER_BIN ] && . $VIRTUALENV_WRAPPER_BIN
 
 # setup golang
@@ -287,6 +292,26 @@ export PATH=${HOME}/.local/bin:${PATH}
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-source ~/hr-conf/zplug/init.zsh
+#source ~/.zplug/init.zsh
 
-zplug 'wfxr/forgit'
+#zplug 'wfxr/forgit'
+
+# hadoop
+export HADOOP_VERSION=3.1.4
+export HADOOP_HOME=$HOME/apps/hadoop-3.1.4
+export HADOOP_MAPRED_HOME=$HADOOP_HOME
+export HADOOP_COMMON_HOME=$HADOOP_HOME
+export HADOOP_HDFS_HOME=$HADOOP_HOME
+export HADOOP_YARN_HOME=$HADOOP_HOME
+export HADOOP_OPTS="-Djava.library.path=$HADOOP_HOME/lib/native"
+export HADOOP_COMMON_LIB_NATIVE_DIR=$HADOOP_HOME/lib/native
+export YARN_HOME=$HADOOP_HOME
+export HADOOP_INSTALL=$HADOOP_HOME
+export HADOOP_CONF_DIR=$HADOOP_HOME
+export HADOOP_LIBEXEC_DIR=$HADOOP_HOME/libexec
+export JAVA_LIBRARY_PATH=$HADOOP_HOME/lib/native:$JAVA_LIBRARY_PATH
+export HADOOP_CONF_DIR=$HADOOP_HOME/etc/hadoop
+export HADOOP_INSTALL=$HADOOP_HOME
+ 
+export PATH=$PATH:$HADOOP_HOME/bin
+export PATH=$PATH:$HADOOP_HOME/sbin
