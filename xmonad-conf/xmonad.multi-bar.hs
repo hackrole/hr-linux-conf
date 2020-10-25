@@ -425,7 +425,11 @@ myXConfig =
        { X.startupHook = do EZ.checkKeymap conf myKeyBindings
                             Cur.setDefaultCursor Cur.xC_crosshair
                             Bars.dynStatusBarStartup barCreator barDestroyer
-                            X.spawn "xrandr --output eDP-1 --off --output DP-1 --primary --mode 3840x2160 --pos 0x0 --rotate normal --output DP-2 --off --output DP-3 --off"
+                            -- 4k DP
+                            -- X.spawn "xrandr --output eDP-1 --off --output DP-1 --primary --mode 3840x2160 --pos 0x0 --rotate normal --output DP-2 --off --output DP-3 --off"
+                            -- 2k dp
+                            --X.spawn "xrandr --output eDP-1 --off --output DP-1 --off --output DP-2 --off --output DP-3 --primary --mode 2560x1440 --pos 0x0 --rotate normal"
+                            X.spawn "autorandr --change --default builtin-single"
                             --X.spawn "stalonetray"
                             -- TODO use pm2 to start feh_bg
                             spawnOnce "bash ~/.xmonad/feh_bg.sh"
