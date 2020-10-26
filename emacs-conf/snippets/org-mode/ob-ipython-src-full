@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: ob-ipython-src-full
+# key: obisf
+# --
+#+begin_src ipython :session ${1::ipyfile ${2:$$(let ((temporary-file-directory "./")) (make-temp-file "py" nil ".png"))} }:exports ${3:both}
+$0
+#+end_src

@@ -219,6 +219,7 @@ export PATH="/usr/local/opt/scala@2.11/bin:$PATH"
 
 # rust-up path
 export PATH="/Users/daipeng/.cargo/bin:${PATH}"
+export RUSTUP_DIST_SERVER=https://mirrors.tuna.tsinghua.edu.cn/rustup
 # autojump
 [[ -s /home/hackrole/.autojump/etc/profile.d/autojump.sh ]] && source /home/hackrole/.autojump/etc/profile.d/autojump.sh
 
