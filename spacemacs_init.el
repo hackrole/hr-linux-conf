@@ -77,7 +77,12 @@ values."
      imenu-list
      ;; dash doc viewer
      (dash :variables  helm-dash-browser-func 'eww
-           dash-docs-docset-newpath "~/.local/share/Zeal/Zeal/docsets")
+           ;; dash-autoload-common-docsets nil
+           ;; helm-dash-docset-newpath "/Users/daipeng/Library/Application Support/Dash/DocSets"
+           dash-docs-docset-path "/Users/daipeng/Library/Application Support/Dash/DocSets"
+           ;; config for ubuntu zeal
+           ;; dash-docs-docset-newpath "~/.local/share/Zeal/Zeal/docsets"
+           )
      git
      (github :variables gist-ask-for-description t
              gist-ask-for-filename t)
@@ -137,8 +142,8 @@ values."
              python-backend 'lsp
              ;; python-backend 'anaconda
              flycheck-flake8-maximum-complexity 12)
-     (ipython-notebook :variables
-                       ein:jupyter-default-server-command "/home/hackrole/.virtualenvs/jupyter3/bin/jupyter")
+     ;; (ipython-notebook :variables
+     ;;                   ein:jupyter-default-server-command "/home/hackrole/.virtualenvs/jupyter3/bin/jupyter")
      django
      ;; scheme
      scheme
@@ -276,10 +281,10 @@ values."
                                       es-mode
                                       ob-ipython
                                       ob-rust
+                                      ob-go
                                       jupyter
                                       ;; projectile-direnv ;; TODO not work
                                       graphql-mode
-                                      ob-ipython
                                       ;; buku bookmark emacs bind
                                       ebuku
                                       ;; open-with
@@ -573,6 +578,7 @@ before packages are loaded. If you are unsure, you should try in setting them in
 
   ;; python
   (setq flycheck-python-flake8-executable "flake8")
+  (setq lsp-enable-snippet nil)
 
   ;; pick shell variables
   (setq exec-path-from-shell-variables '("PATH"
@@ -648,9 +654,9 @@ you should place your code here."
   ;; (setq-default helm-boring-file-regexp-list)
 
   ;; lsp-ui-mode
-  (setq lsp-ui-doc-enable nil)
-  (setq lsp-signature-auto-activate nil)
-  (setq lsp-enable-symbol-highlighting nil)
+  ;; (setq lsp-ui-doc-enable nil)
+  ;; (setq lsp-signature-auto-activate nil)
+  ;; (setq lsp-enable-symbol-highlighting nil)
 
   ;; epub nov config
   (setq nov-text-width 80)
@@ -660,11 +666,21 @@ you should place your code here."
                              :height 1.5))
   (add-hook 'nov-mode-hook 'my-nov-font-setup)
 
-  ;; setup flymd using firefox
+  ;;;; setup flymd using firefox
+  ;; on linux or windows
   ;; (defun my-flymd-browser-fucntion (url &rest args)
   ;;   (let ((browse-url-browser-function 'browse-url-firefox))
   ;;     (browse-url url)))
   ;; (setq flymd-browser-open-function 'my-flymd-browser-function)
+  ;; on mac os
+  (defun my-flymd-browser-function (url)
+    (let ((process-environment (browse-url-process-environment)))
+      (apply 'start-process
+             (concat "firefox" url)
+             nil
+             "/usr/bin/open"
+             (list "-a" "/Applications/Firefox Developer Edition.app" url))))
+  (setq flymd-browser-open-function 'my-flymd-browser-function)
 
   ;; TODO add some files default readonly
 
@@ -707,6 +723,7 @@ you should place your code here."
   (with-eval-after-load 'org
     (add-to-list 'org-babel-load-languages '(ipython . t))
     (add-to-list 'org-babel-load-languages '(rust . t))
+    (add-to-list 'org-babel-load-languages '(go . t))
     (setq org-confirm-babel-evaluate nil)
     (add-hook 'org-babel-after-execute-hook 'org-display-inline-images 'append))
 
@@ -718,7 +735,7 @@ you should place your code here."
 
   ;; - to dired-mode
   (evil-define-key 'normal dired-mode-map (kbd "-") 'dired-up-directory)
- (define-key evil-normal-state-map (kbd "-")
+  (define-key evil-normal-state-map (kbd "-")
     (lambda ()
       (interactive)
       (dired (file-name-directory (buffer-file-name)))))
@@ -732,6 +749,15 @@ you should place your code here."
   (define-coding-system-alias 'utf8 'utf-8)
 
   (setq-default lsp-pyls-configuration-sources ["flake8"])
+
+
+  ;; dash
+  (setq helm-dash-min-length 6)
+  (setq helm-dash-browser-func 'eww)
+  (defun go-doc ()
+    (interactive)
+    (setq-local dash-docs-docsets '("Go")))
+  (add-hook 'go-mode-hook 'go-doc)
 
   ;; close flymake mode, it's fucked
   (setq flymake-diagnostic-functions '(t))
@@ -751,6 +777,8 @@ you should place your code here."
   ;;;; golang config
   ;; golang dap debug support
   (add-to-list 'spacemacs--dap-supported-modes 'go-mode)
+  (eval-after-load 'flycheck
+    '(add-hook 'flycheck-mode-hook #'flycheck-golangci-lint-setup))
   (require 'dap-go)
   (add-hook 'dap-stopped-hook
             (lambda (arg) (call-interactively #'dap-hydra)))
