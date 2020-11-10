@@ -313,6 +313,9 @@ export HADOOP_LIBEXEC_DIR=$HADOOP_HOME/libexec
 export JAVA_LIBRARY_PATH=$HADOOP_HOME/lib/native:$JAVA_LIBRARY_PATH
 export HADOOP_CONF_DIR=$HADOOP_HOME/etc/hadoop
 export HADOOP_INSTALL=$HADOOP_HOME
+# hive
+export HIVE_HOME=$HOME/apps/apache-hive-3.1.2-bin
+export PATH=$HIVE_HOME/bin:$PATH
  
 export PATH=$PATH:$HADOOP_HOME/bin
 export PATH=$PATH:$HADOOP_HOME/sbin
