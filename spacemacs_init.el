@@ -90,11 +90,12 @@ values."
      ;;ansible
      ;; vimscript
      vimscript
-     ;; markdown
      (latex :variables latex-build-command "LaTex"
             latex-enable-folding t
             latex-enable-magic t)
-     (markdown :variables markdown-live-preview-engine 'vmd)
+     ;; markdown
+     (markdown :variables markdown-live-preview-engine 'vmd
+               markdown-mmm-auto-modes '("c" "c++" "rust" "python" "go" "scala" ("elisp" "emacs-lisp")))
      ;; terraform
      terraform
      ;; interative debug
@@ -103,6 +104,7 @@ values."
      fasd
      (org :variables org-enable-org-journal-support t
           org-journal-dir "~/org/journal/"
+          org-enable-hugo-support t
           org-journal-file-format "%Y-%m-%d"
           org-journal-date-format "%A, %B %d %Y")
      (ranger :variables
@@ -188,7 +190,8 @@ values."
      ;; yaml
      yaml
      ;; rust
-     (rust rust-format-on-save t)
+     (rust :variables rust-format-on-save t
+           rust-backend 'lsp)
      sql
      docker
      pdf
@@ -272,6 +275,7 @@ values."
                                       easy-hugo
                                       es-mode
                                       ob-ipython
+                                      ob-rust
                                       jupyter
                                       ;; projectile-direnv ;; TODO not work
                                       graphql-mode
@@ -702,6 +706,7 @@ you should place your code here."
   ;;   :ensure-system-package ((jupyter . "pip3 install jupyter")))
   (with-eval-after-load 'org
     (add-to-list 'org-babel-load-languages '(ipython . t))
+    (add-to-list 'org-babel-load-languages '(rust . t))
     (setq org-confirm-babel-evaluate nil)
     (add-hook 'org-babel-after-execute-hook 'org-display-inline-images 'append))
 
