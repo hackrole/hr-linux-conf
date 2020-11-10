@@ -878,6 +878,7 @@ you should place your code here."
     (define-key yas-keymap (kbd "C-n") 'yas-next-field)
     (define-key yas-keymap (kbd "C-p") 'yas-prev-field))
   (add-hook 'yas-global-mode-hook 'my-yas-hook)
+  (add-hook 'yas-minor-mode-hook 'my-yas-hook)
 
   ;; leetcode
   (spacemacs/set-leader-keys "a l" 'leetcode)
