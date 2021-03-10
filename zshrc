@@ -167,28 +167,17 @@ export PATH="${PATH}:/opt/flutter/bin"
 # stack complete
 #eval "$(stack --bash-completion-script stack)"
 
-##  haskell config
-# stack complete
-#eval "$(stack --bash-completion-script stack)"
-
-##  haskell config
-# stack complete
-#eval "$(stack --bash-completion-script stack)"
-
 # setup virtualenvwapper
-export VIRTUALENV_WRAPPER_BIN="${HOME}/.asdf/installs/python/3.6.5/bin/virtualenvwrapper.sh"
+export ASDF_PYTHON_VERSION="$(asdf current python | cut -d ' ' -f 1)"
+export VIRTUALENV_WRAPPER_BIN="${HOME}/.asdf/installs/python/${ASDF_PYTHON_VERSION}/bin/virtualenvwrapper.sh"
 [ -s $VIRTUALENV_WRAPPER_BIN ] && . $VIRTUALENV_WRAPPER_BIN
 
 # setup golang
-#export GOROOT="$HOME/app/go1.6"
-#export GOPATH="$HOME/projects/mygo"
-#export PATH=${PATH}:${GOROOT}/bin:${GOPATH}/bin
-# golang virtualenv vg
-#command -v vg >/dev/null 2>&1 && eval "$(vg eval --shell zsh)"
-export GOROOT="$HOME/.asdf/installs/golang/1.13.8/go"
+export GO_VERSION="$(asdf current golang | cut -d ' ' -f 1)"
+export GOROOT="$HOME/.asdf/installs/golang/${GO_VERSION}/go"
 export GOPATH="$HOME/projects/mygo"
 export PATH="${GOPATH}/bin:${PATH}"
-export GOTOOLDIR="$HOME/.asdf/installs/golang/1.13.8/go/pkg/linux_amd64/"
+export GOTOOLDIR="$HOME/.asdf/installs/golang/${GO_VERSION}/go/pkg/linux_amd64/"
 
 #THIS MUST BE AT THE END OF THE FILE FOR JENV TO WORK!!!
 #[[ -s "$HOME/.jenv/bin/jenv-init.sh" ]] && source "$HOME/.jenv/bin/jenv-init.sh" && source "$HOME/.jenv/commands/completion.sh"
@@ -319,3 +308,6 @@ export PATH=$HIVE_HOME/bin:$PATH
  
 export PATH=$PATH:$HADOOP_HOME/bin
 export PATH=$PATH:$HADOOP_HOME/sbin
+
+# airflow
+export AIRFLOW_HOME=~/airflow
