@@ -132,8 +132,8 @@ values."
              ;; tmp nil for the project not too diff
              ;; python-enable-yapf-format-on-save nil
              python-formatter 'black
-             python-format-on-save nil
-             python-sort-imports-on-save nil
+             python-format-on-save t
+             python-sort-imports-on-save t
              python-backend 'lsp
              ;; python-backend 'anaconda
              flycheck-flake8-maximum-complexity 12)
@@ -142,6 +142,8 @@ values."
      django
      ;; scheme
      scheme
+     ;; racket
+     racket
      ;; c/c++
      c-c++
      ;; erlang
@@ -279,7 +281,6 @@ values."
                                       jupyter
                                       ;; projectile-direnv ;; TODO not work
                                       graphql-mode
-                                      ob-ipython
                                       ;; buku bookmark emacs bind
                                       ebuku
                                       ;; open-with
@@ -800,7 +801,7 @@ you should place your code here."
   (setq tab-always-indent t)
 
   ;; scheme layer config
-  (setq geiser-active-implementations '(mit))
+  (setq geiser-active-implementations '(racket))
 
   ;; force disable linum-mode in doc-view-mode(pdf-tools)
   (add-hook 'pdf-view-mode-hook (lambda() (linum-mode -1)))
@@ -898,6 +899,8 @@ you should place your code here."
                                  (define-key evil-insert-state-map (kbd "<f1>") 'company-complete)))
 
   (setq org-agenda-files '("~/org-agenda/work.org" "~/org-agenda/2020-2-season.org"))
+  ;; org-export not run code, especially in org-hugo
+  ;; (setq org-export-babel-evaluate nil)
 
   ;; (global-set-key (kbd "C-q r l") 'helm-bookmarks)
   ;; (global-set-key (kbd "C-q s") 'helm-projectile-switch-project)
@@ -982,7 +985,8 @@ This function is called at the very end of Spacemacs initialization."
  '(pdf-view-midnight-colors (quote ("#DCDCCC" . "#383838")))
  '(safe-local-variable-values
    (quote
-    ((python-format-on-save . t)
+    ((org-export-babel-evaluate)
+     (python-format-on-save . t)
      (python-sort-imports-on-save . t)
      (typescript-backend . lsp)
      (javascript-backend . lsp)

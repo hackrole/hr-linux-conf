@@ -131,7 +131,7 @@ export SDKMAN_DIR="$HOME/.sdkman"
 #export PATH=${JAVA_HOME}/bin:${PATH}
 #export CLASSPATH=.:$JAVA_HOME/lib:$JAVA_HOME/jre/lib
 #export CLASSPATH=${CLASSPATH}:${JAVA_HOME}/lib/bsh.jar
-export JAVA_HOME=/Users/daipeng/.sdkman/candidates/java/current
+export JAVA_HOME="${HOME}/.sdkman/candidates/java/current"
 
 # setup android sdk
 #export ANDROID_HOME=$HOME/app/android-sdk-linux
