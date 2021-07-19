@@ -31,7 +31,7 @@ alias emacs="LC_CTYPE=zh_CN.UTF-8 emacs"
 
 alias sjump="/Users/daipeng/.asdf/shims/python3 ~/.jump.py"
 
-#alias open="xdg-open"
+alias open="xdg-open"
 # open chrome app
 # chrome --app-id=<>
 alias ckeep="chrome --app-id=hmjkmjkepdijhoojdojkdfohbdgmmhki"
