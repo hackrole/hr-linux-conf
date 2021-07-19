@@ -332,6 +332,21 @@ allwindows:subscribe(hs.window.filter.windowMoved, function () redrawBorder() en
 allwindows:subscribe(hs.window.filter.windowUnfocused, function () redrawBorder() end)
 
 
+---------------------------
+-- cherry-clock config
+---------------------------
+hs.loadSpoon("Cherry")
+spoon.Cherry.duration = 1
+spoon.Cherry.notification = hs.notify.new({ title = "Done! 🍒", withdrawAfter = 1})
+mapping = {
+    start = {{"cmd", "ctrl"}, "s" }
+}
+spoon.Cherry:bindHotkeys(mapping)
+hs.hotkey.bind({"cmd", "ctrl", "shift"}, "s", function()
+    spoon.Cherry:reset()
+end)
+
+
 ----------------------------------------------
 -- move space. XXX not support by office.
 ----------------------------------------------

@@ -168,12 +168,14 @@ export PATH="${PATH}:/opt/flutter/bin"
 #eval "$(stack --bash-completion-script stack)"
 
 # setup virtualenvwapper
-export ASDF_PYTHON_VERSION="$(asdf current python | cut -d ' ' -f 1)"
+#export MY_ASDF_PYTHON_VERSION="$(asdf current python | cut -d ' ' -f 1)"
+export MY_ASDF_PYTHON_VERSION=3.6.5
 export VIRTUALENV_WRAPPER_BIN="${HOME}/.asdf/installs/python/${ASDF_PYTHON_VERSION}/bin/virtualenvwrapper.sh"
 [ -s $VIRTUALENV_WRAPPER_BIN ] && . $VIRTUALENV_WRAPPER_BIN
 
 # setup golang
-export GO_VERSION="$(asdf current golang | cut -d ' ' -f 1)"
+#export GO_VERSION="$(asdf current golang | cut -d ' ' -f 1)"
+export MY_GO_VERSION=1.16.3
 export GOROOT="$HOME/.asdf/installs/golang/${GO_VERSION}/go"
 export GOPATH="$HOME/projects/mygo"
 export PATH="${GOPATH}/bin:${PATH}"

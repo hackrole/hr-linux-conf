@@ -38,9 +38,9 @@
     #rebase = true
     rebase = false
 [difftool]
-    prompt = false
+	prompt = false
 [diff]
-    tool = vimdiff
+	tool = vimdiff
 [fetch]
     # auto remove remote deleted branch on local
     prune = true
