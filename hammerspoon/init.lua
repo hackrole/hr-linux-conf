@@ -233,9 +233,9 @@ end)
 --    ret = hs.application.launchOrFocus("VMware Fusion.app")
 --end)
 
---hs.hotkey.bind({"cmd", "ctrl"}, "j", function()
---    ret = hs.application.launchOrFocus("IntelliJ IDEA CE.app")
---end)
+hs.hotkey.bind({"cmd", "ctrl"}, "j", function()
+    ret = hs.application.launchOrFocus("IntelliJ IDEA.app")
+end)
 
 hs.hotkey.bind({"cmd", "ctrl"}, "n", function()
     local win = hs.window.get('NyaoVim')
@@ -336,7 +336,7 @@ allwindows:subscribe(hs.window.filter.windowUnfocused, function () redrawBorder(
 -- cherry-clock config
 ---------------------------
 hs.loadSpoon("Cherry")
-spoon.Cherry.duration = 1
+spoon.Cherry.duration = 30
 spoon.Cherry.notification = hs.notify.new({ title = "Done! 🍒", withdrawAfter = 1})
 mapping = {
     start = {{"cmd", "ctrl"}, "s" }

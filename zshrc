@@ -170,16 +170,23 @@ export PATH="${PATH}:/opt/flutter/bin"
 # setup virtualenvwapper
 #export MY_ASDF_PYTHON_VERSION="$(asdf current python | cut -d ' ' -f 1)"
 export MY_ASDF_PYTHON_VERSION=3.6.5
-export VIRTUALENV_WRAPPER_BIN="${HOME}/.asdf/installs/python/${ASDF_PYTHON_VERSION}/bin/virtualenvwrapper.sh"
+export VIRTUALENV_WRAPPER_BIN="${HOME}/.asdf/installs/python/${MY_ASDF_PYTHON_VERSION}/bin/virtualenvwrapper.sh"
 [ -s $VIRTUALENV_WRAPPER_BIN ] && . $VIRTUALENV_WRAPPER_BIN
+
+# pyenv installed by brew
+#if [ -d "$HOME/.pyenv" ]; then
+#    export PYENV_ROOT="$HOME/.pyenv"
+#    export PATH="$PYENV_ROOT/bin:$PATH"
+#    eval "$(pyenv init --path)"
+#fi
 
 # setup golang
 #export GO_VERSION="$(asdf current golang | cut -d ' ' -f 1)"
 export MY_GO_VERSION=1.16.3
-export GOROOT="$HOME/.asdf/installs/golang/${GO_VERSION}/go"
+export GOROOT="$HOME/.asdf/installs/golang/${MY_GO_VERSION}/go"
 export GOPATH="$HOME/projects/mygo"
 export PATH="${GOPATH}/bin:${PATH}"
-export GOTOOLDIR="$HOME/.asdf/installs/golang/${GO_VERSION}/go/pkg/linux_amd64/"
+export GOTOOLDIR="$HOME/.asdf/installs/golang/${MY_GO_VERSION}/go/pkg/linux_amd64/"
 
 #THIS MUST BE AT THE END OF THE FILE FOR JENV TO WORK!!!
 #[[ -s "$HOME/.jenv/bin/jenv-init.sh" ]] && source "$HOME/.jenv/bin/jenv-init.sh" && source "$HOME/.jenv/commands/completion.sh"

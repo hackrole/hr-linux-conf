@@ -51,3 +51,5 @@
 	user = hackrole
 [gitlab "git.leyantech.com/api/v4"]
 	user = peng.dai
+[init]
+	defaultBranch = main
