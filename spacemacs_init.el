@@ -1,6 +1,5 @@
 ;; This file is loaded by Spacemacs at startup.
 ;; It must be stored in your home directory.
-
 (defun dotspacemacs/layers ()
   "Configuration Layers declaration.
 You should not put any user code in this function besides modifying the variable
@@ -51,6 +50,8 @@ values."
      ;; ivy
      (ibuffer :variables ibuffer-group-buffers-by 'projects)
      nixos
+     ;; wakatime dashboard
+     (wakatime :variables wakatime-cli-path "/Users/daipeng/.asdf/shims/wakatime")
      ;; racket
      racket
      ;; password from pass
@@ -680,6 +681,11 @@ you should place your code here."
   ;; fix helm history duplicats
   (setq history-delete-duplicates t)
   (setq history-length 10)
+
+  ;; wakatime-mode
+  (global-wakatime-mode t)
+  (setq wakatime-api-key (f-read-text "~/.wakatime.key" 'utf-8))
+
 
   ;; epub nov config
   (setq nov-text-width 80)
