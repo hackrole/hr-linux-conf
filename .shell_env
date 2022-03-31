@@ -1,0 +1,20 @@
+# vim: set ft=zsh
+
+## zsh alias file
+export MY_ZSH_ALIAS_FILE = "$HOME/.alias"
+
+## asdf-vm
+# python
+export MY_ASDF_PYTHON_VERSION=3.9.10
+export MY_GO_VERSION=1.17.8
+# golang
+export MY_GO_VERSION=1.17.8
+
+# rust
+export RUST_VERSION="1.58.1"
+
+
+## emacs major mode
+# Local Variables:
+# mode: shell-script
+# End:
