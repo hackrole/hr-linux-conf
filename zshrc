@@ -26,6 +26,8 @@ export LANG=en_US.UTF-8
 # bindkey "^B" backward-char
 # bindkey "^K" kill-line
 # bindkey "^U" kill-whole-lline
+# bindkey "^n" down-line-of-history
+# bindkey "^p" up-line-of-history
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -242,7 +244,7 @@ export RUST_SRC_PATH="${HOME}/.asdf/installs/rust/{RUST_VERSION}"
 [[ -s /home/hackrole/.autojump/etc/profile.d/autojump.sh ]] && source /home/hackrole/.autojump/etc/profile.d/autojump.sh
 
 # vagrant config
-export VAGRANT_HOME=/data/vagrant
+export VAGRANT_HOME="${HOME}/.vagrant"
 
 # devpi server dir
 export DEVPI_SERVERDIR="/data/devpi_server"
