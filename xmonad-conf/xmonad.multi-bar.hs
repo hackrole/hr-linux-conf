@@ -1,90 +1,99 @@
-import Control.Monad ((>=>), join, liftM, when)
+{-# OPTIONS_GHC -Wno-deprecations #-}
 
-import Data.Map (Map(), fromList)
+import Control.Monad (join, liftM, when, (>=>))
+import Data.Map (Map (), fromList)
 import Data.Maybe (isJust, isNothing)
-
-import System.Exit (ExitCode(ExitSuccess), exitWith)
-import System.IO (Handle())
-
+import System.Exit (ExitCode (ExitSuccess), exitWith)
+import System.IO (Handle ())
 import XMonad ((-->), (.|.), (=?), (|||))
 import qualified XMonad as X
-import XMonad.Hooks.EwmhDesktops
-import XMonad.Hooks.InsertPosition(insertPosition, Position( Below ), Focus(Newer))
-import qualified XMonad.Actions.DynamicWorkspaces as DynaW
-import qualified XMonad.Actions.FloatSnap as Snap
-import qualified XMonad.Actions.Warp as Warp
-import XMonad.Actions.WindowGo
 import XMonad.Actions.CopyWindow
 -- import qualified XMonad.Actions.Minimize as Min
 
-import qualified XMonad.Hooks.DynamicBars as Bars
-import qualified XMonad.Hooks.DynamicLog as DLog
-import qualified XMonad.Hooks.ManageDocks as Docks
-import qualified XMonad.Hooks.ToggleHook as THook
-import qualified XMonad.Hooks.UrgencyHook as Urg
-
-import qualified XMonad.Layout.BoringWindows as Boring
 -- XXX seems import error
 -- import qualified XMonad.Layout.Minimize as Min
-import qualified XMonad.Layout.MultiToggle as Multi
-import qualified XMonad.Layout.MultiToggle.Instances as MultiI
-import qualified XMonad.Layout.Reflect as Refl
-import qualified XMonad.Layout.ResizableTile as Resiz
-import qualified XMonad.Layout.ToggleLayouts as TogL
-import qualified XMonad.Layout.Grid as LtGrid
-import qualified XMonad.Layout.Tabbed as LtTabbed
-import qualified XMonad.Layout.ThreeColumns as LtThreeColumns
-import qualified XMonad.Layout.IndependentScreens as IdpS
-
-import qualified XMonad.StackSet as W
-
-import XMonad.Util.SpawnOnce(spawnOnce)
-import qualified XMonad.Util.Cursor as Cur
-import qualified XMonad.Util.EZConfig as EZ
-import qualified XMonad.Util.Run as Run
-
 
 -- import qualified VLC
 
 import qualified XMonad.Actions.CycleWS as Cycle
+import qualified XMonad.Actions.DynamicWorkspaces as DynaW
+import qualified XMonad.Actions.FloatSnap as Snap
 import qualified XMonad.Actions.GridSelect as Grid
-import qualified XMonad.Actions.SpawnOn as SpawnOn
 import qualified XMonad.Actions.OnScreen as OnScreen
-
+import qualified XMonad.Actions.SpawnOn as SpawnOn
+import qualified XMonad.Actions.Warp as Warp
+import XMonad.Actions.WindowGo
+import qualified XMonad.Hooks.DynamicBars as Bars
+import qualified XMonad.Hooks.DynamicLog as DLog
+import XMonad.Hooks.EwmhDesktops
+import XMonad.Hooks.InsertPosition (Focus (Newer), Position (Below), insertPosition)
+import qualified XMonad.Hooks.ManageDocks as Docks
+import qualified XMonad.Hooks.ToggleHook as THook
+import qualified XMonad.Hooks.UrgencyHook as Urg
 import qualified XMonad.Hooks.WorkspaceHistory as WH
+import qualified XMonad.Layout.BoringWindows as Boring
+import qualified XMonad.Layout.Grid as LtGrid
+import qualified XMonad.Layout.IndependentScreens as IdpS
+import qualified XMonad.Layout.MultiToggle as Multi
+import qualified XMonad.Layout.MultiToggle.Instances as MultiI
+import qualified XMonad.Layout.Reflect as Refl
+import qualified XMonad.Layout.ResizableTile as Resiz
+import qualified XMonad.Layout.Tabbed as LtTabbed
+import qualified XMonad.Layout.ThreeColumns as LtThreeColumns
+import qualified XMonad.Layout.ToggleLayouts as TogL
+import qualified XMonad.StackSet as W
+import qualified XMonad.Util.Cursor as Cur
+import qualified XMonad.Util.EZConfig as EZ
+import qualified XMonad.Util.Run as Run
+import XMonad.Util.SpawnOnce (spawnOnce)
 
 -- import qualified XMonad.Layout.CompactName as Compact
 
-
 -- This configuration requires xmonad >=0.13.
-
 
 main = X.xmonad $ ewmh $ Docks.docks myXConfig
 
 {----------------
 -  Colors, &c.  -
 ----------------}
-myNormalFG    = "#ffffff"
-myNormalBG    = "#000000"
-myCurrentFG   = myNormalFG
-myCurrentBG   = "#888888"
-myVisibleFG   = myNormalFG
-myVisibleBG   = "#444444"
-myUrgentFG    = myNormalFG
-myUrgentBG    = "#ff6600"
-mySpecial1FG  = "#aaffaa"
-mySpecial1BG  = myNormalBG
-mySpecial2FG  = "#ffaaff"
-mySpecial2BG  = myNormalBG
+myNormalFG = "#ffffff"
+
+myNormalBG = "#000000"
+
+myCurrentFG = myNormalFG
+
+myCurrentBG = "#888888"
+
+myVisibleFG = myNormalFG
+
+myVisibleBG = "#444444"
+
+myUrgentFG = myNormalFG
+
+myUrgentBG = "#ff6600"
+
+mySpecial1FG = "#aaffaa"
+
+mySpecial1BG = myNormalBG
+
+mySpecial2FG = "#ffaaff"
+
+mySpecial2BG = myNormalBG
+
 mySeparatorFG = "#000066"
+
 mySeparatorBG = "#000033"
-myCopyFG      = "#ff0000"
+
+myCopyFG = "#ff0000"
 
 -- myFont = "xft:Hack-12"
 
-myTerminal        = "gnome-terminal"
-myModMask         = X.mod4Mask
+myTerminal = "gnome-terminal"
+
+myModMask = X.mod4Mask
+
 myExternalMonitor = "HDMI-1"
+
 -- myVLCSock         = "/tmp/vlc.sock"
 
 {------------------------------
@@ -99,154 +108,160 @@ spawnToWorkspace program workspace = do
 myKeyBindings :: [(String, X.X ())]
 myKeyBindings =
   [ -- ("M-z", X.spawn myTerminal)
-  ("M-S-c", X.kill)
-  -- rofi and applicatioin launch
-  , ("M-o", X.spawn "rofi -modi combi,run,window,ssh,drun -combi-modi run,window -show")
-  , ("M-C-p f", runOrRaise "firefox" (className =? "Firefox"))
-  , ("M-C-p c", runOrRaise "google-chrome" (className =? "Google-chrome"))
-  , ("M-C-p t", runOrCopy "gnome-terminal" (className =? "gnome-terminal"))
-  , ("M-C-p e", runOrCopy "emacs" (className =? "emacs"))
-  , ("M-C-p g", runOrCopy "firefox" (className =? "Firefox"))
-  , ("M-<Return>", X.spawn myTerminal)
-  , ("M-p e", X.spawn "LC_CTYPE=zh_CN.UTF-8 emacs")
-  , ("M-p d", X.spawn "LC_CTYPE=zh_CN.UTF-8  emacs --with-profile doom")
-  , ("M-p t", X.spawn myTerminal)
-  , ("M-p c", X.spawn "google-chrome")
-  , ("M-p C", X.spawn "chromium-browser")
-  , ("M-p f", X.spawn "firefox")
-  -- Focus and arrange windows.
-  -- ,("M-<Tab>", Boring.focusDown)
-  , ("M-j", X.windows W.focusDown)
-  --, ("M-S-<Tab>", Boring.focusUp)
-  , ("M-k", X.windows W.focusUp)
-  , ("M-m", Boring.focusMaster)
-  , ("M-S-m", X.windows W.swapMaster)
-  , ("M-S-j", X.windows W.swapDown)
-  , ("M-S-k", X.windows W.swapUp)
-  -- Resize the master and slave areas.
-  , ("M-h", X.sendMessage X.Shrink)
-  , ("M-l", X.sendMessage X.Expand)
-  , ("M-S-h", X.sendMessage Resiz.MirrorShrink)
-  , ("M-S-l", X.sendMessage Resiz.MirrorExpand)
-  -- Push the window back into tiling.
-  , ("M-t", X.withFocused $ X.windows . W.sink)
-  -- Change the number of windows in the master area.
-  , ("M-,", X.sendMessage (X.IncMasterN 1))
-  , ("M-.", X.sendMessage (X.IncMasterN (-1)))
-  -- Layout toggles.
-  , ("M-<Space>", X.sendMessage X.NextLayout)
-  , ("M-C-s", X.sendMessage Docks.ToggleStruts)
-  , ("M-C-m", X.sendMessage $ Multi.Toggle MultiI.MIRROR)
-  , ("M-C-b", X.sendMessage $ Multi.Toggle MultiI.NOBORDERS)
-  , ("M-C-x", X.sendMessage $ Multi.Toggle Refl.REFLECTX)
-  , ("M-C-y", X.sendMessage $ Multi.Toggle Refl.REFLECTY)
-  , ("M-C-f", X.sendMessage TogL.ToggleLayout)
-  -- Change workspaces.
-  , ("M-a", workspaceLeaveWrapper Urg.focusUrgent)
-  , ("M-S-a", Urg.clearUrgents >> THook.runLogHook)
-  , ("M-<R>", workspaceLeaveWrapper $ Cycle.moveTo Cycle.Next Cycle.HiddenNonEmptyWS)
-  , ("M-<L>", workspaceLeaveWrapper $ Cycle.moveTo Cycle.Prev Cycle.HiddenNonEmptyWS)
-  , ("M-s", workspaceLeaveWrapper toggleNonEmptyWS)
-  , ("M-d", actOnNonEmptyWorkspace goToWorkspace)
-  -- Dynamic workspaces.
-  , ("M-S-d m", actOnNonEmptyWorkspace shiftToWorkspace)
-  , ("M-S-d r", actOnNonEmptyWorkspace renameWorkspace)
-  -- Physical screens.
-  , ("<XF86Display>", X.spawn ("~/bin/toggle-monitor " ++ myExternalMonitor))
-  -- Boring windows.
-  -- , ("M-b", X.withFocused Min.minimizeWindow)
-  -- XXX not work
-  -- , ("M-S-b", X.sendMessage Min.RestoreNextMinimizedWin)
-  -- Fling the cursor.
-  , ("M-'", Warp.banishScreen Warp.LowerRight)
-  -- Lock and suspend.
-  , ("M-x   x", X.spawn "~/bin/xlock")
-  , ("M-x M-x", X.spawn "~/bin/xlock")
-  -- on ubuntu >= 16.04
-  , ("M-x s", X.spawn "systemctl suspend")
-  -- Media, &c. keys.
-  , ("<XF86AudioMute>" , X.spawn "amixer set Master toggle")
-  , ("M-<F6>"          , X.spawn "amixer set Master toggle")
-  , ("S-<XF86AudioMute>" , X.spawn "amixer set Master 0")
-  , ("M-S-<F6>"          , X.spawn "amixer set Master 0")
-  , ("<XF86AudioLowerVolume>" , X.spawn "amixer set Master 1%-")
-  , ("M-<F7>"                 , X.spawn "amixer set Master 1%-")
-  , ("S-<XF86AudioLowerVolume>" , X.spawn "amixer set Master 10%-")
-  , ("M-S-<F7>"                 , X.spawn "amixer set Master 10%-")
-  , ("<XF86AudioRaiseVolume>" , X.spawn "amixer set Master 1%+")
-  , ("M-<F8>"                 , X.spawn "amixer set Master 1%+")
-  , ("S-<XF86AudioRaiseVolume>" , X.spawn "amixer set Master 10%+")
-  , ("M-S-<F8>"                 , X.spawn "amixer set Master 10%+")
-  -- , ("M-M1-<Space>", X.catchIO $ VLC.pause myVLCSock)
-  -- , ("M-M1-S-<L>", X.catchIO $ VLC.prev myVLCSock)
-  -- , ("M-M1-S-<R>", X.catchIO $ VLC.next myVLCSock)
-  -- , ("M-M1-<L>", X.catchIO $ VLC.left myVLCSock)
-  -- , ("M-M1-<R>", X.catchIO $ VLC.right myVLCSock)
-  -- , ("M-M1-<D>", X.catchIO $ VLC.voldn myVLCSock)
-  -- , ("M-M1-<U>", X.catchIO $ VLC.volup myVLCSock)
-  , ("<XF86MonBrightnessDown>", X.spawn "xbacklight -steps 1 -time 0 -dec 2")
-  , ("S-<XF86MonBrightnessDown>", X.spawn "xbacklight -dec 10")
-  , ("<XF86MonBrightnessUp>", X.spawn "xbacklight -steps 1 -time 0 -inc 2")
-  , ("S-<XF86MonBrightnessUp>", X.spawn "xbacklight -inc 10")
-  -- Screenshots.
-  , ("<Print>", X.spawn "~/bin/screenshot")
-  , ("S-<Print> w", X.spawn "~/bin/screenshot window")
-  , ("S-<Print> r", X.spawn "~/bin/screenshot root")
-  -- Miscellaneous utilities.
-  , ("M-n", X.refresh) , ("M1-<Space>", X.spawn "urxvt -e alsamixer")
-  , ("M-M1-f", X.spawn "/usr/bin/kill -SIGSTOP firefox")
-  , ("M-M1-S-f", X.spawn "/usr/bin/kill -SIGCONT firefox")
-  , ("M-x q", X.spawn "xmonad --recompile && xmonad --restart")
-  , ("M-S-x q", X.io (exitWith ExitSuccess))
+    ("M-S-c", X.kill),
+    -- rofi and applicatioin launch
+    ("M-o", X.spawn "rofi -modi combi,run,window,ssh,drun -combi-modi run,window -show"),
+    ("M-C-p f", runOrRaise "firefox" (className =? "Firefox")),
+    ("M-C-p c", runOrRaise "google-chrome" (className =? "Google-chrome")),
+    ("M-C-p t", runOrCopy "gnome-terminal" (className =? "gnome-terminal")),
+    ("M-C-p e", runOrCopy "emacs" (className =? "emacs")),
+    ("M-C-p g", runOrCopy "firefox" (className =? "Firefox")),
+    ("M-<Return>", X.spawn myTerminal),
+    ("M-p e", X.spawn "LC_CTYPE=zh_CN.UTF-8 emacs"),
+    ("M-p d", X.spawn "LC_CTYPE=zh_CN.UTF-8  emacs --with-profile doom"),
+    ("M-p t", X.spawn myTerminal),
+    ("M-p c", X.spawn "google-chrome"),
+    ("M-p C", X.spawn "chromium-browser"),
+    ("M-p f", X.spawn "firefox"),
+    -- Focus and arrange windows.
+    -- ,("M-<Tab>", Boring.focusDown)
+    ("M-j", X.windows W.focusDown),
+    --, ("M-S-<Tab>", Boring.focusUp)
+    ("M-k", X.windows W.focusUp),
+    ("M-m", Boring.focusMaster),
+    ("M-S-m", X.windows W.swapMaster),
+    ("M-S-j", X.windows W.swapDown),
+    ("M-S-k", X.windows W.swapUp),
+    -- Resize the master and slave areas.
+    ("M-h", X.sendMessage X.Shrink),
+    ("M-l", X.sendMessage X.Expand),
+    ("M-S-h", X.sendMessage Resiz.MirrorShrink),
+    ("M-S-l", X.sendMessage Resiz.MirrorExpand),
+    -- Push the window back into tiling.
+    ("M-t", X.withFocused $ X.windows . W.sink),
+    -- Change the number of windows in the master area.
+    ("M-,", X.sendMessage (X.IncMasterN 1)),
+    ("M-.", X.sendMessage (X.IncMasterN (-1))),
+    -- Layout toggles.
+    ("M-<Space>", X.sendMessage X.NextLayout),
+    ("M-C-s", X.sendMessage Docks.ToggleStruts),
+    ("M-C-m", X.sendMessage $ Multi.Toggle MultiI.MIRROR),
+    ("M-C-b", X.sendMessage $ Multi.Toggle MultiI.NOBORDERS),
+    ("M-C-x", X.sendMessage $ Multi.Toggle Refl.REFLECTX),
+    ("M-C-y", X.sendMessage $ Multi.Toggle Refl.REFLECTY),
+    ("M-C-f", X.sendMessage TogL.ToggleLayout),
+    -- Change workspaces.
+    ("M-a", workspaceLeaveWrapper Urg.focusUrgent),
+    ("M-S-a", Urg.clearUrgents >> THook.runLogHook),
+    ("M-<R>", workspaceLeaveWrapper $ Cycle.moveTo Cycle.Next Cycle.HiddenNonEmptyWS),
+    ("M-<L>", workspaceLeaveWrapper $ Cycle.moveTo Cycle.Prev Cycle.HiddenNonEmptyWS),
+    ("M-s", workspaceLeaveWrapper toggleNonEmptyWS),
+    ("M-d", actOnNonEmptyWorkspace goToWorkspace),
+    -- Dynamic workspaces.
+    ("M-S-d m", actOnNonEmptyWorkspace shiftToWorkspace),
+    ("M-S-d r", actOnNonEmptyWorkspace renameWorkspace),
+    -- Physical screens.
+    ("<XF86Display>", X.spawn ("~/bin/toggle-monitor " ++ myExternalMonitor)),
+    -- Boring windows.
+    -- , ("M-b", X.withFocused Min.minimizeWindow)
+    -- XXX not work
+    -- , ("M-S-b", X.sendMessage Min.RestoreNextMinimizedWin)
+    -- Fling the cursor.
+    ("M-'", Warp.banishScreen Warp.LowerRight),
+    -- Lock and suspend.
+    ("M-x   x", X.spawn "~/bin/xlock"),
+    ("M-x M-x", X.spawn "~/bin/xlock"),
+    -- on ubuntu >= 16.04
+    ("M-x s", X.spawn "systemctl suspend"),
+    -- Media, &c. keys.
+    ("<XF86AudioMute>", X.spawn "amixer set Master toggle"),
+    ("M-<F6>", X.spawn "amixer set Master toggle"),
+    ("S-<XF86AudioMute>", X.spawn "amixer set Master 0"),
+    ("M-S-<F6>", X.spawn "amixer set Master 0"),
+    ("<XF86AudioLowerVolume>", X.spawn "amixer set Master 1%-"),
+    ("M-<F7>", X.spawn "amixer set Master 1%-"),
+    ("S-<XF86AudioLowerVolume>", X.spawn "amixer set Master 10%-"),
+    ("M-S-<F7>", X.spawn "amixer set Master 10%-"),
+    ("<XF86AudioRaiseVolume>", X.spawn "amixer set Master 1%+"),
+    ("M-<F8>", X.spawn "amixer set Master 1%+"),
+    ("S-<XF86AudioRaiseVolume>", X.spawn "amixer set Master 10%+"),
+    ("M-S-<F8>", X.spawn "amixer set Master 10%+"),
+    -- , ("M-M1-<Space>", X.catchIO $ VLC.pause myVLCSock)
+    -- , ("M-M1-S-<L>", X.catchIO $ VLC.prev myVLCSock)
+    -- , ("M-M1-S-<R>", X.catchIO $ VLC.next myVLCSock)
+    -- , ("M-M1-<L>", X.catchIO $ VLC.left myVLCSock)
+    -- , ("M-M1-<R>", X.catchIO $ VLC.right myVLCSock)
+    -- , ("M-M1-<D>", X.catchIO $ VLC.voldn myVLCSock)
+    -- , ("M-M1-<U>", X.catchIO $ VLC.volup myVLCSock)
+    ("<XF86MonBrightnessDown>", X.spawn "xbacklight -steps 1 -time 0 -dec 2"),
+    ("S-<XF86MonBrightnessDown>", X.spawn "xbacklight -dec 10"),
+    ("<XF86MonBrightnessUp>", X.spawn "xbacklight -steps 1 -time 0 -inc 2"),
+    ("S-<XF86MonBrightnessUp>", X.spawn "xbacklight -inc 10"),
+    -- Screenshots.
+    ("<Print>", X.spawn "~/bin/screenshot"),
+    ("S-<Print> w", X.spawn "~/bin/screenshot window"),
+    ("S-<Print> r", X.spawn "~/bin/screenshot root"),
+    -- Miscellaneous utilities.
+    ("M-n", X.refresh),
+    ("M1-<Space>", X.spawn "urxvt -e alsamixer"),
+    ("M-M1-f", X.spawn "/usr/bin/kill -SIGSTOP firefox"),
+    ("M-M1-S-f", X.spawn "/usr/bin/kill -SIGCONT firefox"),
+    ("M-x q", X.spawn "xmonad --recompile && xmonad --restart"),
+    ("M-S-x q", X.io (exitWith ExitSuccess))
   ]
-  ++
-  -- Convenient shortcuts for simple workspaces.
-  [ ("M-" ++ m ++ k, f k)
-      | k <- simpleWorkspaces
-      , (f, m) <- [ (goToWorkspace, "")
-                  , (shiftToWorkspace, "S-")
-                  ]
-  ]
-  -- [
-  --   -- workspaces are distinct by screen
-  --   (("M-" ++ m ++ i), X.windows $ IdpS.onCurrentScreen f i)
-  --      | i <- [[i] | i <- "123456789"]
-  --      , (f, m) <- [(W.view, ""), (W.shift, "S-")]
-  -- ]
-  ++
-  -- Shortcuts for physical screens.
-  [ ("M-" ++ m ++ k, X.screenWorkspace s >>= flip X.whenJust f)
-      | (k, s) <- zip ["q", "w", "e"] [0..]
-      , (f, m) <- [ (viewWorkspace, "")
-                  , (shiftToWorkspace, "S-")
-                  ]
-  ]
-  -- [
-  --   -- swap screen order
-  --   (("M-" ++ m ++ key), X.screenWorkspace sc >>= flip X.whenJust (X.windows . f))
-  --      | (key, sc) <- zip ["w", "e", "r"] [1, 0, 2]
-  --      , (f, m) <- [(W.view, ""), (W.shift, "S-")]
-  -- ]
+    ++
+    -- Convenient shortcuts for simple workspaces.
+    [ ("M-" ++ m ++ k, f k)
+      | k <- simpleWorkspaces,
+        (f, m) <-
+          [ (goToWorkspace, ""),
+            (shiftToWorkspace, "S-")
+          ]
+    ]
+    -- [
+    --   -- workspaces are distinct by screen
+    --   (("M-" ++ m ++ i), X.windows $ IdpS.onCurrentScreen f i)
+    --      | i <- [[i] | i <- "123456789"]
+    --      , (f, m) <- [(W.view, ""), (W.shift, "S-")]
+    -- ]
+    ++
+    -- Shortcuts for physical screens.
+    [ ("M-" ++ m ++ k, X.screenWorkspace s >>= flip X.whenJust f)
+      | (k, s) <- zip ["q", "w", "e"] [0 ..],
+        (f, m) <-
+          [ (viewWorkspace, ""),
+            (shiftToWorkspace, "S-")
+          ]
+    ]
+
+-- [
+--   -- swap screen order
+--   (("M-" ++ m ++ key), X.screenWorkspace sc >>= flip X.whenJust (X.windows . f))
+--      | (key, sc) <- zip ["w", "e", "r"] [1, 0, 2]
+--      , (f, m) <- [(W.view, ""), (W.shift, "S-")]
+-- ]
 
 myMouseBindings :: Map (X.KeyMask, X.Button) (X.Window -> X.X ())
-myMouseBindings = fromList
-  -- Set the window to floating mode and move/resize by dragging.
-  [ ((myModMask, X.button1), windowAction X.mouseMoveWindow Snap.snapMagicMove)
-  , ((myModMask, X.button3), windowAction X.mouseResizeWindow $ Snap.snapMagicResize [Snap.R, Snap.D])
-  -- Resize the master and slave areas by scrolling.
-  , ((myModMask, X.button4), const $ X.sendMessage X.Expand)
-  , ((myModMask, X.button5), const $ X.sendMessage X.Shrink)
-  , ((myModMask .|. X.shiftMask, X.button4), const $ X.sendMessage Resiz.MirrorExpand)
-  , ((myModMask .|. X.shiftMask, X.button5), const $ X.sendMessage Resiz.MirrorShrink)
-  , ((X.noModMask, 10 :: X.Button), const $ actOnNonEmptyWorkspace goToWorkspace)
-  , ((X.noModMask, 13 :: X.Button), const $ workspaceLeaveWrapper toggleNonEmptyWS)
-  ]
-  where snapTolerance = Just 50
-        windowAction action1 action2 w = do
-            X.focus w
-            action1 w
-            action2 snapTolerance snapTolerance w
-            X.windows W.shiftMaster
+myMouseBindings =
+  fromList
+    -- Set the window to floating mode and move/resize by dragging.
+    [ ((myModMask, X.button1), windowAction X.mouseMoveWindow Snap.snapMagicMove),
+      ((myModMask, X.button3), windowAction X.mouseResizeWindow $ Snap.snapMagicResize [Snap.R, Snap.D]),
+      -- Resize the master and slave areas by scrolling.
+      ((myModMask, X.button4), const $ X.sendMessage X.Expand),
+      ((myModMask, X.button5), const $ X.sendMessage X.Shrink),
+      ((myModMask .|. X.shiftMask, X.button4), const $ X.sendMessage Resiz.MirrorExpand),
+      ((myModMask .|. X.shiftMask, X.button5), const $ X.sendMessage Resiz.MirrorShrink),
+      ((X.noModMask, 10 :: X.Button), const $ actOnNonEmptyWorkspace goToWorkspace),
+      ((X.noModMask, 13 :: X.Button), const $ workspaceLeaveWrapper toggleNonEmptyWS)
+    ]
+  where
+    snapTolerance = Just 50
+    windowAction action1 action2 w = do
+      X.focus w
+      action1 w
+      action2 snapTolerance snapTolerance w
+      X.windows W.shiftMaster
 
 {---------------
 -  Status bar  -
@@ -256,21 +271,23 @@ myMouseBindings = fromList
 --         "--expand true --width 5 --transparent true --tint 0x0c1014 --alpha 0 --height 20"
 
 myLogPP :: DLog.PP
-myLogPP = DLog.defaultPP
-  { DLog.ppCurrent = DLog.xmobarColor myCurrentFG myCurrentBG . DLog.pad
-  , DLog.ppVisible = DLog.xmobarColor myVisibleFG myVisibleBG . DLog.pad
-  , DLog.ppHidden  = DLog.xmobarColor myNormalFG myNormalBG
-  -- , DLog.ppHiddenNoWindows = DLog.xmobarColor myNormalFG myNormalBG
-  , DLog.ppUrgent  = DLog.xmobarColor myUrgentFG myUrgentBG . DLog.wrap ">" "<" . DLog.xmobarStrip
-  , DLog.ppTitle   = DLog.xmobarColor mySpecial1FG mySpecial1BG . DLog.shorten 75
-  , DLog.ppLayout  = DLog.xmobarColor mySpecial2FG mySpecial2BG
-  , DLog.ppSep     = DLog.pad $ DLog.xmobarColor mySeparatorFG mySeparatorBG "|"
-  }
+myLogPP =
+  DLog.xmobarPP
+    { DLog.ppCurrent = DLog.xmobarColor myCurrentFG myCurrentBG . DLog.pad,
+      DLog.ppVisible = DLog.xmobarColor myVisibleFG myVisibleBG . DLog.pad,
+      DLog.ppHidden = DLog.xmobarColor myNormalFG myNormalBG,
+      -- , DLog.ppHiddenNoWindows = DLog.xmobarColor myNormalFG myNormalBG
+      DLog.ppUrgent = DLog.xmobarColor myUrgentFG myUrgentBG . DLog.wrap ">" "<" . DLog.xmobarStrip,
+      DLog.ppTitle = DLog.xmobarColor mySpecial1FG mySpecial1BG . DLog.shorten 75,
+      DLog.ppLayout = DLog.xmobarColor mySpecial2FG mySpecial2BG,
+      DLog.ppSep = DLog.pad $ DLog.xmobarColor mySeparatorFG mySeparatorBG "|"
+    }
 
 myLogPPActive :: DLog.PP
-myLogPPActive = myLogPP
-  { DLog.ppCurrent = DLog.xmobarColor myCurrentBG myCurrentFG . DLog.pad
-  }
+myLogPPActive =
+  myLogPP
+    { DLog.ppCurrent = DLog.xmobarColor myCurrentBG myCurrentFG . DLog.pad
+    }
 
 barCreator :: Bars.DynamicStatusBar
 barCreator (X.S sid) = Run.spawnPipe $ "xmobar --screen " ++ show sid
@@ -286,6 +303,7 @@ barDestroyer = return ()
 -- modifiers.
 simpleWorkspaces :: [X.WorkspaceId]
 simpleWorkspaces = [[w] | w <- "123456789"]
+
 -- simpleWorkspaces = [w | w <- ["1:web", "2:editor", "3:terminal", "4:email", "5:irc", "6:misc"]]
 
 --myWorkspaces :: [X.WorkspaceId]
@@ -310,10 +328,14 @@ allEmptyWorkspaces = workspaceTags . filter (isNothing . W.stack) . W.workspaces
 -- Get all the non-empty workspaces in a "useful" order.
 allNonEmptyWorkspaces :: W.StackSet X.WorkspaceId l a s sd -> [X.WorkspaceId]
 allNonEmptyWorkspaces = workspaceTags . filter (isJust . W.stack) . allWorkspaces
-  where allWorkspaces ws = concatMap ($ ws) [ W.hidden
-                                            , (:[]) . W.workspace . W.current
-                                            , map W.workspace . W.visible
-                                            ]
+  where
+    allWorkspaces ws =
+      concatMap
+        ($ ws)
+        [ W.hidden,
+          (: []) . W.workspace . W.current,
+          map W.workspace . W.visible
+        ]
 
 -- Go back to the last visited workspace that currently has any windows.
 toggleNonEmptyWS :: X.X ()
@@ -329,8 +351,9 @@ actOnNonEmptyWorkspace action = X.withWindowSet $ selectStringAndAct action . al
 gridSelectNonEmpty :: [String] -> X.X (Maybe String)
 gridSelectNonEmpty [] = gridSelectNonEmpty [""]
 gridSelectNonEmpty xs = liftM process $ Grid.gridselect myGSConfig $ join zip xs
-  where process (Just "") = process Nothing
-        process x         = x
+  where
+    process (Just "") = process Nothing
+    process x = x
 
 -- Use GridSelect to choose a string and do something with the result.
 selectStringAndAct :: (String -> X.X ()) -> [String] -> X.X ()
@@ -342,13 +365,15 @@ goToWorkspace = workspaceLeaveWrapper . DynaW.addWorkspace
 
 -- Go to the workspace only if it is currently visible.
 viewWorkspace :: X.WorkspaceId -> X.X ()
-viewWorkspace w = do vs <- visibleWorkspaceTags
-                     when (w `elem` vs) . X.windows . W.view $ w
+viewWorkspace w = do
+  vs <- visibleWorkspaceTags
+  when (w `elem` vs) . X.windows . W.view $ w
 
 -- Shift the current window to the workspace, creating it first if necessary.
 shiftToWorkspace :: X.WorkspaceId -> X.X ()
-shiftToWorkspace w = do DynaW.addHiddenWorkspace w
-                        X.windows $ W.shift w
+shiftToWorkspace w = do
+  DynaW.addHiddenWorkspace w
+  X.windows $ W.shift w
 
 -- Rename the workspace and do some bookkeeping.
 renameWorkspace :: X.WorkspaceId -> X.X ()
@@ -377,79 +402,88 @@ renameWorkspace w = X.withWindowSet $ \ws -> do
 --      Min.minimize $
 --      TogL.toggleLayouts full tall
 
-myLayout = Docks.avoidStruts (
-       -- TogL.toggleLayouts X.Full (LtGrid.Grid) ||| TogL.toggleLayouts X.Full (LtThreeColumns.ThreeColMid 1 (1/20) (1/2)) ||| LtTabbed.simpleTabbed ||| TogL.toggleLayouts X.Full (tiled) ||| X.Mirror tiled)
-        tiled ||| X.Full ||| (LtThreeColumns.ThreeColMid 1 (1/20) (1/2)) ||| LtTabbed.simpleTabbed ||| X.Mirror tiled ||| (LtGrid.Grid))
-        where
+myLayout =
+  Docks.avoidStruts
+    ( -- TogL.toggleLayouts X.Full (LtGrid.Grid) ||| TogL.toggleLayouts X.Full (LtThreeColumns.ThreeColMid 1 (1/20) (1/2)) ||| LtTabbed.simpleTabbed ||| TogL.toggleLayouts X.Full (tiled) ||| X.Mirror tiled)
+      tiled ||| X.Full ||| (LtThreeColumns.ThreeColMid 1 (1 / 20) (1 / 2)) ||| LtTabbed.simpleTabbed ||| X.Mirror tiled ||| (LtGrid.Grid)
+    )
+  where
     -- default tiling algorithm partitions the screen into two panes
-    tiled   = X.Tall nmaster delta ratio
+    tiled = X.Tall nmaster delta ratio
 
     -- The default number of windows in the master pane
     nmaster = 1
 
     -- Default proportion of screen occupied by master pane
-    ratio   = 1/2
+    ratio = 1 / 2
 
     -- Percent of screen to increment by when resizing panes
-    delta = 3/100
+    delta = 3 / 100
 
 {-----------------------
 -  Customized configs  -
 -----------------------}
 
 myXConfig =
-  let uHook = Urg.BorderUrgencyHook
-                { Urg.urgencyBorderColor = myUrgentBG
-                }
-      uConf = Urg.urgencyConfig
-                { Urg.suppressWhen = Urg.OnScreen
-                }
-      man   = SpawnOn.manageSpawn X.<+> insertPosition Below Newer X.<+> X.composeAll
-                [ X.className =? "Xmessage" --> X.doFloat
-                ]
-      conf  = X.defaultConfig
-                { X.terminal           = myTerminal
-                , X.modMask            = myModMask
-                , X.normalBorderColor  = "#000099"
-                , X.focusedBorderColor = "#990000"
-                -- Disable the default bindings.
-                , X.keys               = const $ fromList []
-                , X.workspaces         = simpleWorkspaces
-                , X.mouseBindings      = const myMouseBindings
-                , X.manageHook         = man
-                , X.layoutHook         = myLayout
-                }
-  in Urg.withUrgencyHookC uHook uConf $
-     flip EZ.additionalKeysP myKeyBindings $
-     conf
-       { X.startupHook = do EZ.checkKeymap conf myKeyBindings
-                            Cur.setDefaultCursor Cur.xC_crosshair
-                            Bars.dynStatusBarStartup barCreator barDestroyer
-                            -- 4k DP
-                            -- X.spawn "xrandr --output eDP-1 --off --output DP-1 --primary --mode 3840x2160 --pos 0x0 --rotate normal --output DP-2 --off --output DP-3 --off"
-                            -- 2k dp
-                            --X.spawn "xrandr --output eDP-1 --off --output DP-1 --off --output DP-2 --off --output DP-3 --primary --mode 2560x1440 --pos 0x0 --rotate normal"
-                            X.spawn "autorandr --change --default builtin-single"
-                            --X.spawn "stalonetray"
-                            -- TODO use pm2 to start feh_bg
-                            spawnOnce "bash ~/.xmonad/feh_bg.sh"
-                            -- spawnOnce "pm2 start clash -- -f ~/.config/clash/kycloud.yaml"
-                            spawnOnce "clash -f ~/.config/clash/kycloud.yaml"
-                            spawnOnce "dropbox start -i"
-                            X.spawn "nm-applet"
-                            -- spawnOnce "compton -b"
-                            X.spawn "fcitx"
-                            SpawnOn.spawnOn "1" "google-chrome"
-                            SpawnOn.spawnOn "2" "gnome-terminal"
-                            X.spawn "sleep 3 && xmodmap /home/hackrole/.xmodmap && echo 1 >> /tmp/xmodmap.log"
-       , X.logHook     = do WH.workspaceHistoryHook
-                            Bars.multiPP myLogPPActive myLogPP
-       , X.handleEventHook = Bars.dynStatusBarEventHook barCreator barDestroyer
-       }
+  let uHook =
+        Urg.BorderUrgencyHook
+          { Urg.urgencyBorderColor = myUrgentBG
+          }
+      uConf =
+        Urg.urgencyConfig
+          { Urg.suppressWhen = Urg.OnScreen
+          }
+      man =
+        SpawnOn.manageSpawn X.<+> insertPosition Below Newer
+          X.<+> X.composeAll
+            [ X.className =? "Xmessage" --> X.doFloat
+            ]
+      conf =
+        X.defaultConfig
+          { X.terminal = myTerminal,
+            X.modMask = myModMask,
+            X.normalBorderColor = "#000099",
+            X.focusedBorderColor = "#990000",
+            -- Disable the default bindings.
+            X.keys = const $ fromList [],
+            X.workspaces = simpleWorkspaces,
+            X.mouseBindings = const myMouseBindings,
+            X.manageHook = man,
+            X.layoutHook = myLayout
+          }
+   in Urg.withUrgencyHookC uHook uConf $
+        flip EZ.additionalKeysP myKeyBindings $
+          conf
+            { X.startupHook = do
+                EZ.checkKeymap conf myKeyBindings
+                Cur.setDefaultCursor Cur.xC_crosshair
+                Bars.dynStatusBarStartup barCreator barDestroyer
+                -- 4k DP
+                -- X.spawn "xrandr --output eDP-1 --off --output DP-1 --primary --mode 3840x2160 --pos 0x0 --rotate normal --output DP-2 --off --output DP-3 --off"
+                -- 2k dp
+                --X.spawn "xrandr --output eDP-1 --off --output DP-1 --off --output DP-2 --off --output DP-3 --primary --mode 2560x1440 --pos 0x0 --rotate normal"
+                X.spawn "autorandr --change --default builtin-single"
+                --X.spawn "stalonetray"
+                -- TODO use pm2 to start feh_bg
+                spawnOnce "bash ~/.xmonad/feh_bg.sh"
+                -- spawnOnce "pm2 start clash -- -f ~/.config/clash/kycloud.yaml"
+                spawnOnce "clash -f ~/.config/clash/kycloud.yaml"
+                spawnOnce "dropbox start -i"
+                X.spawn "nm-applet"
+                -- spawnOnce "compton -b"
+                X.spawn "fcitx"
+                SpawnOn.spawnOn "1" "google-chrome"
+                SpawnOn.spawnOn "2" "gnome-terminal"
+                X.spawn "sleep 3 && xmodmap /home/hackrole/.xmodmap && echo 1 >> /tmp/xmodmap.log",
+              X.logHook = do
+                WH.workspaceHistoryHook
+                Bars.multiPP myLogPPActive myLogPP,
+              X.handleEventHook = Bars.dynStatusBarEventHook barCreator barDestroyer
+            }
 
 myGSConfig :: Grid.GSConfig X.WorkspaceId
-myGSConfig = Grid.defaultGSConfig
-  {
-   Grid.gs_navigate   = Grid.navNSearch
-  , Grid.gs_rearranger = Grid.searchStringRearrangerGenerator id
-  }
+myGSConfig =
+  (Grid.buildDefaultGSConfig Grid.defaultColorizer)
+    { Grid.gs_navigate = Grid.navNSearch,
+      Grid.gs_rearranger = Grid.searchStringRearrangerGenerator id
+    }

@@ -10,8 +10,22 @@ ZSH_THEME="amuse"
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 
+## ------------------------
+# bindkey -l # list keymap
+# bindkey -M <keymap> # list keymap binding
+# bindkey -e/-v/-a # chnage main keymap
+# bindkey "<key,eg '^F'>" <Action> # bind key to action
+
+# I now use emacs-keybind use "^X^E" to edit command in vi-mode
+## ------------------------
+# use emacs keybind
+# bindkey -e
 # use vi-mode keybind
-bindkey -v
+# bindkey -v
+# bindkey "^F" forward-char
+# bindkey "^B" backward-char
+# bindkey "^K" kill-line
+# bindkey "^U" kill-whole-lline
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -55,7 +69,7 @@ bindkey -v
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git git-extras cabal celery docker encode64 fabric gem httpie jsontools node npm tmux vagrant kubectl pass vi-mode)
+plugins=(git git-extras cabal celery docker encode64 fabric gem httpie jsontools node npm tmux vagrant kubectl pass)
 
 # User configuration
 
@@ -172,9 +186,10 @@ export PATH="${PATH}:/opt/flutter/bin"
 
 # setup virtualenvwapper
 #export MY_ASDF_PYTHON_VERSION="$(asdf current python | cut -d ' ' -f 1)"
-export MY_ASDF_PYTHON_VERSION=3.6.5
+export MY_ASDF_PYTHON_VERSION=3.9.10
 export VIRTUALENV_WRAPPER_BIN="${HOME}/.asdf/installs/python/${MY_ASDF_PYTHON_VERSION}/bin/virtualenvwrapper.sh"
 [ -s $VIRTUALENV_WRAPPER_BIN ] && . $VIRTUALENV_WRAPPER_BIN
+
 
 # pyenv installed by brew
 #if [ -d "$HOME/.pyenv" ]; then
@@ -185,7 +200,7 @@ export VIRTUALENV_WRAPPER_BIN="${HOME}/.asdf/installs/python/${MY_ASDF_PYTHON_VE
 
 # setup golang
 #export GO_VERSION="$(asdf current golang | cut -d ' ' -f 1)"
-export MY_GO_VERSION=1.16.3
+export MY_GO_VERSION=1.17.8
 export GOROOT="$HOME/.asdf/installs/golang/${MY_GO_VERSION}/go"
 export GOPATH="$HOME/projects/mygo"
 export PATH="${GOPATH}/bin:${PATH}"
@@ -219,9 +234,10 @@ fi
 export PATH="/usr/local/opt/scala@2.11/bin:$PATH"
 
 # rust-up path
+export RUST_VERSION="1.58.1"
 export PATH="/Users/daipeng/.cargo/bin:${PATH}"
-export RUSTUP_DIST_SERVER=https://mirrors.tuna.tsinghua.edu.cn/rustup
-export RUST_SRC_PATH="${HOME}/.asdf/installs/rust/1.45.2"
+#export RUSTUP_DIST_SERVER=https://mirrors.tuna.tsinghua.edu.cn/rustup
+export RUST_SRC_PATH="${HOME}/.asdf/installs/rust/{RUST_VERSION}"
 # autojump
 [[ -s /home/hackrole/.autojump/etc/profile.d/autojump.sh ]] && source /home/hackrole/.autojump/etc/profile.d/autojump.sh
 

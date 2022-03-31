@@ -53,27 +53,27 @@ myCopyFG      = "#ff0000"
 myFont = "xft:Hack-12"
 
 -- my log hook for status bar
-trayer = "trayer --edge top --align right --SetDockType true --SetPartialStrut true " ++
-         "--expand true --width 7 --transparent true --tint 0x0c1014 --alpha 0 --height 15"
-myStatusBar = "conky | dzen2 -w 1695 -ta r -h 16 -x 210 -fn \"WenQuanYi Zen Hei:size=10\""
-myXmonadBar = "dzen2 -w 210 -ta l -h 16 -fn \"WenQuanYi Zen Hei:size=10\""
+-- trayer = "trayer --edge top --align right --SetDockType true --SetPartialStrut true " ++
+--          "--expand true --width 7 --transparent true --tint 0x0c1014 --alpha 0 --height 15"
+-- myStatusBar = "conky | dzen2 -w 1695 -ta r -h 16 -x 210 -fn \"WenQuanYi Zen Hei:size=10\""
+-- myXmonadBar = "dzen2 -w 210 -ta l -h 16 -fn \"WenQuanYi Zen Hei:size=10\""
 
 
-myLogPP :: DLog.PP
-myLogPP = DLog.defaultPP
-  { DLog.ppCurrent = DLog.xmobarColor myCurrentFG myCurrentBG . DLog.pad
-  , DLog.ppVisible = DLog.xmobarColor myVisibleFG myVisibleBG . DLog.pad
-  , DLog.ppHidden  = DLog.xmobarColor myNormalFG myNormalBG
-  , DLog.ppUrgent  = DLog.xmobarColor myUrgentFG myUrgentBG . DLog.wrap ">" "<" . DLog.xmobarStrip
-  , DLog.ppTitle   = DLog.xmobarColor mySpecial1FG mySpecial1BG . DLog.shorten 75
-  , DLog.ppLayout  = DLog.xmobarColor mySpecial2FG mySpecial2BG
-  , DLog.ppSep     = DLog.pad $ DLog.xmobarColor mySeparatorFG mySeparatorBG "|"
-  }
+-- myLogPP :: DLog.PP
+-- myLogPP = DLog.defaultPP
+--   { DLog.ppCurrent = DLog.xmobarColor myCurrentFG myCurrentBG . DLog.pad
+--   , DLog.ppVisible = DLog.xmobarColor myVisibleFG myVisibleBG . DLog.pad
+--   , DLog.ppHidden  = DLog.xmobarColor myNormalFG myNormalBG
+--   , DLog.ppUrgent  = DLog.xmobarColor myUrgentFG myUrgentBG . DLog.wrap ">" "<" . DLog.xmobarStrip
+--   , DLog.ppTitle   = DLog.xmobarColor mySpecial1FG mySpecial1BG . DLog.shorten 75
+--   , DLog.ppLayout  = DLog.xmobarColor mySpecial2FG mySpecial2BG
+--   , DLog.ppSep     = DLog.pad $ DLog.xmobarColor mySeparatorFG mySeparatorBG "|"
+--   }
 
-myLogPPActive :: DLog.PP
-myLogPPActive = myLogPP
-  { DLog.ppCurrent = DLog.xmobarColor myCurrentBG myCurrentFG . DLog.pad
-  }
+-- myLogPPActive :: DLog.PP
+-- myLogPPActive = myLogPP
+--   { DLog.ppCurrent = DLog.xmobarColor myCurrentBG myCurrentFG . DLog.pad
+--   }
 
 barCreator :: Bars.DynamicStatusBar
 barCreator (X.S sid) = Run.spawnPipe $ "xmobar --screen " ++ show sid
@@ -117,10 +117,10 @@ myKeys = [ ("C-t C", spawn "chromium")
          , ("M-S-<Tab>", moveTo Prev NonEmptyWS)
          ]
 main = do
-    spawn trayer
-    spawn myStatusBar
-    dzproc <- spawnPipe myXmonadBar
-    xmonad $ ewmh desktopConfig
+    -- spawn trayer
+    -- spawn myStatusBar
+    -- dzproc <- spawnPipe myXmonadBar
+    (xmonad $ ewmh) =<< DLog.dzen desktopConfig
         { manageHook = manageDocks <+> manageSpawn <+> myManageHook <+> manageHook desktopConfig
         , layoutHook = nameTail $ nameTail $ desktopLayoutModifiers $ smartBorders $ maximizeWithPadding 0 $ minimize $ layoutHook desktopConfig
         , startupHook = myStartupHook
@@ -131,7 +131,7 @@ main = do
         --                 , ppCurrent = dzenColor "#66d9ef" "" . wrap "[" "]"
         --                 , ppTitle   = (\s -> "")
         --                 }
-        , logHook     = Bars.multiPP myLogPPActive myLogPP
+        -- , logHook     = Bars.multiPP myLogPPActive myLogPP
         , X.handleEventHook = Bars.dynStatusBarEventHook barCreator barDestroyer
         , modMask = mod4Mask
         , terminal = myTerminal

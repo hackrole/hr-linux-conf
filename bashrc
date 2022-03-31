@@ -160,6 +160,14 @@ export NVM_DIR="/home/daipeng/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
 
 # setup virtualenvwrapper
-source /usr/local/bin/virtualenvwrapper.sh
+export VIRTUALENVWRAPPER_PATH="/home/hackrole/.asdf/installs/python/3.9.10/bin/virtualenvwrapper.sh"
+if [ -z $VIRTUALENVWRAPPER_PATH ]; then
+    source /usr/local/bin/virtualenvwrapper.sh
+fi
 
 # export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
+
+# asdf
+. $HOME/.asdf/asdf.sh
+. $HOME/.asdf/completions/asdf.bash
+
