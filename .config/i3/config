@@ -26,10 +26,10 @@ set $mod Mod4
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below. ISO 10646 = Unicode
-font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
-font pango:DejaVu Sans Mono 10
-font pango:DejaVu Sans Mono, Terminus Bold Semi-Condensed 11
-font pango:Terminus 11px
+# font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
+font pango: Source Code Pro 16px
+# font pango:DejaVu Sans Mono, Terminus Bold Semi-Condensed 11
+# font pango:Terminus 11px
 # The font above is very space-efficient, that is, it looks good, sharp and
 # clear in small sizes. However, if you need a lot of unicode glyphs or
 # right-to-left text rendering, you should instead use pango for rendering and
@@ -260,8 +260,9 @@ bar {
     status_command i3status -c ~/.config/i3/i3status.conf
     #status_command i3blocks -c ~/.i3/i3blocks.conf
     mode dock
-    position top
-    #height 28
+    position bottom
+    # height 48
+    font pango:Source Code Pro Light 24
 }
 
 ## bind key for application
@@ -317,6 +318,8 @@ exec gitter
 exec wechat
 # chrome
 exec google-chrome
+# autorandr
+exec autorandr -c singleDP --force
 # emacs
 exec sleep 2; LC_CTYPE=zh_CN.UTF-8 emacs
 # deluge
@@ -342,7 +345,7 @@ exec_always --no-startup-id sleep 5; xmodmap /home/hackrole/.xmodmap
 # start the xscreensaver
 exec xscreensaver -no-splash
 # set background
-exec --no-startup-id bash /home/hackrole/.i3/feh_bg.sh
+exec --no-startup-id bash /home/hackrole/.config/i3/feh_bg.sh
 
 # make nautilas work
 exec gsettings set org.gnome.desktop.background show-desktop-icons false

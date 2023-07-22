@@ -171,3 +171,44 @@ fi
 . $HOME/.asdf/asdf.sh
 . $HOME/.asdf/completions/asdf.bash
 
+
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="/home/hackrole/.sdkman"
+[[ -s "/home/hackrole/.sdkman/bin/sdkman-init.sh" ]] && source "/home/hackrole/.sdkman/bin/sdkman-init.sh"
+
+complete -C /home/hackrole/.asdf/installs/terraform/1.2.6/bin/terraform terraform
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/home/hackrole/miniconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/home/hackrole/miniconda3/etc/profile.d/conda.sh" ]; then
+        . "/home/hackrole/miniconda3/etc/profile.d/conda.sh"
+    else
+        export PATH="/home/hackrole/miniconda3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
+
+# Created by mirror-config-china
+export IOJS_ORG_MIRROR=https://npm.taobao.org/mirrors/iojs
+export NODIST_IOJS_MIRROR=https://npm.taobao.org/mirrors/iojs
+export NVM_IOJS_ORG_MIRROR=https://npm.taobao.org/mirrors/iojs
+export NVMW_IOJS_ORG_MIRROR=https://npm.taobao.org/mirrors/iojs
+export NODEJS_ORG_MIRROR=https://npm.taobao.org/mirrors/node
+export NODIST_NODE_MIRROR=https://npm.taobao.org/mirrors/node
+export NVM_NODEJS_ORG_MIRROR=https://npm.taobao.org/mirrors/node
+export NVMW_NODEJS_ORG_MIRROR=https://npm.taobao.org/mirrors/node
+export NVMW_NPM_MIRROR=https://npm.taobao.org/mirrors/npm
+# End of mirror-config-china
+
+# Automatically added by the Guix install script.
+if [ -n "$GUIX_ENVIRONMENT" ]; then
+    if [[ $PS1 =~ (.*)"\\$" ]]; then
+        PS1="${BASH_REMATCH[1]} [env]\\\$ "
+    fi
+fi
+

@@ -7,7 +7,7 @@ export ZSH=$HOME/.oh-my-zsh
 # time that oh-my-zsh is loaded.
 ZSH_THEME="amuse"
 
-export LC_ALL=en_US.UTF-8
+#export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 
 ## ------------------------
@@ -71,7 +71,7 @@ export LANG=en_US.UTF-8
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git git-extras cabal celery docker encode64 fabric gem httpie jsontools node npm tmux vagrant kubectl pass)
+plugins=(git git-extras cabal celery docker encode64 fabric gem httpie jsontools node npm tmux vagrant kubectl pass fzf kube-ps1 helm terraform)
 
 # User configuration
 
@@ -180,7 +180,7 @@ export PATH="${PATH}:/opt/flutter/bin"
 #[ -s "${HOME}/.asdf" ] && source "${HOME}/.asdf/asdf.sh" && source "${HOME}/.asdf/completions/asdf.bash"
 # enable asdf, for virtualenv for nodejs/erlang/elixir and so on
 [[ -s "$HOME/.asdf/asdf.sh" ]] && source $HOME/.asdf/asdf.sh
-#[[ -s "$HOME/.asdf/completions/asdf.bash" ]] && source $HOME/.asdf/completions/asdf.bash
+[[ -s "$HOME/.asdf/completions/asdf.bash" ]] && source $HOME/.asdf/completions/asdf.bash
 
 ##  haskell config
 # stack complete
@@ -191,6 +191,10 @@ export PATH="${PATH}:/opt/flutter/bin"
 export MY_ASDF_PYTHON_VERSION=3.9.10
 export VIRTUALENV_WRAPPER_BIN="${HOME}/.asdf/installs/python/${MY_ASDF_PYTHON_VERSION}/bin/virtualenvwrapper.sh"
 [ -s $VIRTUALENV_WRAPPER_BIN ] && . $VIRTUALENV_WRAPPER_BIN
+# pipenv
+export PIPENV_PYPI_MIRROR=https://pypi.doubanio.com/simple
+# poetry
+
 
 
 # pyenv installed by brew
@@ -202,11 +206,12 @@ export VIRTUALENV_WRAPPER_BIN="${HOME}/.asdf/installs/python/${MY_ASDF_PYTHON_VE
 
 # setup golang
 #export GO_VERSION="$(asdf current golang | cut -d ' ' -f 1)"
-export MY_GO_VERSION=1.17.8
+export MY_GO_VERSION=1.20.4
 export GOROOT="$HOME/.asdf/installs/golang/${MY_GO_VERSION}/go"
 export GOPATH="$HOME/projects/mygo"
 export PATH="${GOPATH}/bin:${PATH}"
 export GOTOOLDIR="$HOME/.asdf/installs/golang/${MY_GO_VERSION}/go/pkg/linux_amd64/"
+export GO111MODULE="on"
 
 #THIS MUST BE AT THE END OF THE FILE FOR JENV TO WORK!!!
 #[[ -s "$HOME/.jenv/bin/jenv-init.sh" ]] && source "$HOME/.jenv/bin/jenv-init.sh" && source "$HOME/.jenv/commands/completion.sh"
@@ -341,3 +346,31 @@ export PATH=$PATH:$HADOOP_HOME/sbin
 
 # airflow
 export AIRFLOW_HOME=~/airflow
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/home/hackrole/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/home/hackrole/miniconda3/etc/profile.d/conda.sh" ]; then
+        . "/home/hackrole/miniconda3/etc/profile.d/conda.sh"
+    else
+        export PATH="/home/hackrole/miniconda3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
+
+
+complete -o nospace -C /home/hackrole/.asdf/installs/terraform/1.2.6/bin/terraform terraform
+
+[ -f "/home/hackrole/.ghcup/env" ] && source "/home/hackrole/.ghcup/env" # ghcup-env
+
+
+GUIX_PROFILE="/home/hackrole/.config/guix/current"                                                                                 
+. "$GUIX_PROFILE/etc/profile"    
+
+export PROMPT='$(kube_ps1)'$PROMPT
+
+if [ -e /home/hackrole/.nix-profile/etc/profile.d/nix.sh ]; then . /home/hackrole/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
