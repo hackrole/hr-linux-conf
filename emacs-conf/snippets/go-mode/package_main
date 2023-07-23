@@ -1,9 +1,0 @@
-# -*- mode: snippet -*-
-# name: package_main
-# key: pmain
-# --
-package main
-
-func main() {
-  $0
-}

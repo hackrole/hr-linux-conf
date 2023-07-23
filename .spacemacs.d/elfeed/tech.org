@@ -1,0 +1,5 @@
+* Blogs
+
+** Software Development
+
+*** [[https://draveness.me/feed.xml][why design as such]] 

@@ -1,6 +1,0 @@
-# -*- mode: snippet -*-
-# name: ob-ipython-table-data
-# key: obit
-# --
-#+tblname: data_table
-$0

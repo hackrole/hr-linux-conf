@@ -30,8 +30,6 @@ values."
    ;; List of configuration layers to load.
    dotspacemacs-configuration-layers
    '(asciidoc
-     asciidoc
-     asciidoc
      nginx
      php
      csv
@@ -101,9 +99,10 @@ values."
      git
      ;; (github :variables gist-ask-for-description t
      ;;         gist-ask-for-filename t)
-     ;; plantuml, install plantuml with apt-get on ubuntu
-     (plantuml :variables org-plantuml-jar-path "/opt/plantuml.jar"
-               plantuml-jar-path "/opt/plantuml.jar")
+     ;; plantuml
+     (setq sp-org-plantuml-jar-path (or (getenv "sp-org-plantuml-jar-path") "/opt/plantuml.jar"))
+     (plantuml :variables org-plantuml-jar-path sp-org-plantuml-jar-path
+               plantuml-jar-path sp-org-plantuml-jar-path)
      ;; saltstack
      salt
      ;; ansible, XXX this now will lead describe-key not work
@@ -126,12 +125,30 @@ values."
      ;; fasd
      fasd
      command-log
+     (elfeed :variables elfeed-feeds '(("https://draveness.me/feed.xml" linux golang)
+                                       ("https://planet.emacslife.com/atom.xml" emacs))
+             elfeed-enable-goodies nil)
      (org :variables org-enable-org-journal-support t
           org-journal-dir "~/org/journal/"
           org-enable-hugo-support t
           org-enable-roam-support t
           org-enable-roam-ui t
+          org-roam-ui-open-on-start nil
           org-enable-reveal-js-support t
+          org-enable-roam-protocol t
+          org-roam-capture-templates '(("d" "default" plain
+                                        "%?"
+                                        :if-new (file+head "%<%Y%m%d>-${slug}.org" "#+title: ${title}\n")
+                                        :unnarrowed t)
+                                       ("w" "work" plain
+                                        "%?"
+                                        :if-new (file+head "work/%<%Y-%m-%d>-${slug}.org" "#+title: ${title}\n")
+                                        :unnarrowed t)
+                                       ("p" "plan" plain
+                                        "$?"
+                                        :if-new (file+head "plan/%<%Y-%m-%d>-${slug}.org" "#+title: ${title}\n")
+                                        :unnarrowed t)
+                                        )
           org-journal-file-format "%Y-%m-%d"
           org-journal-date-format "%A, %B %d %Y")
      ;; (ranger :variables
@@ -147,7 +164,6 @@ values."
             shell-default-position 'bottom
             ;; shell-default-shell 'ansi-term
             shell-default-shell 'vterm
-            shell-default-height '50
             shell-default-term-shell "/bin/zsh")
      ;; spell check make emacs hangs and slow
      ;; (spell-checking :variables
@@ -174,7 +190,7 @@ values."
      ;;                   ein:jupyter-default-server-command "/home/hackrole/.virtualenvs/jupyter3/bin/jupyter")
      django
      ;; scheme
-     scheme
+     (scheme :variables scheme-implementations '(racket guile))
      ;; c/c++
      c-c++
      ;;(csharp :variables csharp-backend 'lsp)
@@ -340,7 +356,6 @@ values."
                                       ;; (flycheck-swagger-tools :location (recipe :fetcher github
                                       ;;                                           :repo "magoyette/flycheck-swagger-tools"))
                                       vue-mode
-                                      ;; go-mode
                                       protobuf-mode)
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
@@ -613,6 +628,9 @@ before packages are loaded. If you are unsure, you should try in setting them in
   (setq leetcode-account "daipeng123456")
   (setq leetcode-prefer-language "python3")
 
+  ;; golang
+  (setq lsp-diagnostics-provider :none)
+
   ;;;; use `oxs` layout instead
   ;; skip `gls` warning on macos
   ;; (when (string= system-type "darwin")
@@ -622,6 +640,12 @@ before packages are loaded. If you are unsure, you should try in setting them in
   ;; dash config
   (setq helm-dash-browser-func 'eww)
 
+  ;; watch company-go
+  ;; (defun wt (sym nv op wh)
+  ;;   (message "%s %s %s %s" sym nv op wh))
+  ;; (add-variable-watcher 'company-backends 'wt)
+  ;; (add-variable-watcher 'go-mode-hook 'wt)
+
   ;; python
   (setq flycheck-python-flake8-executable "flake8")
   ;; (setq lsp-enable-snippet nil)
@@ -629,6 +653,7 @@ before packages are loaded. If you are unsure, you should try in setting them in
   ;; (setq lsp-log-io t)
   (setq lsp-completion-provider :none)
   (setq lsp-prefer-capf nil)
+
 
   ;; pick shell variables
   (setq exec-path-from-shell-variables '("PATH"
@@ -705,10 +730,18 @@ you should place your code here."
   (setq org-roam-directory (file-truename "~/org-roam"))
   ;; (setq spaceline-org-clock-p t)
 
+  ;; k8s-mode indent
+  (setq k8s-indent-offset nil)
+
+  ;; scheme config
+  (setq geiser-chicken-binary "chicken-csi")
+
   (setq projectile-project-search-path '("~/projects/" "~/hr-conf/"))
   (setq projectile-fd-executable "fd")
   ;; (setq-default helm-boring-file-regexp-list)
 
+  ;; enable mode line display of org clock
+  (setq spaceline-org-clock-p t)
 
   ;; lsp-ui-mode
   (setq lsp-ui-doc-enable t)
@@ -1101,9 +1134,17 @@ you should place your code here."
   (add-hook 'company-mode-hook (lambda()
                                  (define-key evil-insert-state-map (kbd "<f1>") 'company-complete)))
 
-  (setq org-agenda-files '("~/org-agenda/work.org" "~/org-agenda/2020-2-season.org" "~/org-roam/daily/"))
+  (setq org-agenda-files '("~/org-agenda/work.org" "~/org-agenda/2020-2-season.org" "~/org-roam/"))
   ;; org-export not run code especially in org-hugo
   (setq org-export-babel-evaluate nil)
+
+  ;; org-roam
+  (setq org-roam-directory (file-truename "~/org-roam"))
+  ;; (add-hook 'after-init-hook 'org-roam-mode)
+  (org-roam-db-autosync-mode)
+  (org-roam-ui-mode t)
+  (setq org-roam-completion-everywhere t)
+  (spacemacs/set-leader-keys "a o r e" 'org-roam-extract-subtree)
 
   ;; (global-set-key (kbd "C-q r l") 'helm-bookmarks)
   ;; (global-set-key (kbd "C-q s") 'helm-projectile-switch-project)
