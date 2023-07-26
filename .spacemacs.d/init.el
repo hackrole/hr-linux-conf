@@ -131,7 +131,22 @@ values."
           org-enable-hugo-support t
           org-enable-roam-support t
           org-enable-roam-ui t
+          org-roam-ui-open-on-start nil
           org-enable-reveal-js-support t
+          org-enable-roam-protocol t
+          org-roam-capture-templates '(("d" "default" plain
+                                        "%?"
+                                        :if-new (file+head "%<%Y%m%d>-${slug}.org" "#+title: ${title}\n")
+                                        :unnarrowed t)
+                                       ("w" "work" plain
+                                        "%?"
+                                        :if-new (file+head "work/%<%Y-%m-%d>-${slug}.org" "#+title: ${title}\n")
+                                        :unnarrowed t)
+                                       ("p" "plan" plain
+                                        "$?"
+                                        :if-new (file+head "plan/%<%Y-%m-%d>-${slug}.org" "#+title: ${title}\n")
+                                        :unnarrowed t)
+                                       )
           org-journal-file-format "%Y-%m-%d"
           org-journal-date-format "%A, %B %d %Y")
      ;; (ranger :variables
