@@ -142,7 +142,7 @@ values."
                                         "%?"
                                         :if-new (file+head "work/%<%Y-%m-%d>-${slug}.org" "#+title: ${title}\n")
                                         :unnarrowed t)
-                                       ("s", "shortcut", plain
+                                       ("s" "shortcut" plain
                                         "%?"
                                         :if-new (file+head "shortcuts/%<%Y-%m-%d>-${slug}.org" "#+title: ${title}\n")
                                         :unnarrowed t)
@@ -168,9 +168,9 @@ values."
             shell-default-shell 'vterm
             shell-default-term-shell "/bin/zsh")
      ;; spell check make emacs hangs and slow
-     ;; (spell-checking :variables
-     ;;                 enable-flyspell-auto-completion t
-     ;;                 spell-checking-enable-auto-dictionary t)
+     (spell-checking :variables
+                     enable-flyspell-auto-completion nil
+                     spell-checking-enable-auto-dictionary t)
      ;; version-control
      ;; emacs lisp
      emacs-lisp
