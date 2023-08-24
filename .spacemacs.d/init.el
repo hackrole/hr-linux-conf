@@ -142,7 +142,7 @@ values."
                                         "%?"
                                         :if-new (file+head "work/%<%Y-%m-%d>-${slug}.org" "#+title: ${title}\n")
                                         :unnarrowed t)
-                                       ("s", "shortcut", plain
+                                       ("s" "shortcut", plain
                                         "%?"
                                         :if-new (file+head "shortcuts/%<%Y-%m-%d>-${slug}.org" "#+title: ${title}\n")
                                         :unnarrowed t)
@@ -168,9 +168,9 @@ values."
             shell-default-shell 'vterm
             shell-default-term-shell "/bin/zsh")
      ;; spell check make emacs hangs and slow
-     ;; (spell-checking :variables
-     ;;                 enable-flyspell-auto-completion t
-     ;;                 spell-checking-enable-auto-dictionary t)
+     (spell-checking :variables
+                     enable-flyspell-auto-completion t
+                     spell-checking-enable-auto-dictionary t)
      ;; version-control
      ;; emacs lisp
      emacs-lisp
@@ -335,6 +335,7 @@ values."
                                       ob-ipython
                                       ob-rust
                                       ob-typescript
+                                      ob-mongo
                                       ob-go
                                       clipetty
                                       jupyter
@@ -733,10 +734,6 @@ you should place your code here."
   (setq org-plantuml-jar-path sp-org-plantuml-jar-path)
   (setq plantuml-jar-path sp-org-plantuml-jar-path)
 
-  ;; org-roam
-  (setq org-roam-directory (file-truename "~/org-roam"))
-  ;; (setq spaceline-org-clock-p t)
-
   ;; k8s-mode indent
   (setq k8s-indent-offset nil)
 
@@ -746,9 +743,6 @@ you should place your code here."
   (setq projectile-project-search-path '("~/projects/" "~/hr-conf/"))
   (setq projectile-fd-executable "fd")
   ;; (setq-default helm-boring-file-regexp-list)
-
-  ;; enable mode line display of org clock
-  (setq spaceline-org-clock-p t)
 
   ;; lsp-ui-mode
   (setq lsp-ui-doc-enable t)
@@ -912,6 +906,7 @@ you should place your code here."
     (add-to-list 'org-babel-tangle-lang-exts '("js" . "js"))
     (add-to-list 'org-babel-load-languages '(java . t))
     (add-to-list 'org-babel-load-languages '(haskell . t))
+    (add-to-list 'org-babel-load-languages '(mongo . t))
     ;; (nconc org-babel-default-header-args:java '((:dir . "/tmp")))
     (setq org-confirm-babel-evaluate nil)
     (add-hook 'org-babel-after-execute-hook 'org-display-inline-images 'append))
@@ -1145,10 +1140,14 @@ you should place your code here."
   ;; org-export not run code especially in org-hugo
   (setq org-export-babel-evaluate nil)
 
+  ;; enable mode line display of org clock
+  (setq spaceline-org-clock-p t)
+
   ;; org-roam
   (setq org-roam-directory (file-truename "~/org-roam"))
   ;; (add-hook 'after-init-hook 'org-roam-mode)
   (org-roam-db-autosync-mode)
+  (setq org-roam-ui-open-on-start nil)
   (org-roam-ui-mode t)
   (setq org-roam-completion-everywhere t)
   (spacemacs/set-leader-keys "a o r e" 'org-roam-extract-subtree)
