@@ -16,9 +16,17 @@
     excludesfile = /Users/daipeng/.gitignore_global
     # use linux line-of-end
     autocrlf = input
-    pager = less -F -X
+    ; pager = less -F -X
+    pager = delta
     #autocrlf = true
     #whitespace = cr-at-eol
+[interactive]
+  diffFilter = delta --color-only
+[delta]
+  navigate = true
+  light = false
+[merge]
+  conflictstyle = diff3
 [push]
     default = simple
 [difftool "sourcetree"]
@@ -40,6 +48,7 @@
 [difftool]
 	prompt = false
 [diff]
+  colorMoved = default
 	tool = vimdiff
 [fetch]
     # auto remove remote deleted branch on local

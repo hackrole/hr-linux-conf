@@ -8,4 +8,4 @@
                        ("obii" "#+begin_src ipython :session :exports both :results raw drawer\n  %matplotlib inline\n  import matplotlib.pylot as plt\n  import numpy as np\n  import pandas as pd\n  import seaborn as sns\n  $0\n#+end_src" "ob-ipython-import" nil nil nil "/home/hackrole/.spacemacs.d/snippets/org-mode/ob-ipython-import" nil nil)))
 
 
-;;; Do not edit! File generated at Mon Mar 20 21:23:15 2023
+;;; Do not edit! File generated at Mon Sep  4 15:13:53 2023

@@ -1,2 +1,5 @@
 [virtualenvs]
 path = "/home/hackrole/.virtualenvs"
+prefer-active-python = true
+
+[repositories.LexisAdvance]

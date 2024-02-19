@@ -46,19 +46,19 @@ values."
      ;; <M-m f e R> (Emacs style) to install them.
      ;; ----------------------------------------------------------------
      (erc :variables
-            erc-server-list
-            '(("irc.freenode.net"
-               :port "6697"
-               :ssl t
-               :nick "hackrole"
-               :password "freeme")))
+          erc-server-list
+          '(("irc.freenode.net"
+             :port "6697"
+             :ssl t
+             :nick "hackrole"
+             :password "freeme")))
      helm
      ;; ivy
      (ibuffer :variables ibuffer-group-buffers-by 'projects)
      nixos
      ;; wakatime dashboard
      ;; expand $HOME variable
-     (wakatime :variables wakatime-cli-path "/home/hackrole/.asdf/shims/wakatime")
+     ;; (wakatime :variables wakatime-cli-path "/home/hackrole/.asdf/shims/wakatime")
      ;; racket
      racket
      ;; c and c++
@@ -77,16 +77,16 @@ values."
      (syntax-checking :variables syntax-checking-use-original-bitmaps t)
      ;; contains auto-complete/yasnippet/company
      (auto-completion :variables auto-completion-enable-sort-by-usage t
-                        auto-completion-return-key-behavior nil
-                        auto-completion-tab-key-behavior nil
-                        auto-completion-complete-with-key-sequence nil ;; this not work
-                        auto-completion-complete-with-key-sequence-delay 0
-                        auto-completion-minimum-prefix-length 1
-                        auto-completion-private-snippets-directory (concat)
-                        auto-completion-enable-snippets-in-popup t
-                        spacemacs-default-company-backends '(company-files company-capf company-yasnippet)
-                        require-final-newline nil
-                        auto-completion-enable-help-tooltip t)
+                      auto-completion-return-key-behavior nil
+                      auto-completion-tab-key-behavior nil
+                      auto-completion-complete-with-key-sequence nil ;; this not work
+                      auto-completion-complete-with-key-sequence-delay 0
+                      auto-completion-minimum-prefix-length 1
+                      auto-completion-private-snippets-directory (concat)
+                      auto-completion-enable-snippets-in-popup t
+                      spacemacs-default-company-backends '(company-files company-capf company-yasnippet)
+                      require-final-newline nil
+                      auto-completion-enable-help-tooltip t)
      ;; better-defaults
      ;; themes, no which I like
      themes-megapack
@@ -100,7 +100,10 @@ values."
            ;; config for ubuntu zeal
            ;; dash-docs-docset-newpath "~/.local/share/Zeal/Zeal/docsets"
            )
-     git
+     (git :variables git-enable-magit-todos-plugin t
+          git-magit-status-fullscreen t
+          git-enable-magit-delta-plugin t
+          git-enable-magit-gitflow-plugin t)
      ;; (github :variables gist-ask-for-description t
      ;;         gist-ask-for-filename t)
      ;; plantuml
@@ -140,15 +143,19 @@ values."
           org-enable-roam-protocol t
           org-roam-capture-templates '(("d" "default" plain
                                         "%?"
-                                        :if-new (file+head "%<%Y%m%d>-${slug}.org" "#+title: ${title}\n")
+                                        :if-new (file+head "literature/%<%Y%m%d>-${slug}.org" "#+title: ${title}\n")
                                         :unnarrowed t)
                                        ("w" "work" plain
                                         "%?"
                                         :if-new (file+head "work/%<%Y-%m-%d>-${slug}.org" "#+title: ${title}\n")
                                         :unnarrowed t)
-                                       ("s" "shortcut", plain
+                                       ("s" "shortcut" plain
                                         "%?"
                                         :if-new (file+head "shortcuts/%<%Y-%m-%d>-${slug}.org" "#+title: ${title}\n")
+                                        :unnarrowed t)
+                                       ("n" "read note" plain
+                                        "* note\n\n%?\n\n* resource\n${link}"
+                                        :if-new (file+head "fleeting/%<%Y-%m-%d>-${slug}.org" "#+title: ${title}\n")
                                         :unnarrowed t)
                                        ("p" "plan" plain
                                         "%?"
@@ -177,7 +184,7 @@ values."
             shell-default-term-shell "/bin/zsh")
      ;; spell check make emacs hangs and slow
      (spell-checking :variables
-                     enable-flyspell-auto-completion t
+                     enable-flyspell-auto-completion nil
                      spell-checking-enable-auto-dictionary t)
      ;; version-control
      ;; emacs lisp
@@ -354,17 +361,25 @@ values."
                                       graphql-mode
                                       ;; buku bookmark emacs bind
                                       ebuku
+                                      ;; googlebazel
+                                      bazel
                                       ;; youdao dictionary
                                       youdao-dictionary
+                                      ;; justfile mode
+                                      just-mode
+                                      justl
                                       ;; open-with
                                       openwith
                                       ;; atomic-chrome similer to edit-with-emacs
                                       atomic-chrome
                                       (leetcode :location (recipe :fetcher github
-                                                                    :repo "kaiwk/leetcode.el"))
+                                                                  :repo "kaiwk/leetcode.el"))
                                       ;; swagger
                                       (openapi-yaml-mode :location (recipe :fetcher github
                                                                            :repo "magoyette/openapi-yaml-mode"))
+                                      apheleia
+                                      ;; org export to github flavored markdown
+                                      ;; ox-gfm
                                       ;; edit with emacs
                                       atomic-chrome
                                       ;; (flycheck-swagger-tools :location (recipe :fetcher github
@@ -374,15 +389,15 @@ values."
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
    ;; A list of packages that will not be installed and loaded.
-   ;dotspacemacs-excluded-packages '(tn-theme)
+                                        ;dotspacemacs-excluded-packages '(tn-theme)
    dotspacemacs-excluded-packages '(tn-theme
                                     company-tern
                                     firebelly-theme
-                                     niflheim-theme
-                                     importmagic
-                                     pastels-on-dark-theme
-                                     tronesque-theme
-                                     zonokai-theme)
+                                    niflheim-theme
+                                    importmagic
+                                    pastels-on-dark-theme
+                                    tronesque-theme
+                                    zonokai-theme)
    ;; dotspacemacs-excluded-packages '(mu4e-maildirs-extension)
    ;; Defines the behaviour of Spacemacs when installing packages.
    ;; Possible values are `used-only', `used-but-keep-unused' and `all'.
@@ -459,8 +474,14 @@ values."
    dotspacemacs-colorize-cursor-according-to-state t
    ;; Default font, or prioritized list of fonts. `powerline-scale' allows to
    ;; quickly tweak the mode-line size to make separators look not too crappy.
-   dotspacemacs-default-font '("Source Code Pro"
+   ;; dotspacemacs-default-font '("Source Code Pro"
+   ;;                             :size 24
+   ;;                             :weight normal
+   ;;                             :width normal
+   ;;                             :powerline-scale 1.1)
+   dotspacemacs-default-font '("SauceCodePro Nerd Font"
                                :size 24
+                               ;; :weight light
                                :weight normal
                                :width normal
                                :powerline-scale 1.1)
@@ -762,7 +783,11 @@ you should place your code here."
   ;; lsp completion
   (setq lsp-completion-provider :none)
   (setq lsp-prefer-capf nil)
-  (add-hook 'python-mode-hook '(lambda () (setq company-backends '((company-capf :with company-yasnippet)))))
+  (defun my-python-cp-hook ()
+    (interactive)
+    (setq company-backends '((company-capf :with company-yasnippet))))
+
+  (add-hook 'python-mode-hook 'my-python-cp-hook)
 
   ;; enable copy to clipboard while in terminal-emacs and wsl
   (global-clipetty-mode)
@@ -773,6 +798,20 @@ you should place your code here."
 
   ;; config org-present
   ;; (setq org-present-text-scale 20)
+
+  ;; justfile config
+  (spacemacs/set-leader-keys-for-major-mode 'just-mode
+    "l" 'justl
+    )
+  (spacemacs/set-leader-keys-for-major-mode 'justl-mode
+    "j" 'justl--refresh-buffer
+    "e" 'justl-exec-recipe
+    "E" 'justl-exec-eshell
+    "?" 'justl-help-popup
+    "h" 'justl-help-popup
+    "w" 'justl--exec-recipe-with-args
+    "W" 'justl-no-exec-eshell
+    "g" 'justl-go-to-recipe)
 
   (setq visual-fill-column-width 80
         visual-fill-column-center-text t)
@@ -834,7 +873,7 @@ you should place your code here."
 
   ;; wakatime-mode
   ;; (global-wakatime-mode t)
-  (setq wakatime-api-key (f-read-text "~/.wakatime.key" 'utf-8))
+  ;; (setq wakatime-api-key (f-read-text "~/.wakatime.key" 'utf-8))
 
   ;; epub nov config
   (setq nov-text-width 80)
@@ -887,6 +926,8 @@ you should place your code here."
         '(("github\\.com" . gfm-mode)
           ("redmine" . texttile-mode)))
   (setq atomic-chrome-buffer-open-style 'frame)
+
+  ;; (require 'ox-gfm)
 
   ;;;; org config
   ;; enable org shortkey to insert code
@@ -968,8 +1009,8 @@ you should place your code here."
   (setq-default evil-escape-key-sequence "jk")
   (setq-default evil-escape-delay 0.2)
 
-  ;; disable mypy check
-  (setq-default flycheck-disabled-checkers '(python-mypy python-pylint))
+  ;; python flycheck config
+  (setq-default flycheck-disabled-checkers '(python-pylint))
   (define-coding-system-alias 'utf8 'utf-8)
 
   (setq-default lsp-pyls-configuration-sources ["flake8"])
@@ -986,12 +1027,18 @@ you should place your code here."
   ;; close flymake mode, it's fucked
   (setq flymake-diagnostic-functions '(t))
   (global-flycheck-mode 0)
-  (add-hook 'python-mode-hook '(lambda () (flymake-mode 0)) t)
+  (defun my/setup-python-flycheck-hook ()
+    (interactive)
+    (flymake-mode 0)
+    (setq flycheck-enabled-checkers '(python-pyright python-mypy))
+    (setq flycheck-disable-checker '(python-pylint))
+    (flycheck-select-checker 'python-pyright))
+  (add-hook 'python-mode-hook 'my/setup-python-flycheck-hook)
 
   ;; mu4e config for alert
   (with-eval-after-load 'mu4e-alert
     (mu4e-alert-set-default-style 'notifications)) ;; for linux
-    ;; (mu4e-alert-set-default-style 'notifier)) ;; for mac OSX
+  ;; (mu4e-alert-set-default-style 'notifier)) ;; for mac OSX
 
   ;; javascript config
   (setq-default js2-basic-offset 2)
@@ -1021,6 +1068,25 @@ you should place your code here."
     "j" 'es-execute-request-dwim
     "n" 'es-goto-next-request
     "p" 'es-goto-previous-request)
+
+  ;; bazel
+  (spacemacs/declare-prefix "a b" "bazel-build")
+  (spacemacs/set-leader-keys
+    "a b b" 'bazel-build
+    "a b T" 'bazel-test
+    "a b C" 'bazel-coverage
+    "a b r" 'bazel-run
+    "a b t" 'bazel-test-at-point
+    "a b c" 'bazel-compile-current-file
+    "a b f" 'bazel-find-build-file
+    "a b F" 'bazel-find-workspace-file
+    "a b G" 'bazel-show-consuming-rule
+    "a b p" 'bazle-find-project
+    )
+  (spacemacs/set-leader-keys-for-major-mode 'bazel-workspace-mode
+    "i h" 'bazel-insert-http-archive)
+  ;; (spacemacs/set-leader-keys-for-major-mode 'bazel-mode
+  ;;   "g g" 'Xref)
 
   ;; easy hugo setup
   (setq easy-hugo-basedir "~/hr-conf/hugo_note")
@@ -1055,7 +1121,9 @@ you should place your code here."
   (setq geiser-active-implementations '(racket))
 
   ;; force disable linum-mode in doc-view-mode(pdf-tools)
-  (add-hook 'pdf-view-mode-hook (lambda() (linum-mode -1)))
+  (defun my/disable-linum-mode-for-pdf-view-mode ()
+    (linum-mode -1))
+  (add-hook 'pdf-view-mode-hook 'my/disable-linum-mode-for-pdf-view-mode)
 
   ;; web-mode for js/vue/react
   ;; (add-to-list 'auto-mode-alist '("\\.js\\'" . web-mode))
@@ -1096,8 +1164,9 @@ you should place your code here."
                                 (spacemacs/set-leader-keys-for-major-mode 'python-mode
                                   "db" 'hr-conf/python-toggle-breakpoint)
                                 ))
-  (add-hook 'python-mode-hook (lambda ()
-                                (setq flycheck-select-checker 'python-flake8)))
+  ;; (apheleia-global-mode +1)
+  ;; (add-to-list 'apheleia-mode-alist '(python-mode . ruff))
+  ;; (add-to-list 'apheleia-mode-alist '(python-ts-mode . ruff))
 
   ;; google translate
   (setq google-translate-default-target-language "zh-CN")
@@ -1156,8 +1225,10 @@ you should place your code here."
   (define-key evil-insert-state-map (kbd "M-o") (kbd "<RET>jkO"))
 
   ;; add keybinding for company-complete manual
-  (add-hook 'company-mode-hook (lambda()
-                                 (define-key evil-insert-state-map (kbd "<f1>") 'company-complete)))
+  (defun my-company-key-hook ()
+    (interactive)
+    (define-key evil-insert-state-map (kbd "<f1>") 'company-complete))
+  (add-hook 'company-mode-hook 'my-company-key-hook)
 
   (setq org-agenda-files '("~/org-roam/daily/" "~/org-roam/plan/"))
   ;; org-export not run code especially in org-hugo
