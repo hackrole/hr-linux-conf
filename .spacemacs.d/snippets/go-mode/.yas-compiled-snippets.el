@@ -2,7 +2,8 @@
 ;;; Snippet definitions:
 ;;;
 (yas-define-snippets 'go-mode
-                     '(("imp" "import (\n       $0\n)\n" "import" nil nil nil "/home/hackrole/.spacemacs.d/snippets/go-mode/import" nil nil)))
+                     '(("pmain" "package main\n\nfunc main() {\n  $0\n}" "package_main" nil nil nil "/home/hackrole/.spacemacs.d/snippets/go-mode/package_main" nil nil)
+                       ("imp" "import (\n       $0\n)\n" "import" nil nil nil "/home/hackrole/.spacemacs.d/snippets/go-mode/import" nil nil)))
 
 
-;;; Do not edit! File generated at Mon Mar 20 21:23:15 2023
+;;; Do not edit! File generated at Mon Sep  4 15:13:53 2023
