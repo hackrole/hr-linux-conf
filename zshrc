@@ -71,7 +71,7 @@ export LANG=en_US.UTF-8
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git git-extras cabal celery docker encode64 fabric gem httpie jsontools node npm tmux vagrant kubectl pass fzf kube-ps1 helm terraform )
+plugins=(git git-extras cabal celery docker encode64 fabric gem httpie jsontools node npm tmux vagrant kubectl pass fzf kube-ps1 helm terraform z)
 
 # User configuration
 
@@ -379,3 +379,6 @@ if [ -e /home/hackrole/.nix-profile/etc/profile.d/nix.sh ]; then . /home/hackrol
 # proto
 export PROTO_HOME="$HOME/.proto"
 export PATH="$PROTO_HOME/shims:$PROTO_HOME/bin:$PATH"
+
+# TODO eval zoxide, a fast/z alternative
+# eval "$(zoxide init zsh)"
