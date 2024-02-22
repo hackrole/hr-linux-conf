@@ -174,6 +174,9 @@ values."
             ;; shell-default-shell 'ansi-term
             shell-default-shell 'vterm
             shell-default-term-shell "/bin/zsh")
+     (shell-scripts :variables
+                    shell-scripts-backend 'lsp
+                    shell-scripts-format-on-save t)
      ;; spell check make emacs hangs and slow
      (spell-checking :variables
                      enable-flyspell-auto-completion nil
