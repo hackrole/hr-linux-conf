@@ -71,7 +71,7 @@ export LANG=en_US.UTF-8
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git git-extras cabal celery docker encode64 fabric gem httpie jsontools node npm tmux vagrant kubectl pass fzf kube-ps1 helm terraform)
+plugins=(git git-extras cabal celery docker encode64 fabric gem httpie jsontools node npm tmux vagrant kubectl pass fzf kube-ps1 helm terraform z)
 
 # User configuration
 
@@ -156,7 +156,8 @@ export JAVA_HOME="${HOME}/.sdkman/candidates/java/current"
 #export ANDROID_HOME=$HOME/app/android-sdk-linux
 #export PATH=$PATH:${ANDROID_HOME}/tools:${ANDROID_HOME}/platform-tools
 export PATH="${PATH}:/opt/android-studio/bin"
-# flutter
+# dart and flutter
+export PATH=$PATH:"$HOME/.pub-cache/bin"
 export PUB_HOSTED_URL=https://pub.flutter-io.cn
 export FLUTTER_STORAGE_BASE_URL=https://storage.flutter-io.cn
 export PATH="${PATH}:/opt/flutter/bin"
@@ -374,3 +375,10 @@ GUIX_PROFILE="/home/hackrole/.config/guix/current"
 export PROMPT='$(kube_ps1)'$PROMPT
 
 if [ -e /home/hackrole/.nix-profile/etc/profile.d/nix.sh ]; then . /home/hackrole/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
+
+# proto
+export PROTO_HOME="$HOME/.proto"
+export PATH="$PROTO_HOME/shims:$PROTO_HOME/bin:$PATH"
+
+# TODO eval zoxide, a fast/z alternative
+# eval "$(zoxide init zsh)"
