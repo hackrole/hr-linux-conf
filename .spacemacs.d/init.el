@@ -32,6 +32,7 @@ values."
    '(
      (dart :variables lsp-enable-on-type-formatting t
            lsp-dart-sdk-dir "/home/hackrole/.asdf/installs/dart/2.19.6"
+           lsp-enable-on-type-formatting t
            dart-backend 'lsp)
      asciidoc
      nginx
@@ -811,8 +812,11 @@ you should place your code here."
 
   (add-hook 'python-mode-hook 'my-python-cp-hook)
 
+  ;;; TODO fix copy/paster keyboard in linux and minibuffer
   ;; enable copy to clipboard while in terminal-emacs and wsl
   (global-clipetty-mode)
+
+  ;; 
 
   ;; fix helm history duplicats
   (setq history-delete-duplicates t)
