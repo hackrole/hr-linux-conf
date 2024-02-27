@@ -155,7 +155,7 @@ values."
                                         :if-new (file+head "shortcuts/%<%Y-%m-%d>-${slug}.org" "#+title: ${title}\n")
                                         :unnarrowed t)
                                        ("n" "read note" plain
-                                        "* note\n\n%?\n\n* resource\n${link}"
+                                        "%?"
                                         :if-new (file+head "fleeting/%<%Y-%m-%d>-${slug}.org" "#+title: ${title}\n")
                                         :unnarrowed t)
                                        ("p" "plan" plain
@@ -1180,6 +1180,7 @@ you should place your code here."
   ;; (add-to-list 'apheleia-mode-alist '(python-ts-mode . ruff))
 
   ;; google translate
+  ;; (setq google-translate-default-source-language "en-US")
   (setq google-translate-default-target-language "zh-CN")
 
   ;; set nodenv path
