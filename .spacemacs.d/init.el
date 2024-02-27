@@ -365,6 +365,11 @@ values."
                                       graphql-mode
                                       ;; buku bookmark emacs bind
                                       ebuku
+                                      ;; github copilot
+                                      (copilot :location (recipe
+                                                            :fetcher github
+                                                            :repo "copilot-emacs/copilot.el"
+                                                            :files ("*.el" "dist")))
                                       ;; googlebazel
                                       bazel
                                       ;; youdao dictionary
@@ -768,6 +773,16 @@ you should place your code here."
 
   ;; skip boring files
   (setq-default helm-ff-skip-boring-files t)
+
+  ;; copiot config
+  (with-eval-after-load 'company
+    (delq 'company-preview-if-just-one-frontend company-frontends))
+  (with-eval-after-load 'copilot
+    (define-key copilot-completion-map (kbd "C-l") 'copilot-accept-completion)
+    (define-key copilot-completion-map (kbd "C-l") 'copilot-accept-completion)
+    (define-key copilot-completion-map (kbd "C-TAB") 'copilot-accept-completion-by-word)
+    (define-key copilot-completion-map (kbd "C-<tab>") 'copilot-accept-completion-by-word))
+  (add-hook 'prog-mode-hook 'copilot-mode)
 
   ;; plantuml
   (setq sp-org-plantuml-jar-path (or (getenv "sp-org-plantuml-jar-path") "/opt/plantuml/plantuml.jar"))
